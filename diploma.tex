@@ -120,13 +120,11 @@
 	%chapter1,%
 	%chapter2,%
 	%chapter3,%
-
-	technical_background,
-	design,
-	implementation,
-	verification,
-	summary,
-
+	technical_background,%
+	design,%
+	implementation,%
+	verification,%
+	conclusion,%
 	acknowledgement,%
 	appendices,%
 }
@@ -165,7 +163,7 @@ aboveskip=10pt}
 \include{design}
 \include{implementation}
 \include{verification}
-\include{summary}
+\include{conclusion}
 
 %\include{chapter1}
 %\include{chapter2}
@@ -174,10 +172,11 @@ aboveskip=10pt}
 \include{acknowledgement}
 %\listoffigures\addcontentsline{toc}{chapter}{Ábrák jegyzéke}
 %\listoftables\addcontentsline{toc}{chapter}{Táblázatok jegyzéke}
-
+\renewcommand{\bibname}{Bibliography}
 \bibliography{mybib}
 %TODO
 \addcontentsline{toc}{chapter}{Bibliography}
+
 \bibliographystyle{plain}
 
 \include{appendices}
