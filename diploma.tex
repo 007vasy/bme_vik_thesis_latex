@@ -15,12 +15,14 @@
 %\usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{anysize}
-\usepackage[magyar]{babel}
+\usepackage[english]{babel}
 \usepackage{sectsty}
 \usepackage{ctable}
 \usepackage{setspace}  % Ettol a tablazatok, abrak, labjegyzetek maradnak 1-es sorkozzel!
 \usepackage[hang]{caption}
 \usepackage{hyperref}
+\usepackage[nodayofweek]{datetime}
+
 
 %--------------------------------------------------------------------------------------
 % Main variables
@@ -41,10 +43,10 @@
 % (like the ToC, the References, and the Chapter pages)remain in plane style
 
 \pagestyle{plain}
-%\setlength{\parindent}{0pt} % áttekinthetõbb, angol nyelvû dokumentumokban jellemzõ
-%\setlength{\parskip}{8pt plus 3pt minus 3pt} % áttekinthetõbb, angol nyelvû dokumentumokban jellemzõ
-\setlength{\parindent}{12pt} % magyar nyelvû dokumentumokban jellemzõ
-\setlength{\parskip}{0pt}    % magyar nyelvû dokumentumokban jellemzõ
+\setlength{\parindent}{0pt} % áttekinthetõbb, angol nyelvû dokumentumokban jellemzõ
+\setlength{\parskip}{8pt plus 3pt minus 3pt} % áttekinthetõbb, angol nyelvû dokumentumokban jellemzõ
+%\setlength{\parindent}{12pt} % magyar nyelvû dokumentumokban jellemzõ
+%\setlength{\parskip}{0pt}    % magyar nyelvû dokumentumokban jellemzõ
 
 \marginsize{35mm}{25mm}{15mm}{15mm} % anysize package
 \setcounter{secnumdepth}{0}
@@ -153,7 +155,6 @@ aboveskip=10pt}
 \onehalfspacing
 \include{titlepage}
 
-\renewcommand{\contentsname}{Contents}
 \tableofcontents\vfill
 \include{declaration}
 \include{abstract}
