@@ -111,15 +111,22 @@
 \author{\vikszerzo}
 \title{\viktitle}
 \includeonly{
-	guideline,%
-	project,%
+	%guideline,%
+	%project,%
 	titlepage,%
 	declaration,%
 	abstract,%
 	introduction,%
-	chapter1,%
-	chapter2,%
-	chapter3,%
+	%chapter1,%
+	%chapter2,%
+	%chapter3,%
+
+	technical_background,
+	design,
+	implementation,
+	verification,
+	summary,
+
 	acknowledgement,%
 	appendices,%
 }
@@ -141,26 +148,36 @@ aboveskip=10pt}
 %--------------------------------------------------------------------------------------
 \begin{document}
 \singlespacing
-\include{guideline}
-\include{project}
+%\include{guideline}
+%\include{project}
 
 \pagenumbering{arabic}
 \onehalfspacing
 \include{titlepage}
+
+\renewcommand{\contentsname}{Contents}
 \tableofcontents\vfill
 \include{declaration}
 \include{abstract}
 \include{introduction}
-\include{chapter1}
-\include{chapter2}
-\include{chapter3}
-\include{acknowledgement}
 
+\include{technical_background}
+\include{design}
+\include{implementation}
+\include{verification}
+\include{summary}
+
+%\include{chapter1}
+%\include{chapter2}
+%\include{chapter3}
+
+\include{acknowledgement}
 %\listoffigures\addcontentsline{toc}{chapter}{Ábrák jegyzéke}
 %\listoftables\addcontentsline{toc}{chapter}{Táblázatok jegyzéke}
 
 \bibliography{mybib}
-\addcontentsline{toc}{chapter}{Irodalomjegyzék}
+%TODO
+\addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{plain}
 
 \include{appendices}
