@@ -45,7 +45,9 @@ As it seems in the file names the workers made the truck more than one time with
 
 But in this first iteration, STILL won't privided any goal value for tire abrosion. So from this first iteration i could only made explanatory data analysis to fuel further data collection and enough goal values in sustainable resolation and quality to train some predictive model on that data.
 				\noindent
-In the second iteration on data providing i get on 10.2017. more data in a quite similar fashion, but from working forklift, and a top of that with some additional tire measurement. The CAN-bus sensor data span about two month in time, but there was just a few measurement of the tire abrosion, every third week. This is nearly enough to make some prediction, but for further iterations it was neccesery.
+In the second iteration on data providing i get on 10.2017. more data in a quite similar fashion, but from working forklift, and a top of that with some additional tire measurement. The CAN-bus sensor data span about two month in time, but there was just a few measurement of the tire abrosion, every third week. This is nearly enough to make some prediction, but for further iterations it was neccessary.
+
+
 
 %----------------------------------------------------------------------------
 			\subsubsection{Fault prediction dataset}
@@ -58,15 +60,54 @@ Brief solution description:RUL
 %----------------------------------------------------------------------------
 	\section{Data processing methods}
 %----------------------------------------------------------------------------
-A TeXnicCenter és a LEd kizárólag szerkesztõprogram 
+%CAN fingerprint
 
 
+				\noindent
+If one wants to make educated guess about the future, one has to bring the data in tidy
+%tidy reference
+form, it advised and required for preparation to the most of the data mining methods.
+				\noindent
+In this case the *.mat files involved some so-called box-shorting to achieve the "tidy" state. In box-shorting one has to know the range of the shorting key (in this data's case the timestamp key's range) and with that, one can make a large data table with a lot of "NA"-s, but it's needed to orginize the multi frequency sensory data.
 
+Once the tidying is done, comes the \textit{exploratory} data analysis to make sense about the data mass and come with ways to achieve the best prediction possible, and short out unnessesary columns, to make the future process faster.
+%FAULTPRED?
 %----------------------------------------------------------------------------
 	\section{Developing tools}
 %----------------------------------------------------------------------------
-Linux operáció
-
-TODO SUBSECTION
-TODO RSTUDIO
-TODO PYCharm
+		\subsection{Hardware}
+%----------------------------------------------------------------------------
+			\subsubsection{Personal computer}
+%----------------------------------------------------------------------------
+My PC is a Dell Latitude E6320 64 bit with an Intel(R) Core(TM) i5-2520M CPU @ 2.50GHz processor.
+%TODO reference
+%----------------------------------------------------------------------------
+			\subsubsection{Department Linux R server}
+%----------------------------------------------------------------------------
+The Department's super compoter called "batman" is Linux based R server and it's capadle of running R script's on enormous dataset's. It has two Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz processors each of them has 6 cores and capable of running 12 Threads.
+%TODO reference
+%----------------------------------------------------------------------------
+		\subsection{Software}
+%----------------------------------------------------------------------------
+			\subsubsection{Linux Ubuntu 17.04}
+%----------------------------------------------------------------------------
+The operation system in the title is an open source software, stable and convinent for an advadced user, and to go further it's easiest way to communicate with to Linux system via SSH.
+%----------------------------------------------------------------------------				
+			\subsubsection{RStudio}
+%----------------------------------------------------------------------------
+RStudio is the most common tool for developing R projects, it has good package controlling application.
+%----------------------------------------------------------------------------	
+			\subsubsection{Termius Android mobile phone application}
+%----------------------------------------------------------------------------
+The tidying and data preprocessing method is resource and time consuming, and for optimize it to the daily life i used this app with my 4G or sometimes just HSDPA internet acces to maintain an SSH connection to the Linux R server and supervise the and check the process progress time to time and hand the occasinal error ands bugs.
+%----------------------------------------------------------------------------
+			\subsubsection{Git and GitHub}
+%----------------------------------------------------------------------------
+For version control reasons and open source commitment, i choose this common toolset to save my work as it progressed.
+%----------------------------------------------------------------------------
+%			\subsubsection{PyCharm}
+%----------------------------------------------------------------------------	
+%----------------------------------------------------------------------------
+		\subsection{Management}
+%----------------------------------------------------------------------------
+For productivity reasons i use the GTD methodology, it's a time trying 10 years old method. It provides clarity, focus and flexible planning for me. 
