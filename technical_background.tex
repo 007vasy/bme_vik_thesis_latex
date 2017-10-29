@@ -1,16 +1,69 @@
 %----------------------------------------------------------------------------
 \chapter{Technical backgroud}
 %----------------------------------------------------------------------------
-\section{The MANTIS project}
+	\section{The MANTIS project}
 %----------------------------------------------------------------------------
-MANTIS
+		\subsection{Overall picture about the MANTIS project}
 %----------------------------------------------------------------------------
-\section{Data processing methods}
+Mantis project brief description
+
+%----------------------------------------------------------------------------
+		\subsection{Datasets from STILL}
+%----------------------------------------------------------------------------
+			\subsubsection{CAN fingerprint dataset}
+%----------------------------------------------------------------------------
+				\noindent
+As I already mentioned, the STILL forklifts use the CAN technology, for two kind on data collecting, in the CAN fingerpint dataset, the workers from the STILL had  connected a special CAN bus data collector to a few forklift and had done with them specific task and they have called it "fingerprints". The *.file names helped the understanding of the type of the road what the forklift go through:
+
+\begin{itemize}[noitemsep]
+    \item {800hTestDrive\_fast.mat}
+    \item {800hTestDrive\_slow.mat}
+    \item {FastTrack800h\_fast.mat}
+ 	\item {FastTrack800h\_slow.mat}
+	\item {FastTrackEight\_wl\_fast.mat}
+	\item {FastTrackEight\_wl\_slow.mat}
+	\item {FastTrackEight\_wol\_fast.mat}
+	\item {FastTrackEight\_wol\_slow.mat}
+  	\item {FastTrackOval\_wl\_fast.mat}
+	\item {FastTrackOval\_wl\_slow.mat}
+	\item {FastTrackOval\_wol\_fast.mat}
+	\item {FastTrackOval\_wol\_slow.mat}
+	\item {Ramp\_wl\_fast.mat} 
+	\item {Ramp\_wl\_slow.mat}
+	\item {Ramp\_wol\_fast.mat}
+	\item {Ramp\_wol\_slow.mat}
+    \item {WorkCycle\_fast.mat}
+    \item {WorkCycle\_slow.mat}
+	\item {Shunt800h\_fast.mat}  	
+  	\item {Shunt800h\_slow.mat}	
+ 	\item {Shunt\_fast.mat} 	
+ 	\item {Shunt\_slow.mat}
+\end{itemize}
+
+				\noindent
+As it seems in the file names the workers made the truck more than one time with various speed and load.
+
+But in this first iteration, STILL won't privided any goal value for tire abrosion. So from this first iteration i could only made explanatory data analysis to fuel further data collection and enough goal values in sustainable resolation and quality to train some predictive model on that data.
+				\noindent
+In the second iteration on data providing i get on 10.2017. more data in a quite similar fashion, but from working forklift, and a top of that with some additional tire measurement. The CAN-bus sensor data span about two month in time, but there was just a few measurement of the tire abrosion, every third week. This is nearly enough to make some prediction, but for further iterations it was neccesery.
+
+%----------------------------------------------------------------------------
+			\subsubsection{Fault prediction dataset}
+%----------------------------------------------------------------------------
+Brief solution description:Fault prediction
+%----------------------------------------------------------------------------
+			\subsubsection{Remaing Usefull life dataset}
+%----------------------------------------------------------------------------
+Brief solution description:RUL
+%----------------------------------------------------------------------------
+	\section{Data processing methods}
 %----------------------------------------------------------------------------
 A TeXnicCenter és a LEd kizárólag szerkesztõprogram 
 
+
+
 %----------------------------------------------------------------------------
-\section{Developing tools}
+	\section{Developing tools}
 %----------------------------------------------------------------------------
 Linux operáció
 
