@@ -1,19 +1,28 @@
 %----------------------------------------------------------------------------
 \chapter{Design}
 %----------------------------------------------------------------------------
+%TODO Electrix fault pred
+%----------------------------------------------------------------------------
 \section{Requirement specification}
 %----------------------------------------------------------------------------
+	\noindent
+The end goal is to come up with data processing methods and calculated attributes from the measured values for the future prediction applications.
+	\subsection{Start state}
+The start state is a raw CAN bus physical sensory data in a *.mat format, different measurement frequencies by sensor types.
 
+	\subsection{End state}
+		\noindent
+To reach the end state one has to transform that to an CSV (Comma Separate Value) or RDS (R Data Structure) format, for more convienent handling and calculate attributes.
+		\noindent
+The attributes are aggregations and summarisation of the connection between key values, it's comes from expert knowledge, exploratory data analysis and some unsupervised learning technique.	 \subsection{Abstract Workflow}
+To reach the end state from the start state, we have to break up the process from one (start-to-end) to smaller steps.
 
-TODO workflow
-TODO start and end state
-
-%----------------------------------------------------------------------------
-\section{Task background}
-%----------------------------------------------------------------------------
-
-TODO starting data
-TODO end information
+\begin{enumerate}
+	\item {Cleaning:} Solve the different measurement frequency problem, by making a one-row/one-observation data frame.
+	\item {Exploring:} Explore the data with exploratory data analysis tool and unsupervised learning, backed up with the STILL workers's, engineers's and my acquaintances's expert knowledge.
+ 	\item {Specifying Attributes:} Come up with sustainable attribute calculating algorithms.
+ 	\item {Implementing:} Implementin the cleaning and attribute calculation.
+\end{enumerate}
 
 %----------------------------------------------------------------------------
 \section{Data processing workflow design}
