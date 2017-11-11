@@ -6,22 +6,25 @@
 \section{Requirement specification}
 %----------------------------------------------------------------------------
 	\noindent
-The end goal is to come up with data processing methods and calculated attributes from the measured values for the future prediction applications.
-	\subsection{Start state}
-The start state is a raw CAN bus physical sensory data in a *.mat format, different measurement frequencies by sensor types.
-
-	\subsection{End state}
+The final aim was to create data processing methods and calculated attributes from measured values for future prediction applications.
+%----------------------------------------------------------------------------
+	\subsection{Starting state}
+The start state was a raw CAN bus physical sensory data in a *.mat format with different measurement frequencies by sensor types.
+%----------------------------------------------------------------------------
+	\subsection{Final state}
 		\noindent
-To reach the end state one has to transform that to an CSV (Comma Separate Value) or RDS (R Data Structure) format, for more convienent handling and calculate attributes.
+To achive the final state, data sets require to transform to an CSV (Comma Separate Value) or RDS (R Data Structure) format for more convenient handling and calculating attributes.
 		\noindent
-The attributes are aggregations and summarisation of the connection between key values, it's comes from expert knowledge, exploratory data analysis and some unsupervised learning technique.	 \subsection{Abstract Workflow}
-To reach the end state from the start state, we have to break up the process from one (start-to-end) to smaller steps.
+The attributes are aggregations and summarisation of connection between key values originating from expert knowledge, exploratory data analysis and several unsupervised learning technique.
+%----------------------------------------------------------------------------
+\subsection{Abstract Workflow}
+To accomplish the final state from the starting state, the process was partitioned from on start-to-end into smaller steps. 
 
 \begin{enumerate}
-	\item {Cleaning:} Solve the different measurement frequency problem, by making a one-row/one-observation data frame.
-	\item {Exploring:} Explore the data with exploratory data analysis tool and unsupervised learning, backed up with the STILL workers's, engineers's and my acquaintances's expert knowledge.
- 	\item {Specifying Attributes:} Come up with sustainable attribute calculating algorithms.
- 	\item {Implemention:} Implementing the cleaning process and attribute calculation.
+	\item {Cleaning:} To solve different measurement frequency problem by making a one-row/one-observation data frame.
+	\item {Exploring:} Investigating the data with exploratory data analysis tools and unsupervised learning supported by the STILL workers's, engineers's and my acquaintances's expert knowledge.
+ 	\item {Specifying Attributes:} To introduce sustainable attribute calculating algorithms.
+ 	\item {Calculating RUL (Remaining usefull life):} From received goal values (few tire measurement) and from the attributes calculated beforehand, present a RUL calculating algoritm for the MANTIS project.
 \end{enumerate}
 
 % TODO workflow figure
@@ -38,8 +41,7 @@ To reach the end state from the start state, we have to break up the process fro
 			\paragraph{Visualisation}
 		\subsubsection{Unsupervised learning}
 	\subsection{Specifying Attributes}
-	\subsection{Implemention}
-		\subsubsection{Cleaning process}
-		\subsubsection{Attribute calculating algorithms}		
+	\subsection{Calculating RUL (Remaining usefull life)}
+	
 
 
