@@ -5,7 +5,7 @@
 %----------------------------------------------------------------------------
 		\subsection{Overall picture about the MANTIS project}
 %----------------------------------------------------------------------------
-The MANTIS pilot project is a data-supported decision making system. The data comes from industrial sensors and on a popular IOT communication protokoll (MQTT) communicate with the given company cloud service, where the data tidying and prediction happens, provide future insights to the company's employees for premaintenence and with that cut human, financial and material resources.
+The MANTIS pilot project is a decision making system supported by data. The collected information comes from industrial sensors and on a popular IOT communication protokoll (MQTT) communicate with the given company cloud service, where the data is being tidyied and prediction happens, providing future insights to the company's employees for pre-maintenence and with that leading to potential redution of human, financial, and material resources.
 
 %----------------------------------------------------------------------------
 		\subsection{Data sets from STILL}
@@ -13,7 +13,7 @@ The MANTIS pilot project is a data-supported decision making system. The data co
 			\subsubsection{CAN fingerprint dataset}
 %----------------------------------------------------------------------------
 				\noindent
-As I already mentioned, the STILL forklifts use the CAN technology, for two kind on data collecting, in the CAN fingerpint dataset, the workers from the STILL had  connected a special CAN bus data collector to a few forklift and had done with them specific task and they have called it "fingerprints". The *.file names helped the understanding of the type of the road what the forklift go through:
+As it was mentioned before, the STILL forklifts use the CAN technology collecting data on two kind. In the CAN fingerpint dataset, the workers from the STILL had  connected a special CAN bus data collector to a few forklift and had done with them specific task. They have called it "fingerprints". The *.mat file names helped the understanding the type of the road and what the forklift gone through:
 
 \begin{itemize}[noitemsep]
     \item {800hTestDrive\_fast.mat}
@@ -41,13 +41,11 @@ As I already mentioned, the STILL forklifts use the CAN technology, for two kind
 \end{itemize}
 
 				\noindent
-As it seems in the file names the workers made the truck more than one time with various speed and load.
+As it easily can be seen in the file names, the workers made though the truck more than one time with various speed and load on the same track.
 
-But in this first iteration, STILL won't privided any goal value for tire abrosion. So from this first iteration i could only made explanatory data analysis to fuel further data collection and enough goal values in sustainable resolation and quality to train some predictive model on that data.
+However, in this first iteration, STILL won't privided any goal value for tire abrosion. So from this first iteration I was able to made only explanatory data analysis to fuel further data collection and with enough goal values in sustainable resolution and quality to train some predictive model on that data.
 				\noindent
-In the second iteration on data providing i get on 10.2017. more data in a quite similar fashion, but from working forklift, and a top of that with some additional tire measurement. The CAN-bus sensor data span about two month in time, but there was just a few measurement of the tire abrosion, every third week. This is nearly enough to make some prediction, but for further iterations it was neccessary.
-
-
+In the second iteration on data providing on 10.2017 I received more information in a quite similar fashion, but from working forklift, and a top of that with some additional tire measurement. The CAN-bus sensor data encompress approximately two month in time, but there were just a few measurements of the tire abrasion, from every third week. Unfortunately, this is nearly enough to make some prediction, but further iterations required htese information.
 
 %----------------------------------------------------------------------------
 			\subsubsection{Fault prediction dataset}
@@ -64,11 +62,9 @@ Brief solution description:RUL
 
 
 				\noindent
-If one wants to make educated guess about the future, one has to bring the data in tidy
-%tidy reference
-form, it advised and required for preparation to the most of the data mining methods.
+Assuming someone wants to make educated guess about the future, the neat arrangement of data is demanded, often called "tidy" format, as it is advised and required for preparation for most of the data mining methods.
 				\noindent
-In this case the *.mat files involved some so-called box-shorting to achieve the "tidy" state. In box-shorting one has to know the range of the shorting key (in this data's case the timestamp key's range) and with that, one can make a large data table with a lot of "NA"-s, but it's needed to orginize the multi frequency sensory data.
+In this case, the *.mat files involved a special treatment called box-shorting to achieve the clean and useable "tidy" state. During the box-shorting procedure mentioned before, the researcher has to know the range of shorting key (in this data set's case the timestamp key's range) and with that, one can make a large data table with a lot of "NA"-s, but it's needed to orginize the multi frequency sensory data.
 
 Once the tidying is done, comes the \textit{exploratory} data analysis to make sense about the data mass and come with ways to achieve the best prediction possible, and short out unnessesary columns, to make the future process faster.
 %FAULTPRED?
@@ -84,14 +80,14 @@ My PC is a Dell Latitude E6320 64 bit with an Intel(R) Core(TM) i5-2520M CPU @ 2
 %----------------------------------------------------------------------------
 			\subsubsection{Department Linux R server}
 %----------------------------------------------------------------------------
-The Department's super compoter called "batman" is Linux based R server and it's capadle of running R script's on enormous dataset's. It has two Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz processors each of them has 6 cores and capable of running 12 Threads.
+The Department's super compoter called "batman" is Linux based R server and it's capable of running R script's on enormous data set's. It has two Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz processors, each of them has 6 cores and is capable of running 12 Threads.
 \cite{Batman}
 %----------------------------------------------------------------------------
 		\subsection{Software}
 %----------------------------------------------------------------------------
 			\subsubsection{Linux Ubuntu 17.04}
 %----------------------------------------------------------------------------
-The operation system in the title is an open source software, stable and convinent for an advadced user, and to go further it's easiest way to communicate with to Linux system via SSH.
+The operation system in the title is an open source software, stable and convenient for an advanced user, and to go further, it's the easiest way to communicate with to Linux system via SSH.
 \cite{Ubuntu}
 %----------------------------------------------------------------------------				
 			\subsubsection{RStudio}
@@ -101,12 +97,12 @@ RStudio is the most common tool for developing R projects, it has good package c
 %----------------------------------------------------------------------------	
 			\subsubsection{Termius Android mobile phone application}
 %----------------------------------------------------------------------------
-The tidying and data preprocessing method is resource and time consuming, and for optimize it to the daily life i used this app with my 4G or sometimes just HSDPA internet acces to maintain an SSH connection to the Linux R server and supervise the and check the process progress time to time and hand the occasinal error ands bugs.
+The tidying and data preprocessing method is resource and time consuming, thus I have optimized it for every-day life with an application via 4G or HSDPA internet access to maintain an SSH connection to the Linux R server. In addition supervise and check the process's progress from time to time and hand the occasional errors and bugs.
 \cite{Termius}
 %----------------------------------------------------------------------------
 			\subsubsection{Git and GitHub}
 %----------------------------------------------------------------------------
-For version control reasons and open source commitment, i choose this common toolset to save my work as it progressed.
+As a consequence of version control and open source commitment, I had choosen this common toolset to save my work as it has been progressing.
 \cite{Github}
 %----------------------------------------------------------------------------
 %			\subsubsection{PyCharm}
@@ -119,4 +115,4 @@ For version control reasons and open source commitment, i choose this common too
 %----------------------------------------------------------------------------
 		\subsection{Management}
 %----------------------------------------------------------------------------
-For productivity reasons i use the GTD\cite{GTD} methodology, it's a time trying 10 years old method. It provides clarity, focus and flexible planning for me and I implemented it in th Wrike \cite{WRIKE} project management sofware wich is free for students. For more information : \cite{WRIKE_for_students}
+according my demand of productivity, I use the GTD\cite{GTD} methodology, it's a conclusion of 10 years of experience. It provides clarity, focus and flexible planning for me. Additionally, I implemented it in Wrike \cite{WRIKE} project management sofware available for students for free. For more information visit the developer company's support website: \cite{WRIKE_for_students}
