@@ -1,7 +1,7 @@
 %----------------------------------------------------------------------------
 \chapter{Design}
 %----------------------------------------------------------------------------
-%TODO Electrix fault pred
+%TODO Electric fault pred
 %----------------------------------------------------------------------------
 \section{Requirement specification}
 %----------------------------------------------------------------------------
@@ -27,7 +27,11 @@ To accomplish the final state from the starting state, the process was partition
  	\item {Calculating RUL (Remaining usefull life):} From received goal values (few tire measurement) and from the attributes calculated beforehand, present a RUL calculating algoritm for the MANTIS project.
 \end{enumerate}
 
-% TODO workflow figure
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=150mm, keepaspectratio]{figures/abstract_workflow.png}
+\caption{Abstract workflow from raw data to final objective} 
+\end{figure}
 
 %----------------------------------------------------------------------------
 \section{Expert knowledge and facts}
@@ -38,8 +42,23 @@ To accomplish the final state from the starting state, the process was partition
 %----------------------------------------------------------------------------
 	\subsection{Cleaning}
 		\subsubsection{Idea One}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=150mm, keepaspectratio]{figures/cleaning_idea_one.png}
+\caption{First idea to clean the raw data} 
+\end{figure}
 		\subsubsection{Idea Two}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=150mm, keepaspectratio]{figures/cleaning_idea_two.png}
+\caption{Second idea to read the raw data} 
+\end{figure}
 		\subsubsection{Idea Synthesis}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=150mm, keepaspectratio]{figures/cleaning_idea_synthesis.png}
+\caption{To optimise the cleaning workflow, merged the to processes together} 
+\end{figure}
 	\subsection{Exploring}
 		\subsubsection{Exploratory data analysis}
 			\paragraph{Data summaries}
