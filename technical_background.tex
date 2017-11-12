@@ -48,9 +48,9 @@ However, in this first iteration, STILL won't privided any goal value for tire a
 In the second iteration on data providing on 10.2017 I received more information in a quite similar fashion, but from working forklift, and a top of that with some additional tire measurement. The CAN-bus sensor data encompress approximately two month in time, but there were just a few measurements of the tire abrasion, from every third week. Unfortunately, this is nearly enough to make some prediction, but further iterations required htese information.
 
 %----------------------------------------------------------------------------
-			\subsubsection{Fault prediction dataset}
+			\subsubsection{Electrical fail prediction dataset}
 %----------------------------------------------------------------------------
-Brief solution description:Fault prediction
+Brief solution description:Failt prediction
 %----------------------------------------------------------------------------
 			\subsubsection{Remaing Usefull life dataset}
 %----------------------------------------------------------------------------
@@ -58,16 +58,15 @@ Brief solution description:RUL
 %----------------------------------------------------------------------------
 	\section{Data processing methods}
 %----------------------------------------------------------------------------
-%CAN fingerprint
-
-
+		\subsection{CAN fingerprint}
 				\noindent
 Assuming someone wants to make educated guess about the future, the neat arrangement of data is demanded, often called "tidy" format, as it is advised and required for preparation for most of the data mining methods.
 				\noindent
 In this case, the *.mat files involved a special treatment called box-shorting to achieve the clean and useable "tidy" state. During the box-shorting procedure mentioned before, the researcher has to know the range of shorting key (in this data set's case the timestamp key's range) and with that, one can make a large data table with a lot of "NA"-s, but it's needed to orginize the multi frequency sensory data.
 
 Once the tidying is done, comes the \textit{exploratory} data analysis to make sense about the data mass and come with ways to achieve the best prediction possible, and short out unnessesary columns, to make the future process faster.
-%FAULTPRED?
+		\subsection{Electrical fail prediction}
+Brief describe of the dataset
 %----------------------------------------------------------------------------
 	\section{Developing tools}
 %----------------------------------------------------------------------------
@@ -105,13 +104,10 @@ The tidying and data preprocessing method is resource and time consuming, thus I
 As a consequence of version control and open source commitment, I had choosen this common toolset to save my work as it has been progressing.
 \cite{Github}
 %----------------------------------------------------------------------------
-%			\subsubsection{PyCharm}
+			\subsubsection{PyCharm}
 %----------------------------------------------------------------------------
-%\cite{PyCharm}	
-%----------------------------------------------------------------------------
-%			\subsubsection{Google Cloud}
-%----------------------------------------------------------------------------
-%\cite{GoogleCloud}	
+At working with the Electrical fail prediction data set, I had used python for various reasons, mainly because there is a package called \textit{NetworkX} \cite{NetworkX}, and for python developing for me the most convinent tool is PyCharm because it's high functionality.
+\cite{PyCharm}	
 %----------------------------------------------------------------------------
 		\subsection{Management}
 %----------------------------------------------------------------------------
