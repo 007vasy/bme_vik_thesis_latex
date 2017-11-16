@@ -50,23 +50,30 @@ In the second iteration on data providing on 10.2017 I received more information
 %----------------------------------------------------------------------------
 			\subsubsection{Electrical fail prediction dataset}
 %----------------------------------------------------------------------------
-Brief solution description:Failt prediction
-%----------------------------------------------------------------------------
-			\subsubsection{Remaing Usefull life dataset}
-%----------------------------------------------------------------------------
-Brief solution description:RUL
+\noindent
+The STILL forklift's system has an electrical CAN bus warning collection system. The warning comes from the part what can communicate with the bus. The engineer of the STILL captured this data from a defined time frame and save it for us in a txt file. 
+
+\noindent
+One observation in the previously mentioned file is involves a forklift unique ID, the timestamp and the occured warning and some othet specific data what isn't in the scope of this thesis.
+\noindent
+In the world of the Electrical fail prediction dataset there is othet to file to work with, one is an SAP database export in a txt format and one is and xls file, all two have truck ID, exchanged part ID and time stamp in one observation with more data what is not in the spectrum of this project.
+\noindent
+For thefor the sake of completeness the last two files have techical worker comments and not all observations have exchanged part ID. For that we can use some Natural Language Processing Method but this is also not in the scope of this course.
+\noindent
+From this three previously described file when it's represented in a normaly workable way, the wanted remaining usefull life can be calculated.
 %----------------------------------------------------------------------------
 	\section{Data processing methods}
 %----------------------------------------------------------------------------
 		\subsection{CAN fingerprint}
 				\noindent
-Assuming someone wants to make educated guess about the future, the neat arrangement of data is demanded, often called "tidy" format, as it is advised and required for preparation for most of the data mining methods.
+Assuming someone wants to make educated guess about the future, the neat arrangement of data is demanded, often called "tidy" format, as it is advised and required for preparation for most of the data mining methods. And for that reason I had choosen the R language to tackle this objective.
 				\noindent
 In this case, the *.mat files involved a special treatment called box-shorting to achieve the clean and useable "tidy" state. During the box-shorting procedure mentioned before, the researcher has to know the range of shorting key (in this data set's case the timestamp key's range) and with that, one can make a large data table with a lot of "NA"-s, but it's needed to orginize the multi frequency sensory data.
 
 Once the tidying is done, comes the \textit{exploratory} data analysis to make sense about the data mass and come with ways to achieve the best prediction possible, and short out unnessesary columns, to make the future process faster.
+%----------------------------------------------------------------------------
 		\subsection{Electrical fail prediction}
-Brief describe of the dataset
+For knowledge brodation and easy network-like data representing reasons I had choosen the Python language, and the Pycharm software along with the networkx Python package.
 %----------------------------------------------------------------------------
 	\section{Developing tools}
 %----------------------------------------------------------------------------
@@ -77,9 +84,9 @@ Brief describe of the dataset
 My PC is a Dell Latitude E6320 64 bit with an Intel(R) Core(TM) i5-2520M CPU @ 2.50GHz processor.
 \cite{Latitude}
 %----------------------------------------------------------------------------
-			\subsubsection{Department Linux R server}
+			\subsubsection{Department Linux R and Python server}
 %----------------------------------------------------------------------------
-The Department's super compoter called "batman" is Linux based R server and it's capable of running R script's on enormous data set's. It has two Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz processors, each of them has 6 cores and is capable of running 12 Threads.
+The Department's super compoter called "batman" is Linux based R and Python server and it's capable of running R and Python script's on ernormous data set's. It has two Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz processors, each of them has 6 cores and is capable of running 12 Threads.
 \cite{Batman}
 %----------------------------------------------------------------------------
 		\subsection{Software}
