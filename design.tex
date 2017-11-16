@@ -77,12 +77,14 @@ To accomplish the final state from the starting state, the process was partition
 		\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=150mm, keepaspectratio]{figures/CAN_fingerprint_RUL_calculation.png}
-		\caption{To optimise the cleaning workflow, merged the to processes together} 
+		\caption{Calculating RUL from cleaned data} 
 		\end{figure}	
 %----------------------------------------------------------------------------
 \section{Electrical fail prediction data set processing method}
 %----------------------------------------------------------------------------
 	\subsection{Requirement specification}
+%----------------------------------------------------------------------------
+From raw data and later described warning sequence from a random truck, the model have to estimate the remaining useful life from the exchange part ID possibilities.	
 %----------------------------------------------------------------------------
 	\subsection{Data processing workflow design}
 %----------------------------------------------------------------------------
@@ -92,8 +94,15 @@ To accomplish the final state from the starting state, the process was partition
 		\includegraphics[width=150mm, keepaspectratio]{figures/Electrical_fail_prediction_preprocessing_workflow.png}
 		\caption{To optimise the cleaning workflow, merged the to processes together} 
 		\end{figure}
+		One have get rid of the resource wasting, fiddling values, and extract the can be usefull columns. After that the graph building values can be selected.
+
+		There is two group of the data:
+		Nodes
+		Edges
+
 %----------------------------------------------------------------------------
 		\subsubsection{Exploring}
+		With visualisation
 %----------------------------------------------------------------------------
 		\subsubsection{Calculating RUL}
 		\begin{figure}[!ht]
@@ -101,3 +110,6 @@ To accomplish the final state from the starting state, the process was partition
 		\includegraphics[width=150mm, keepaspectratio]{figures/Calc_Fault_pred_RUL.png}
 		\caption{To optimise the cleaning workflow, merged the to processes together} 
 		\end{figure}
+		Nodes: possible warnings and exchange part ID-s
+		Edges truck ID, timestampt warning or exchange part ID
+		form that we build a graph and with the given sequence we looking for the truck has similar path after that, from the last node of the sequence calculate possibility paths all of the exhange part ID-s. We display it with avg, min max mean time frame and calced path possibility.
