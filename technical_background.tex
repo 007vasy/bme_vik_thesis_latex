@@ -5,7 +5,7 @@
 %----------------------------------------------------------------------------
 		\subsection{Overall picture about the MANTIS project}
 %----------------------------------------------------------------------------
-The MANTIS pilot project is a decision making system supported by data. The collected information comes from industrial sensors and on a popular IOT communication protokoll (MQTT) communicate with the given company cloud service, where the data is being tidyied and prediction happens, providing future insights to the company's employees for pre-maintenence and with that leading to potential redution of human, financial, and material resources.
+The MANTIS pilot project is a decision making system supported by data. The collected information comes from industrial sensors and on a popular IOT communication protocol (MQTT) communicate with the given company cloud service, where the data is being tidied and prediction happens, providing future insights to the company's employees for pre-maintenance and with that leading to potential reduction of human, financial, and material resources.
 
 %----------------------------------------------------------------------------
 		\subsection{Data sets from STILL}
@@ -13,7 +13,7 @@ The MANTIS pilot project is a decision making system supported by data. The coll
 			\subsubsection{CAN fingerprint dataset}
 %----------------------------------------------------------------------------
 				\noindent
-As it was mentioned before, the STILL forklifts use the CAN technology collecting data on two kind. In the CAN fingerpint dataset, the workers from the STILL had  connected a special CAN bus data collector to a few forklift and had done with them specific task. They have called it "fingerprints". The *.mat file names helped the understanding the type of the road and what the forklift gone through:
+As it was mentioned before, the STILL forklifts use the CAN technology collecting data on two kind. In the CAN fingerprint dataset, the workers from the STILL had  connected a special CAN bus data collector to a few forklift and had done with them specific task. They have called it "fingerprints". The *.mat file names helped the understanding the type of the road and what the forklift gone through:
 
 \begin{itemize}[noitemsep]
     \item {800hTestDrive\_fast.mat}
@@ -43,9 +43,9 @@ As it was mentioned before, the STILL forklifts use the CAN technology collectin
 				\noindent
 As it easily can be seen in the file names, the workers made though the truck more than one time with various speed and load on the same track.
 
-However, in this first iteration, STILL won't privided any goal value for tire abrosion. So from this first iteration I was able to made only explanatory data analysis to fuel further data collection and with enough goal values in sustainable resolution and quality to train some predictive model on that data.
+However, in this first iteration, STILL won't provided any goal value for tire abrasion. So from this first iteration I was able to made only explanatory data analysis to fuel further data collection and with enough goal values in sustainable resolution and quality to train some predictive model on that data.
 				\noindent
-In the second iteration on data providing on 10.2017 I received more information in a quite similar fashion, but from working forklift, and a top of that with some additional tire measurement. The CAN-bus sensor data encompress approximately two month in time, but there were just a few measurements of the tire abrasion, from every third week. Unfortunately, this is nearly enough to make some prediction, but further iterations required htese information.
+In the second iteration on data providing on 10.2017 I received more information in a quite similar fashion, but from working forklift, and a top of that with some additional tire measurement. The CAN-bus sensor data encompress approximately two month in time, but there were just a few measurements of the tire abrasion, from every third week. Unfortunately, this is nearly enough to make some prediction, but further iterations required these information.
 
 %----------------------------------------------------------------------------
 			\subsubsection{Electrical fail prediction dataset}
@@ -54,28 +54,28 @@ In the second iteration on data providing on 10.2017 I received more information
 The STILL forklift's system has an electrical CAN bus warning collection system. The warning comes from the part what can communicate with the bus. The engineer of the STILL captured this data from a defined time frame and save it for us in a txt file. 
 
 \noindent
-One observation in the previously mentioned file is involves a forklift unique ID, the timestamp and the occured warning and some othet specific data what isn't in the scope of this thesis.
+One observation in the previously mentioned file is involves a forklift unique ID, the time stamp and the occurred warning and some other specific data what isn't in the scope of this thesis.
 \noindent
-In the world of the Electrical fail prediction dataset there is othet to file to work with, one is an SAP database export in a txt format and one is and xls file, all two have truck ID, exchanged part ID and time stamp in one observation with more data what is not in the spectrum of this project.
+In the world of the Electrical fail prediction dataset there is other to file to work with, one is an SAP database export in a txt format and one is and xls file, all two have truck ID, exchanged part ID and time stamp in one observation with more data what is not in the spectrum of this project.
 \noindent
-For thefor the sake of completeness the last two files have techical worker comments and not all observations have exchanged part ID. For that we can use some Natural Language Processing Method but this is also not in the scope of this course.
+For the sake of completeness the last two files have technical worker comments and not all observations have exchanged part ID. For that we can use some Natural Language Processing Method but this is also not in the scope of this course.
 \noindent
-From this three previously described file when it's represented in a normaly workable way, the wanted remaining usefull life can be calculated.
+From this three previously described file when it's represented in a normally workable way, the wanted remaining useful life can be calculated.
 %----------------------------------------------------------------------------
 	\section{Data processing methods}
 %----------------------------------------------------------------------------
 		\subsection{CAN fingerprint}
 				\noindent
-Assuming someone wants to make educated guess about the future, the neat arrangement of data is demanded, often called "tidy" format, as it is advised and required for preparation for most of the data mining methods. And for that reasons I had choosen the R language to tackle this objective.
+Assuming someone wants to make educated guess about the future, the neat arrangement of data is demanded, often called "tidy" format, as it is advised and required for preparation for most of the data mining methods. And for that reasons I had chosen the R language to tackle this objective.
 				\noindent
-In this case, the *.mat files involved a special treatment called box-shorting to achieve the clean and useable "tidy" state. During the box-shorting procedure mentioned before, the researcher has to know the range of shorting key (in this data set's case the timestamp key's range) and with that, one can make a large data table with a lot of "NA"-s, but it's needed to orginize the multi frequency sensory data.
+In this case, the *.mat files involved a special treatment called box-shorting to achieve the clean and usable "tidy" state. During the box-shorting procedure mentioned before, the researcher has to know the range of shorting key (in this data set's case the time stamp key's range) and with that, one can make a large data table with a lot of "NA"-s, but it's needed to organize the multi frequency sensory data.
 
-Once the tidying is done, comes the \textit{exploratory} data analysis to make sense about the data mass and come with ways to achieve the best prediction possible, and short out unnessesary columns, to make the future process faster.
+Once the tidying is done, comes the \textit{exploratory} data analysis to make sense about the data mass and come with ways to achieve the best prediction possible, and short out unnecessary columns, to make the future process faster.
 %----------------------------------------------------------------------------
 		\subsection{Electrical fail prediction}
-For knowledge brodation and easy network-like data representing reasons I had choosen the Python language, and the Pycharm software along with the networkx Python package.
+For knowledge brodation and easy network-like data representing reasons I had chosen the Python language, and the Pycharm software along with the networkx Python package.
 
-It's an another language useful for data science related solution making along with an ernourmus web community.
+It's an another language useful for data science related solution making along with an enormous web community.
 %----------------------------------------------------------------------------
 	\section{Developing tools}
 %----------------------------------------------------------------------------
@@ -88,7 +88,7 @@ My PC is a Dell Latitude E6320 64 bit with an Intel(R) Core(TM) i5-2520M CPU @ 2
 %----------------------------------------------------------------------------
 			\subsubsection{Department Linux R and Python server}
 %----------------------------------------------------------------------------
-The Department's super compoter called "batman" is Linux based R and Python server and it's capable of running R and Python script's on ernormous data set's. It has two Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz processors, each of them has 6 cores and is capable of running 12 Threads.
+The Department's super computer called "batman" is Linux based R and Python server and it's capable of running R and Python script's on enormous data set's. It has two Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz processors, each of them has 6 cores and is capable of running 12 Threads.
 \cite{Batman}
 %----------------------------------------------------------------------------
 		\subsection{Software}
@@ -110,14 +110,14 @@ The tidying and data preprocessing method is resource and time consuming, thus I
 %----------------------------------------------------------------------------
 			\subsubsection{Git and GitHub}
 %----------------------------------------------------------------------------
-As a consequence of version control and open source commitment, I had choosen this common toolset to save my work as it has been progressing.
+As a consequence of version control and open source commitment, I had chosen this common tool set to save my work as it has been progressing.
 \cite{Github}
 %----------------------------------------------------------------------------
 			\subsubsection{PyCharm}
 %----------------------------------------------------------------------------
-At working with the Electrical fail prediction data set, I had used python for various reasons, mainly because there is a package called \textit{NetworkX} \cite{NetworkX}, and for python developing for me the most convinent tool is PyCharm because it's high functionality.
+At working with the Electrical fail prediction data set, I had used python for various reasons, mainly because there is a package called \textit{NetworkX} \cite{NetworkX}, and for python developing for me the most convenient tool is PyCharm because it's high functionality.
 \cite{PyCharm}	
 %----------------------------------------------------------------------------
 		\subsection{Management}
 %----------------------------------------------------------------------------
-according my demand of productivity, I use the GTD\cite{GTD} methodology, it's a conclusion of 10 years of experience. It provides clarity, focus and flexible planning for me. Additionally, I implemented it in Wrike \cite{WRIKE} project management sofware available for students for free. For more information visit the developer company's support website: \cite{WRIKE_for_students}
+according my demand of productivity, I use the GTD\cite{GTD} methodology, it's a conclusion of 10 years of experience. It provides clarity, focus and flexible planning for me. Additionally, I implemented it in Wrike \cite{WRIKE} project management software available for students for free. For more information visit the developer company's support website: \cite{WRIKE_for_students}

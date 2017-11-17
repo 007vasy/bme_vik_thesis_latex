@@ -13,9 +13,9 @@ The start state was a raw CAN bus physical sensory data in a *.mat format with d
 %----------------------------------------------------------------------------
 	\subsubsection{Final state}
 		\noindent
-To achive the final state, data sets require to transform to an CSV (Comma Separate Value) or RDS (R Data Structure) format for more convenient handling and calculating attributes.
+To achieve the final state, data sets require to transform to an CSV (Comma Separate Value) or RDS (R Data Structure) format for more convenient handling and calculating attributes.
 		\noindent
-The attributes are aggregations and summarisation of connection between key values originating from expert knowledge, exploratory data analysis and several unsupervised learning technique.
+The attributes are aggregations and summarization of connection between key values originating from expert knowledge, exploratory data analysis and several unsupervised learning technique.
 %----------------------------------------------------------------------------
 \subsubsection{Abstract Workflow}
 To accomplish the final state from the starting state, the process was partitioned from on start-to-end into smaller steps. 
@@ -24,7 +24,7 @@ To accomplish the final state from the starting state, the process was partition
 	\item {Cleaning:} To solve different measurement frequency problem by making a one-row/one-observation data frame.
 	\item {Exploring:} Investigating the data with exploratory data analysis tools and unsupervised learning supported by the STILL workers's, engineers's and my acquaintances's expert knowledge.
  	\item {Specifying Attributes:} To introduce sustainable attribute calculating algorithms.
- 	\item {Calculating RUL (Remaining usefull life):} From received goal values (few tire measurement) and from the attributes calculated beforehand, present a RUL calculating algoritm for the MANTIS project.
+ 	\item {Calculating RUL (Remaining useful life):} From received goal values (few tire measurement) and from the attributes calculated beforehand, present a RUL calculating algoritm for the MANTIS project.
 \end{enumerate}
 
 \begin{figure}[!ht]
@@ -61,22 +61,22 @@ Principles and insights from expert knowledge.
 			\begin{figure}[!ht]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/cleaning_idea_synthesis.png}
-			\caption{To optimise the cleaning workflow, merged the to processes together} 
+			\caption{To optimize the cleaning workflow, merged the to processes together} 
 			\end{figure}
 	\subsubsection{Exploring}
-	explain why is it usefull to do in a broder sense
+	explain why is it useful to do in a broader sense
 		\paragraph{Exploratory data analysis}
-			explain why is it usefull to do
+			explain why is it useful to do
 			\subparagraph{Data summaries}
 			enumerate data summary methods
-			\subparagraph{Visualisation}
-			enumerat data visualisation methods
+			\subparagraph{Visualization}
+			enumerate data visualization methods
 		\paragraph{Unsupervised learning}
 		explain what is it 
-		enumarate some types
+		enumerate some types
 	\subsubsection{Specifying Attributes}
-	from exprt knowledge
-	\subsubsection{Calculating RUL (Remaining usefull life)}
+	from expert knowledge
+	\subsubsection{Calculating RUL (Remaining useful life)}
 	explain red flag in short
 	calc what from what and why core principle and desired outcome framework abstract path to that
 		\begin{figure}[!ht]
@@ -101,9 +101,9 @@ From raw data and later described warning sequence from a random truck, the mode
 		\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=150mm, keepaspectratio]{figures/Electrical_fail_prediction_preprocessing_workflow.png}
-		\caption{To optimise the cleaning workflow, merged the to processes together} 
+		\caption{To optimize the cleaning workflow, merged the to processes together} 
 		\end{figure}
-		One have get rid of the resource wasting, fiddling values, and extract the can be usefull columns. After that the graph building values can be selected.
+		One have get rid of the resource wasting, fiddling values, and extract the can be useful columns. After that the graph building values can be selected.
 
 		There is two group of the data:
 		Nodes
@@ -111,7 +111,7 @@ From raw data and later described warning sequence from a random truck, the mode
 
 %----------------------------------------------------------------------------
 		\subsubsection{Exploring}
-		With visualisation
+		With visualization
 %----------------------------------------------------------------------------
 		\subsubsection{Calculating RUL}
 explain and reason the validity of the whole method
@@ -122,5 +122,5 @@ explain and reason the validity of the whole method
 		\caption{To optimise the cleaning workflow, merged the to processes together} 
 		\end{figure}
 		Nodes: possible warnings and exchange part ID-s
-		Edges truck ID, timestampt warning or exchange part ID
-		form that we build a graph and with the given sequence we looking for the truck has similar path after that, from the last node of the sequence calculate possibility paths all of the exhange part ID-s. We display it with avg, min max mean time frame and calced path possibility.
+		Edges truck ID, timestamp warning or exchange part ID
+		form that we build a graph and with the given sequence we looking for the truck has similar path after that, from the last node of the sequence calculate possibility paths all of the exchange part ID-s. We display it with avg, min max mean time frame and calced path possibility.
