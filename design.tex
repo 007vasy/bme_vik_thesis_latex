@@ -41,41 +41,68 @@ When some kind of industrial data set is examined and processed to make educated
 
 \noindent
 In summary, the main indicators of tire abrasion are between two tire measurement:
-\begin{itemise}
-	\item{traveled distance } 
+\begin{itemize}
+	\item{traveled distance} 
 	\item{elapsed time between}
 	\item{elapsed time in high torque low speed state}
 	\item{changing x direction in elapsed time}
 	\item{changing y direction in elapsed time}
-\end{itemise}
+\end{itemize}
 
 These aggregated values can be calculated from the raw sensor data, and from data with enough tire measurement point the RUL can be calculated with a help of a built statistical model.
 
 %----------------------------------------------------------------------------
-\subsection{Data processing workflow design}
+\subsection{Data processing workflow design}\footnote{Used bibliography \cite{CSDISTILLED}\cite{DATACAMP}\cite{LeanThinking}}
 %----------------------------------------------------------------------------
-\cite{CSDISTILLED}
-\cite{DATACAMP}	
-\cite{LeanThinking}
+As it seems from the starting and final state, in first step the *mat files has to be transformed into usable data frame, and meanwhile the not useful columns has to be dropped to save precious processor time and data storage space, especially at handling the longer files. After that the attributes has to be calculated, then the remaining useful life.
+To plan that using planning principles is necessary\footnote{Used bibliography \cite{CSDISTILLED}\cite{DATACAMP}\cite{LeanThinking}}.
 	\subsubsection{Cleaning}
+		\noindent
+	As it has been described in the previous section, the *.mat files has to bee transformed to a data frame with only the useful columns remaining to the further calculations.
+		\noindent
+	To come up with a sustainable process, one has to iterate through more than one ideas, for the sake clarity, all ideas would be enumerated.
 		\paragraph{Idea One}
+			The first data shape transforming idea was to boxshort the data. In more detail:
+\begin{enumerate}
+	\item{examine the longest key value pair vector maximal timestamp} 
+	\item{make a data frame with timestamp keys from zero to the max timestamp key got from the file in step of hundredth of a second}
+	\item{search every value-s place with the help of the timestamp key}
+	\item{interpolate for the missing values}
+	\item{do it for all columns in the file}
+	\item{do it for all files}
+\end{enumerate}
 			\begin{figure}[!ht]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/cleaning_idea_one.png}
 			\caption{First idea to clean the raw data} 
 			\end{figure}
+		\noindent
+This is time consuming and slow even on the server.
 		\paragraph{Idea Two}
+To get rid of the speed problem, the second idea was to aggregate the values mean by second, this solution have to be more faster than the previous one, but if there time skip in the data\footnote{there is a lot of missing rows, sometimes minutes}
 			\begin{figure}[!ht]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/cleaning_idea_two.png}
 			\caption{Second idea to read the raw data} 
 			\end{figure}
 		\paragraph{Idea Synthesis}
+To get the advantage of the two methods it would be useful to merge them.
+\begin{enumerate}
+	\item{examine the longest key value pair vector maximal timestamp} 
+	\item{make a data frame with timestamp keys from zero to the max timestamp key got from the file in step of a second}
+	\item{aggregate the measurement average by second to second}
+	\item{search every value-s place with the help of the timestamp key}
+	\item{interpolate for the missing values}
+	\item{do it for all columns in the file}
+	\item{do it for all files}
+\end{enumerate} 
 			\begin{figure}[!ht]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/cleaning_idea_synthesis.png}
 			\caption{To optimize the cleaning workflow, merged the to processes together} 
 			\end{figure}
+\noindent
+With this solution design, the high quality data frame, what can be used later is possible, and with this idea synthesis the problems with the previous ones are worked around.
 	\subsubsection{Exploring}
 	explain why is it useful to do in a broader sense
 		\paragraph{Exploratory data analysis}
