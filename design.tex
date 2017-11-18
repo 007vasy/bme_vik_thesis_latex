@@ -36,8 +36,21 @@ To accomplish the final state from the starting state, the process was partition
 %----------------------------------------------------------------------------
 \subsection{Expert knowledge and facts}
 %----------------------------------------------------------------------------
-Principles and insights from expert knowledge.
-(Sidenote: reality)
+\noindent
+When some kind of industrial data set is examined and processed to make educated guess about the future principles and insights from expert knowledge are really helpful to make sense and understand the data in a higher sense.\footnote{In reality the vast majority of the insight came from exploratory data analysis and unsupervised learning}
+
+\noindent
+In summary, the main indicators of tire abrasion are between two tire measurement:
+\begin{itemise}
+	\item{traveled distance } 
+	\item{elapsed time between}
+	\item{elapsed time in high torque low speed state}
+	\item{changing x direction in elapsed time}
+	\item{changing y direction in elapsed time}
+\end{itemise}
+
+These aggregated values can be calculated from the raw sensor data, and from data with enough tire measurement point the RUL can be calculated with a help of a built statistical model.
+
 %----------------------------------------------------------------------------
 \subsection{Data processing workflow design}
 %----------------------------------------------------------------------------
@@ -84,6 +97,7 @@ Principles and insights from expert knowledge.
 		\includegraphics[width=150mm, keepaspectratio]{figures/CAN_fingerprint_RUL_calculation.png}
 		\caption{Calculating RUL from cleaned data} 
 		\end{figure}	
+%----------------------------------------------------------------------------
 %----------------------------------------------------------------------------
 \section{Electrical fail prediction data set processing method}
 %----------------------------------------------------------------------------

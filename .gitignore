@@ -25,3 +25,4 @@ figures/
 *.pdf
 *.fls
 *.fdb_latexmk
+*.sublime-*
