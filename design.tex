@@ -103,8 +103,10 @@ To get the advantage of the two methods it would be useful to merge them.
 			\end{figure}
 \noindent
 With this solution design, the high quality data frame, what can be used later is possible, and with this idea synthesis the problems with the previous ones are worked around.
+%----------------------------------------------------------------------------
 	\subsubsection{Exploring}
 	explain why is it useful to do in a broader sense
+	confirm expert knowledge
 		\paragraph{Exploratory data analysis}
 			explain why is it useful to do
 			\subparagraph{Data summaries}
@@ -114,11 +116,19 @@ With this solution design, the high quality data frame, what can be used later i
 		\paragraph{Unsupervised learning}
 		explain what is it 
 		enumerate some types
+		confirm expert knowledge
+%----------------------------------------------------------------------------
 	\subsubsection{Specifying Attributes}
 	from expert knowledge
+	enumerate attributes
+%----------------------------------------------------------------------------
 	\subsubsection{Calculating RUL (Remaining useful life)}
 	explain red flag in short
 	calc what from what and why core principle and desired outcome framework abstract path to that
+	calc hourly agg attributes
+	interpolate tire abrosion
+	avg the agg att/time = tire abrosion
+	avg them in files
 		\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=150mm, keepaspectratio]{figures/CAN_fingerprint_RUL_calculation.png}
@@ -139,6 +149,7 @@ From raw data and later described warning sequence from a random truck, the mode
 \cite{DATACAMP}
 \cite{LeanThinking}
 		\subsubsection{Cleaning}
+		get rid of NA-s
 		\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=150mm, keepaspectratio]{figures/Electrical_fail_prediction_preprocessing_workflow.png}
@@ -152,7 +163,8 @@ From raw data and later described warning sequence from a random truck, the mode
 
 %----------------------------------------------------------------------------
 		\subsubsection{Exploring}
-		With visualization
+		With visualization, make sense about the data 
+		confirm expert knowledge
 %----------------------------------------------------------------------------
 		\subsubsection{Calculating RUL}
 explain and reason the validity of the whole method
