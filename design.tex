@@ -121,11 +121,22 @@ With this solution design, the high quality data frame, what can be used later i
 		\cite{h-clust} Is a k-means with a twist, because it clusters clusters hierarchically, step by step with various distance calculation method and top-down or bottom-up approach.
 		\subparagraph{Principal component analysis}
 		\cite{PCA}
-		This algorithm make an orthogonal, multi dimensional space from the values and place there the observations. This algorithm can tell the principal, most significant values from the data set.
+		This algorithm make an orthogonal, multi dimensional space from the values and place there the observations. This algorithm can tell the most significant values from the data set.
 %----------------------------------------------------------------------------
 	\subsubsection{Specifying Attributes}
-	from expert knowledge
-	enumerate attributes
+	From expert knowledge \footnote{and exploratory data analysis} the main components and indicators of the tire abrasion can be specified.
+
+	These attributes are:
+	\begin{itemize}
+		\item{elapsed time} 
+		\item{traveled distance} 
+		\item{count in various speed and torque state}
+		\item{changing x direction}
+		\item{changing y direction}
+		\item{is there weight counter (max 3600 in a hour)}
+		\item{steering wheel degree change derived by time aggregated by average}
+	\end{itemize}
+	All of them will be aggregated hour by hour, from tire change or measurement.
 %----------------------------------------------------------------------------
 	\subsubsection{Calculating RUL (Remaining useful life)}
 	explain red flag in short
