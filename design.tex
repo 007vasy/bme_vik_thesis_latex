@@ -136,20 +136,36 @@ With this solution design, the high quality data frame, what can be used later i
 		\item{is there weight counter (max 3600 in a hour)}
 		\item{steering wheel degree change derived by time aggregated by average}
 	\end{itemize}
-	All of them will be aggregated hour by hour, from tire change or measurement.
+	All of them will be aggregated hour by hour\footnote{when the tire measurement interval goes down the aggregation window could and should too}, from tire change or measurement.
 %----------------------------------------------------------------------------
 	\subsubsection{Calculating RUL (Remaining useful life)}
-	explain red flag in short
-	calc what from what and why core principle and desired outcome framework abstract path to that
-	calc hourly agg attributes
-	interpolate tire abrosion
-	avg the agg att/time = tire abrosion
-	avg them in files
-		\begin{figure}[!ht]
+		\noindent
+	After the specified attributes are calculated and aggregated and enough \footnote{more than one} tire measurement is available with accurate time stamp, the RUL can be calculated in the following way:
+
+	\begin{enumerate}
+		\item{join the tire measurement and the hourly aggregated attributes by timestamp}
+		\item{interpolate from the tire measurements to the hourly aggregations}
+		\item{compute the tire diameter change on all the given measurement points}
+		\item{calculate the average diameter change by hourly aggregations} with that the tire diameter change by hourly attribute change is given
+		\item{produce the attributes hourly for a new measurement}
+		\item{calculate the tire diameter change for all attributes}
+		\item{compute the mean tire diameter change by hour}
+		\item{summarize the tire diameter change from last know diameter}
+		\item{if the summary is greater than a given constant, the tire should be changed}
+		\item{compute reaming useful life on the last hours abrasion rate}
+	\end{enumerate}
+	\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=150mm, keepaspectratio]{figures/CAN_fingerprint_RUL_calculation.png}
 		\caption{Calculating RUL from cleaned data} 
-		\end{figure}	
+	\end{figure}
+		\noindent
+	Other not implemented solutions:
+	\begin{itemize}
+		\item{calculate RUL with machine learning} There was not enough data for this solution, the model will be over-fitted based on DataCamp case studies \cite{DataCamp_CaseStudies} 
+		\item{calculate RUL with deep learning} Similar then above.	
+	\end{itemize}
+	
 %----------------------------------------------------------------------------
 %----------------------------------------------------------------------------
 \section{Electrical fail prediction data set processing method}
