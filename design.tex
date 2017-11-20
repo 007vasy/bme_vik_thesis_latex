@@ -172,7 +172,9 @@ With this solution design, the high quality data frame, what can be used later i
 %----------------------------------------------------------------------------
 	\subsection{Requirement specification}
 %----------------------------------------------------------------------------
-From raw data and later described warning sequence from a random truck, the model have to estimate the remaining useful life from the exchange part ID possibilities.	
+From given CAN bus warning collection form the STILL forklifts electrical parts and SAP technical database, which contains the company's technical workers comments on all repair sessions, and occasionally exchanged parts ID and name, and later described warning sequence from a random truck, the model have to estimate the remaining useful life to a next repair session.
+
+In the scope of this project iteration, the exchange part ID-s is the superior priority, the technical workers comments should be categorized with some natural language processing method. \cite{nlp}
 %----------------------------------------------------------------------------
 	\subsection{Data processing workflow design}
 %----------------------------------------------------------------------------
