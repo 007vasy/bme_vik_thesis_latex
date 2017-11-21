@@ -17,11 +17,21 @@ To achieve this object, I have worked with two kinds of data sets. Which will be
 %----------------------------------------------------------------------------
     \subsection{CAN fingerprint data set}
 %----------------------------------------------------------------------------
+\noindent
 My task was to create a tidy format from the given "CAN fingerprint" data set with cleaning methods, to explore what can be predicted with no goal value provided, to figure out requirements for better prognostication, to visualize the connection between the given variables. Moreover, the second phase data wave and small amount and low resolution goal value I made a pilot prediction algorithm to iterate the ultimate solution searching process. 
+\noindent
+After a few iteration the calculation of the remaining useful life of the tires are achievable.
 %----------------------------------------------------------------------------
   \subsection{Electrical fail prediction data set}
 %----------------------------------------------------------------------------
-2 txt and 1 xml file the desired outcome is to represent it in a graph. From that the RUL calculated.
+\noindent
+The objective is with this data set is come up with a calculation method to compute the remaining useful life, but because the data is represented in a different way, it's obvious for the need of a distinct approach.
+\noindent
+In the influence of the L. Barabasi-Albert book \cite{BALNWSCBOOK}, the RUL computation algorithm is based on a graph representation of the available data. 
+\noindent
+The representation is based on the idea of the realization of the possible states as nodes and the paths of the machines between the nodes in time as edges.
+\noindent
+With the previously described data representation, the possibility to go into a specific fail state\footnote{one type of the nodes, the other is the warning states.} is a given timespan is calculable and that is the RUL itself.
 
 \section{Chapter descriptions}
 %----------------------------------------------------------------------------
