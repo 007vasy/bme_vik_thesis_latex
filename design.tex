@@ -173,7 +173,7 @@ With this solution design, the high quality data frame, what can be used later i
 	\subsection{Requirement specification}
 %----------------------------------------------------------------------------
 \paragraph\noindent
-From given CAN bus warning collection form the STILL forklifts electrical parts and SAP technical database, which contains the company's technical workers comments on all repair sessions, and occasionally exchanged parts ID and name, and later described warning sequence from a random truck, the model have to estimate the remaining useful life to a next repair session.
+From given CAN bus warning collection form the STILL forklifts electrical parts and SAP technical database, which contains the company's technical workers comments on all repair sessions, and occasionally exchanged parts ID and name, and later described warning sequence from a random machine, the model have to estimate the remaining useful life to a next repair session.
 \paragraph\noindent
 In the scope of this project iteration, the exchange part ID-s is the superior priority, the technical workers comments should be categorized with some natural language processing method. \cite{nlp}
 %----------------------------------------------------------------------------
@@ -182,6 +182,8 @@ In the scope of this project iteration, the exchange part ID-s is the superior p
 \paragraph\noindent
 As previously has been mentioned the BAL Network science book \cite{BALNWSCBOOK} is an effective indicator of the later specified solution. But a lot of optimizing idea comes from the Computer Science Distilled book\cite{CSDISTILLED}, the usage of the Python language and the NetworkX package\cite{NetworkX} is the influence of the DataCamp e-learning platform \cite{DATACAMP}, and the thinking in flows, process and value streams is the cause of the Lean Thinking book\cite{LeanThinking} and the Phoenix Project book \cite{PhoenixProject}
 
+
+%----------------------------------------------------------------------------
 		\subsubsection{Raw data's condition}
 		The data set given for this subproject is consisting three files:
 		\begin{itemize}
@@ -195,30 +197,67 @@ As previously has been mentioned the BAL Network science book \cite{BALNWSCBOOK}
 			\item{Drop not useful columns for the first iteration graph building} For the first iteration graph building, the timestamp, machine ID and the ID of the warning is required from the firstly mentioned file. From the second and the third the repair session starting and ending time, the machine ID and the exchange part ID is required. When there is no exchange part ID just technical worker comment, for the fast method development, it could be handy to give a temporary distinct ID, from the other real exchange part IDs, to these rows exchange part ID column. \footnote{this can be a starting point of the subcategorizing, with the help of the NLP} 
 		\end{itemize}
 		\subsubsection{Creating nodes list and edges list}
-		There is two group of the data:
-		Nodes
-		Edges
-
+		\paragraph\noindent
+		From the previously generated files the nodes and edges, the two components of the graph can be generated. The nodes list should contains all the distinct warning and exchange part ID-s, the edges list should contain the timestamp, the from and to node's ID , and the vehicle ID.
+		\paragraph{Making the nodes list}
+		The previously generated files contain a lot of duplicated warning and exchange part ID along with a bunch of not needed columns.
+		Is this case the planned steps should be:
+		\begin{enumerate}
+			\item{read in the warning ID and exchange part ID columns from the previously mentioned files} 
+			\item{concatenate the two SAP originated lists}
+			\item{drop the duplications}
+			\item{concatenate the lists}
+			\item{save it}
+		 \end{enumerate}
+		\paragraph{Making the edges list, machine by machine}
+		For easier handling and performance and disk space reasons, would be wise to generate the path of all machines.
+		The steps should be:
+		\begin{enumerate}
+			\item{read in the largest file chunk by chunk} 
+			\item{group by the information by machine ID}
+			\item{save it to a corresponding machine's file}
+			\item{do the previous 2 steps to the smaller files after reading it in as a whole}
+			\item{read in the distinct machine paths one by one}
+			\item{order them by time}
+			\item{save them in separated files}
+		 \end{enumerate}
+		With this step we get the distinct nodes and a lot of edges is different paths. 
 		\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=150mm, keepaspectratio]{figures/Electrical_fail_prediction_preprocessing_workflow.png}
 		\caption{The cleaning and ordering step by step} 
 		\end{figure}
-
-
 %----------------------------------------------------------------------------
 		\subsubsection{Exploring}
-		With visualization, make sense about the data 
-		confirm expert knowledge
+			\paragraph\noindent
+			Unlike the previous data set, the cleaning step is not as significant as it could be, because the data had given in a more convenient way. After the later described NA and duplicated column dropping, the data exploring can begin. But the end of the data exploring is after the making of the nodes and edges list, because it's easy to check visually a correct graph representation \footnote{for example: the path is continuous or dashed}.
+			\subparagraph{Data summaries}
+			There are a lot of data summary methods (mean, median, SQRT, min, max and quarters). With these aggregations ran on the data set, it's get a first impression. 
+			\subparagraph{Visualization}
+			The human mind can easy interpret large amount of data with correct visual representation and to go further checked the connections and facts derived from expert knowledge. \footnote{Not to mention, amend that knowledge.}
 %----------------------------------------------------------------------------
 		\subsubsection{Calculating RUL}
-explain and reason the validity of the whole method
-		explain red flag in short
+			\paragraph{Building the graph}
+			When the previous ordering and exploring and fact checking is complete, the graph building can begin, from the generated files, the base is the nodes list all nodes should be represented in the graph, when it comes to edges the situation is different, for computational resource reasons, not all of the path should be included for sure. But the more the path the better be the prediction.
+			\paragraph{computing}
+			If the graph has been build, the remaining useful life calculation steps should be the following:
+			\begin{enumerate}
+				\item{get a warning sequence, what is not represented in the graph, from the same machine, in a chronological order}
+				\item{between the oldest and the second oldest nodes given in the sequence and the graph \footnote{all the nodes in the new sequence should be int th graph too} list the machine ID-s on that path}
+				\item{iterate through the hole sequence and eliminate the machines what are absent in the current edges}
+				\item{when there is no machine shorted the sequence with eliminate the oldest node in the sequence and redo the previous search}
+				\item{the list of the machined with similar path are given, from the last and youngest node in the sequence the shortest similar machine path should be listed to the exchange part ID nodes}
+				\item{from the last node the possibility could be calculated to all exchange part ID nodes, based on the similar shortest machine path count to the specific exchange part ID nodes divided by sum of to all the exchange part ID nodes}
+				\item{besides of possibility the time to the specific exchange part ID node could be computed to give more in sight about the remaining useful life, based on the similar shortest machine's distance in time}
+				\item{the result should look like a with columns like: exchange part ID node, min to that node, mean, median and max, and the computed possibility arranged by possibility and time} 
+		 		\item{the RUL is the highest possibility with the shortest remaining time}
+		 	\end{enumerate}
+			
+		The calculation of the whole table is profitable, because the technical workers can solve more problem at one repair sessions, this could cause longer timespan on duty.
+
+		TODO explain red flags in short
 		\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=150mm, keepaspectratio]{figures/Calc_Fault_pred_RUL.png}
 		\caption{To optimize the cleaning workflow, merged the to processes together} 
 		\end{figure}
-		Nodes: possible warnings and exchange part ID-s
-		Edges truck ID, timestamp warning or exchange part ID
-		form that we build a graph and with the given sequence we looking for the truck has similar path after that, from the last node of the sequence calculate possibility paths all of the exchange part ID-s. We display it with avg, min max mean time frame and calculated path possibility.
