@@ -41,33 +41,33 @@ As it was mentioned before, the STILL forklifts use the CAN technology collectin
  	\item {Shunt\_slow.mat}
 \end{itemize}
 
-				\noindent
+				\subparagraph\noindent
 As it easily can be seen in the file names, the workers made though the truck more than one time with various speed and load on the same track.
 
 However, in this first iteration, STILL won't provided any goal value for tire abrasion. So from this first iteration I was able to made only explanatory data analysis to fuel further data collection and with enough goal values in sustainable resolution and quality to train some predictive model on that data.
-				\noindent
+				\subparagraph\noindent
 In the second iteration on data providing on 10.2017 I received more information in a quite similar fashion, but from working forklift, and a top of that with some additional tire measurement. The CAN-bus sensor data encompress approximately two month in time, but there were just a few measurements of the tire abrasion, from every third week. Unfortunately, this is nearly enough to make some prediction, but further iterations required these information.
 
 \#TODO enumerate column names in english.
 %----------------------------------------------------------------------------
 				\paragraph{Phase Two}
 In the second iteration our team got some additional data from STILL. It estimated 3 forklifts CAN bus data with additional tire measurement, and a little change in the columns names and values.
-
+				\subparagraph\noindent
 With this few tire measurement divided in time, the interpolation and the RUL calculation can be possible, but with high risk of over-fitting the machine learning model or a statistical model with not so satisfying results.
 \#TODO enumerate column names in english.
 %----------------------------------------------------------------------------
 			\subsubsection{Electrical fail prediction dataset}
 %----------------------------------------------------------------------------
-\noindent
+\paragraph\noindent
 The STILL forklift's system has an electrical CAN bus warning collection system. The warning comes from the part what can communicate with the bus. The engineer of the STILL captured this data from a defined time frame and save it for us in a txt file. 
 
-\noindent
+\paragraph\noindent
 One observation in the previously mentioned file is involves a forklift unique ID, the time stamp and the occurred warning and some other specific data what isn't in the scope of this thesis.
-\noindent
+\\paragraphnoindent
 In the world of the Electrical fail prediction dataset there is other to file to work with, one is an SAP database export in a txt format and one is and xls file, all two have truck ID, exchanged part ID and time stamp in one observation with more data what is not in the spectrum of this project.
-\noindent
+\paragraph\noindent
 For the sake of completeness the last two files have technical worker comments and not all observations have exchanged part ID. For that we can use some Natural Language Processing Method but this is also not in the scope of this course.
-\noindent
+\paragraph\noindent
 From this three previously described file when it's represented in a normally workable way, the wanted remaining useful life can be calculated.
 
 \#TODO enumerate column names in english.
@@ -75,9 +75,9 @@ From this three previously described file when it's represented in a normally wo
 	\section{Data processing methods}
 %----------------------------------------------------------------------------
 		\subsection{CAN fingerprint}
-				\noindent
+				\paragraph\noindent
 Assuming someone wants to make educated guess about the future, the neat arrangement of data is demanded, often called "tidy" format, as it is advised and required for preparation for most of the data mining methods. And for that reasons I had chosen the R language to tackle this objective.
-				\noindent
+				\paragraph\noindent
 In this case, the *.mat files involved a special treatment called box-shorting to achieve the clean and usable "tidy" state. During the box-shorting procedure mentioned before, the researcher has to know the range of shorting key (in this data set's case the time stamp key's range) and with that, one can make a large data table with a lot of "NA"-s, but it's needed to organize the multi frequency sensory data.
 
 Once the tidying is done, comes the \textit{exploratory} data analysis to make sense about the data mass and come with ways to achieve the best prediction possible, and short out unnecessary columns, to make the future process faster.

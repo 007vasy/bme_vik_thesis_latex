@@ -12,9 +12,9 @@ The final aim was to create data processing methods and calculated attributes fr
 The start state was a raw CAN bus physical sensory data in a *.mat format with different measurement frequencies by sensor types.
 %----------------------------------------------------------------------------
 	\subsubsection{Final state}
-		\noindent
+		\paragraph\noindent
 To achieve the final state, data sets require to transform to an CSV (Comma Separate Value) or RDS (R Data Structure) format for more convenient handling and calculating attributes.
-		\noindent
+		\paragraph\noindent
 The attributes are aggregations and summarization of connection between key values originating from expert knowledge, exploratory data analysis and several unsupervised learning technique.
 %----------------------------------------------------------------------------
 \subsubsection{Abstract Workflow}
@@ -36,10 +36,10 @@ To accomplish the final state from the starting state, the process was partition
 %----------------------------------------------------------------------------
 \subsection{Expert knowledge and facts}
 %----------------------------------------------------------------------------
-\noindent
+\paragraph\noindent
 When some kind of industrial data set is examined and processed to make educated guess about the future principles and insights from expert knowledge are really helpful to make sense and understand the data in a higher sense.\footnote{In reality the vast majority of the insight came from exploratory data analysis and unsupervised learning}
 
-\noindent
+\paragraph\noindent
 In summary, the main indicators of tire abrasion are between two tire measurement:
 \begin{itemize}
 	\item{traveled distance} 
@@ -57,9 +57,9 @@ These aggregated values can be calculated from the raw sensor data, and from dat
 As it seems from the starting and final state, in first step the *mat files has to be transformed into usable data frame, and meanwhile the not useful columns has to be dropped to save precious processor time and data storage space, especially at handling the longer files. After that the attributes has to be calculated, then the remaining useful life.
 To plan that using planning principles is necessary\footnote{Used bibliography \cite{CSDISTILLED}\cite{DATACAMP}\cite{LeanThinking}}.
 	\subsubsection{Cleaning}
-		\noindent
+		\paragraph\noindent
 	As it has been described in the previous section, the *.mat files has to bee transformed to a data frame with only the useful columns remaining to the further calculations.
-		\noindent
+		\paragraph\noindent
 	To come up with a sustainable process, one has to iterate through more than one ideas, for the sake clarity, all ideas would be enumerated.
 		\paragraph{Idea One}
 			The first data shape transforming idea was to boxshort the data. In more detail:
@@ -76,7 +76,7 @@ To plan that using planning principles is necessary\footnote{Used bibliography \
 			\includegraphics[width=150mm, keepaspectratio]{figures/cleaning_idea_one.png}
 			\caption{First idea to clean the raw data} 
 			\end{figure}
-		\noindent
+		\subparagraph\noindent
 This is time consuming and slow even on the server.
 		\paragraph{Idea Two}
 To get rid of the speed problem, the second idea was to aggregate the values mean by second, this solution have to be more faster than the previous one, but if there time skip in the data\footnote{there is a lot of missing rows, sometimes minutes}
@@ -101,7 +101,7 @@ To get the advantage of the two methods it would be useful to merge them.
 			\includegraphics[width=150mm, keepaspectratio]{figures/cleaning_idea_synthesis.png}
 			\caption{To optimize the cleaning workflow, merged the to processes together} 
 			\end{figure}
-\noindent
+\subparagraph\noindent
 With this solution design, the high quality data frame, what can be used later is possible and with this idea synthesis, the problems with the previous ones are worked around.
 %----------------------------------------------------------------------------
 	\subsubsection{Exploring}
@@ -139,7 +139,7 @@ With this solution design, the high quality data frame, what can be used later i
 	All of them will be aggregated hour by hour\footnote{when the tire measurement interval goes down the aggregation window could and should too}, from tire change or measurement.
 %----------------------------------------------------------------------------
 	\subsubsection{Calculating RUL (Remaining useful life)}
-		\noindent
+		\paragraph\noindent
 	After the specified attributes are calculated and aggregated and enough \footnote{more than one} tire measurement is available with accurate time stamp, the RUL can be calculated in the following way:
 
 	\begin{enumerate}
@@ -159,7 +159,7 @@ With this solution design, the high quality data frame, what can be used later i
 		\includegraphics[width=150mm, keepaspectratio]{figures/CAN_fingerprint_RUL_calculation.png}
 		\caption{Calculating RUL from cleaned data} 
 	\end{figure}
-		\noindent
+		\paragraph\noindent
 	Other not implemented solutions:
 	\begin{itemize}
 		\item{calculate RUL with machine learning} There was not enough data for this solution, the model will be over-fitted based on DataCamp case studies \cite{DataCamp_CaseStudies} 
@@ -172,28 +172,39 @@ With this solution design, the high quality data frame, what can be used later i
 %----------------------------------------------------------------------------
 	\subsection{Requirement specification}
 %----------------------------------------------------------------------------
+\paragraph\noindent
 From given CAN bus warning collection form the STILL forklifts electrical parts and SAP technical database, which contains the company's technical workers comments on all repair sessions, and occasionally exchanged parts ID and name, and later described warning sequence from a random truck, the model have to estimate the remaining useful life to a next repair session.
-
+\paragraph\noindent
 In the scope of this project iteration, the exchange part ID-s is the superior priority, the technical workers comments should be categorized with some natural language processing method. \cite{nlp}
 %----------------------------------------------------------------------------
 	\subsection{Data processing workflow design}
 %----------------------------------------------------------------------------
-\cite{BALNWSCBOOK}
-\cite{CSDISTILLED}
-\cite{DATACAMP}
-\cite{LeanThinking}
-		\subsubsection{Cleaning}
-		get rid of NA-s
-		\begin{figure}[!ht]
-		\centering
-		\includegraphics[width=150mm, keepaspectratio]{figures/Electrical_fail_prediction_preprocessing_workflow.png}
-		\caption{To optimize the cleaning workflow, merged the to processes together} 
-		\end{figure}
-		One have get rid of the resource wasting, fiddling values, and extract the can be useful columns. After that the graph building values can be selected.
+\paragraph\noindent
+As previously has been mentioned the BAL Network science book \cite{BALNWSCBOOK} is an effective indicator of the later specified solution. But a lot of optimizing idea comes from the Computer Science Distilled book\cite{CSDISTILLED}, the usage of the Python language and the NetworkX package\cite{NetworkX} is the influence of the DataCamp e-learning platform \cite{DATACAMP}, and the thinking in flows, process and value streams is the cause of the Lean Thinking book\cite{LeanThinking} and the Phoenix Project book \cite{PhoenixProject}
 
+		\subsubsection{Raw data's condition}
+		The data set given for this subproject is consisting three files:
+		\begin{itemize}
+			\item{xtra\_All\_errors\_with\_metainfo.txt} size of 12.9 GB, contains the warning log of 789 forklifts, with timestamp, machine ID, the ID of the warning, some extra information which is out of the scope of this project\footnote{but in a further iteration could be necessary}, and a lot of NA columns.
+			\item{ServiceReportSAPExtrakt\_FLMxFahrzeuge.txt} size of 224.7 MB, contains an export from an SAP repair database, with columns like "when was the machine repair session stared","when was the machine repair session ended", the machine's ID, the exchanged part ID number, some additional information \footnote{not all rows contain exchanged part ID, in these case the technical worker comment can be useful, but the natural language processing is not the scope of this thesis.} and lot of NA columns.
+			\item{Alle-SBs-ProActive\_droprows.xlsx} size of 4.5 MB, nearly exactly the same columns like one above, but form different forklifts and a bit different column names.
+		\end{itemize}
+		\subsubsection{Cleaning in two iteration}
+		\begin{itemize}
+			\item{Getting rid of NA-s columns, and duplications} This step is required to reduce the further resource cost of the operations, and to have a filebase for further method development.
+			\item{Drop not useful columns for the first iteration graph building} For the first iteration graph building, the timestamp, machine ID and the ID of the warning is required from the firstly mentioned file. From the second and the third the repair session starting and ending time, the machine ID and the exchange part ID is required. When there is no exchange part ID just technical worker comment, for the fast method development, it could be handy to give a temporary distinct ID, from the other real exchange part IDs, to these rows exchange part ID column. \footnote{this can be a starting point of the subcategorizing, with the help of the NLP} 
+		\end{itemize}
+		\subsubsection{Creating nodes list and edges list}
 		There is two group of the data:
 		Nodes
 		Edges
+
+		\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=150mm, keepaspectratio]{figures/Electrical_fail_prediction_preprocessing_workflow.png}
+		\caption{The cleaning and ordering step by step} 
+		\end{figure}
+
 
 %----------------------------------------------------------------------------
 		\subsubsection{Exploring}
