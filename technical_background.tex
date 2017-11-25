@@ -3,9 +3,9 @@
 %----------------------------------------------------------------------------
 	\section{The MANTIS project}
 %----------------------------------------------------------------------------
-		\subsection{Overall picture about the MANTIS project}
+		\subsection{Overall picture about MANTIS project}
 %----------------------------------------------------------------------------
-The MANTIS pilot project is a data-driven decision making system. The collected information comes from industrial sensors and on a popular IoT communication protocol (MQTT) communicate with the given company cloud service, where the data is being tidied and prediction happens. These processes are providing future insights to the company's employees for pre-maintenance and with that leading to potential reduction of human, financial, and material resources.\cite{Mantis}
+The MANTIS pilot project is a data-driven decision making system. The collected information comes from industrial sensors. Through a popular IoT communication protocol (MQTT) communicate with given company cloud service where data clarification and prediction happens. These processes are providing future insights to the company's employees for pre-maintenance leading to potential reduction of human, financial, and material resources.\cite{Mantis}
 
 %----------------------------------------------------------------------------
 		\subsection{Data sets from STILL}
@@ -14,7 +14,7 @@ The MANTIS pilot project is a data-driven decision making system. The collected 
 %----------------------------------------------------------------------------
 				\paragraph{Phase One}
 				\noindent
-As it was mentioned before, STILL forklifts \cite{RX20} use the CAN technology to collect data. In this project are two kinds of them is utilized \footnote{Physical sensory and internal electric part logs.}. In the CAN fingerprint data set, the workers from the STILL had connected a special CAN bus data collector to a few forklift and had done with them specific task. They have called it "fingerprints". The *.mat file names helped the understanding the type of the path and what the forklift has gone through:
+As it was mentioned before, STILL forklifts \cite{RX20} use the CAN technology to collect data. In this project two kinds of them are utilized \footnote{Physical sensory and internal electric part logs.}. In one of the two called CAN fingerprint data set, the workers from the STILL had connected a special CAN bus data collector to one forklift and had done with them specific tasks. They have called them "fingerprints". The *.mat file names helped to understand the type of path and what the forklift has gone through:
 
 \begin{itemize}[noitemsep]
     \item {800hTestDrive\_fast.mat}
@@ -42,35 +42,39 @@ As it was mentioned before, STILL forklifts \cite{RX20} use the CAN technology t
 \end{itemize}\footnote{tracktype\_(with load)/(without load)\_speed}
 
 				\subparagraph\noindent
-As it easily can be seen in the file names, the workers carried out various tests with the trucks more than one time with various speed and load on the over various tracks.
+As it easily can be seen in the file names, the workers carried out various tests with the trucks more than one time with various speed and load on over various tracks.
 
-However, in this first iteration, STILL did not provide any target value for tire abrasion. So from this first iteration I was able to make only exploratory data analysis to fuel further data collection and with enough target values in sustainable resolution and quality to train some predictive model based on that data.
+However, in this first iteration, STILL did not provide any target value for tire abrasion. Thus from this first iteration I was able to make only exploratory data analysis to fuel further data collection. With enough target values in adequate resolution and quality predictive models can be trained based on that data.
 				\subparagraph\noindent
-In the second iteration on data provided on 10.2017 I received more information in a quite similar fashion, but from working forklift, and a top of that with some additional tire measurement. The CAN-bus sensor data encompress approximately two months in time, but there were just a few measurements of the tire wear, from every third week. Unfortunately, this is just nearly enough to make some predictions, but required for further iterations to develop and upgrade the model.
+In the second iteration on data provided on 10.2017 I received more information in a quite similar fashion, but from working forklifts and a top on that with some additional tire measurement. The CAN-bus sensor data contain approximately two months in time, but there were just a few measurements for tire wear from every third week. Unfortunately, this is just nearly sufficient to make predictions, but required for further iterations to develop and upgrade the model.
 
-\#TODO enumerate column names in english.
+\#TODO enumerate column names in English.
 %----------------------------------------------------------------------------
 				\paragraph{Phase Two}
-In the second iteration our team got some additional data from STILL. It estimated 3 forklifts CAN bus data with additional tire measurement, and a little change in the columns names and values.
+In the second iteration our team was given some additional data from STILL. It included 3 forklifts' CAN bus data with additional tire measurements and a little change in the columns names and values.
 				\subparagraph\noindent
-With this few tire measurement divided in time, the interpolation and the RUL calculation can be possible, but with high risk of over-fitting the machine learning model or a statistical model with not so satisfying results.
-\#TODO enumerate column names in english.
+With this few tire measurement divided in time the interpolation and the RUL calculation become possible, despite of high risk of over-fitting the machine learning model or a statistical model, which could cause the lack of satisfying results.
+
+\#TODO enumerate column names in English.
 %----------------------------------------------------------------------------
 			\subsubsection{Electrical fail prediction dataset}
 %----------------------------------------------------------------------------
 \paragraph\noindent
-The STILL forklift's system has an electrical CAN bus warning collection system. The warning comes from the part what can communicate with the bus. The engineer of the STILL captured this data from a defined time frame and save it for us in a txt file. 
+The STILL forklift's system has an electrical CAN bus warning collection subsystem. The warning comes from the part which can communicate with the bus. Engineers of STILL captured this data in a defined time frame and saved it for us in a txt file. 
 
 \paragraph\noindent
-One observation in the previously mentioned file is involves a forklift unique ID, the time stamp and the occurred warning and some other specific data what isn't in the scope of this thesis.
+One observation in the previously mentioned file involves a forklift unique ID, time stamp, occurred warning and other specific data what isn't in the scope of this thesis.
+
 \paragraph\noindent
-In the world of the Electrical fail prediction dataset there is other to file to work with, one is an SAP database export in a txt format and one is and xls file, all two have truck ID, exchanged part ID and time stamp in one observation with more data what is not in the spectrum of this project.
+In the world of Electrical fail prediction dataset there are two additional file to work with, one is an SAP database export in a txt format and other one is and xls file all two have truck ID, exchanged part ID, and time stamp in one observation along with additional information what is not in the spectrum of this project.
+
 \paragraph\noindent
-For the sake of completeness the last two files have technical worker comments and not all observations have exchanged part ID. For that we can use some Natural Language Processing Method but this is also not in the scope of this course.
+For the sake of completeness the last two files have technical worker comments and not all observations have exchanged part ID. For that we can use some Natural Language Processing Methods but this is also not in the scope of this piece of writing.
+
 \paragraph\noindent
 From this three previously described file when it's represented in a normally workable way, the wanted remaining useful life can be calculated.
 
-\#TODO enumerate column names in english.
+\#TODO enumerate column names in English.
 %----------------------------------------------------------------------------
 	\section{Data processing methods}
 %----------------------------------------------------------------------------
