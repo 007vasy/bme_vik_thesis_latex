@@ -190,49 +190,49 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 		The data set given for this subproject is consisting three files:
 		\begin{itemize}
 			\item{xtra\_All\_errors\_with\_metainfo.txt} size of 12.9 GB contains the warning log of 789 forklifts, with timestamp, machine ID, the IDs of warnings, and additional information which is out of the scope of this project\footnote{but in a further iteration could be necessary}, and a lot of NA columns.
-			\item{ServiceReportSAPExtrakt\_FLMxFahrzeuge.txt} size of 224.7 MB contains an export from an SAP repair database with columns named for example as "when was the machine repair session stared","when was the machine repair session ended", the machine's ID, the exchanged part ID number, some additional information \footnote{not all rows contain exchanged part ID, in these case the technical worker comment can be useful, but the natural language processing is not the scope of this thesis.} and lot of NA columns.
+			\item{ServiceReportSAPExtrakt\_FLMxFahrzeuge.txt} size of 224.7 MB contains an export from an SAP repair database with columns named for example as "when was the machine repair session stared","when was the machine repair session ended", the machine's ID, the exchanged part ID number, some additional information \footnote{not all rows contain exchanged part ID, in these cases the technical worker's comments can be useful, but natural language processing is not the scope of this thesis.} and lot of NA columns.
 			\item{Alle-SBs-ProActive\_droprows.xlsx} size of 4.5 MB nearly exactly the same columns like one above, but form different forklifts and a bit different column names.
 		\end{itemize}
 		\subsubsection{Cleaning in two iteration}
 		\begin{itemize}
-			\item{Getting rid of NA-s columns, and duplications} This step is required to reduce the further resource cost of the operations, and to have a filebase for further method development.
-			\item{Drop not useful columns for the first iteration graph building} For the first iteration graph building, the timestamp, machine ID and the ID of the warning is required from the firstly mentioned file. From the second and the third the repair session starting and ending time, the machine ID and the exchange part ID is required. When there is no exchange part ID just technical worker comment, for the fast method development, it could be handy to give a temporary distinct ID, from the other real exchange part IDs, to these rows exchange part ID column. \footnote{this can be a starting point of the subcategorizing, with the help of the NLP} 
+			\item{Eliminating NA-s columns, and duplications:} This step is required to reduce the further resource cost of the operations, and to have a filebase for further method development.
+			\item{Discarding not useful columns} For the first iteration graph building, the timestamp, machine ID and ID of the warning is required from the firstly mentioned file. From the second and third repair session' starting and ending time the machine ID and the exchange part ID is essential. When there is no exchange part ID just technical worker comment, for fast method's development, it could be handy to give a temporary distinct ID. The temporary ones have to differ from real exchange part IDs. \footnote{this can be a starting point of subcategorizing, with the help of NLP} 
 		\end{itemize}
 		\subsubsection{Creating nodes list and edges list}
 		\paragraph\noindent
-		From the previously generated files the nodes and edges, the two components of the graph can be generated. The nodes list should contains all the distinct warning and exchange part ID-s, the edges list should contain the timestamp, the from and to node's ID , and the vehicle ID.
+		From previously generated files the nodes and edges, the two vital components of the graph can be generated. The nodes list should contains all the distinct warning and exchange part ID-s, the edges list should contain the timestamp, the from and to node's ID , and the vehicle ID.
 		\paragraph{Making the nodes list}
-		The previously generated files contain a lot of duplicated warning and exchange part ID along with a bunch of not needed columns.
+		The previously generated files contain a lot of duplicated warning and exchange part ID along with a multitudinous not needed columns.
 		Is this case the planned steps should be:
 		\begin{enumerate}
-			\item{read in the warning ID and exchange part ID columns from the previously mentioned files} 
-			\item{concatenate the two SAP originated lists}
-			\item{drop the duplications}
-			\item{concatenate the lists}
-			\item{save it}
+			\item{to read in the warning ID and exchange part ID columns from previously mentioned files} 
+			\item{to concatenate the two SAP originated lists}
+			\item{to drop duplications}
+			\item{to concatenate the lists}
+			\item{to save it}
 		 \end{enumerate}
 		\paragraph{Making the edges list, machine by machine}
-		For easier handling and performance and disk space reasons, would be wise to generate the path of all machines.
+		For easier handling, better performance, and disk space reasons, would be wise to generate the path of all machines.
 		The steps should be:
 		\begin{enumerate}
-			\item{read in the largest file chunk by chunk} 
-			\item{group by the information by machine ID}
-			\item{save it to a corresponding machine's file}
-			\item{do the previous 2 steps to the smaller files after reading it in as a whole}
-			\item{read in the distinct machine paths one by one}
-			\item{order them by time}
-			\item{save them in separated files}
+			\item{reading in the largest file chunk by chunk} 
+			\item{grouping the information by machine ID}
+			\item{saving it to a corresponding machine's file}
+			\item{doing the previous 2 steps to the smaller files after reading it in as a whole}
+			\item{reading in the distinct machine paths one by one}
+			\item{ordering them by time}
+			\item{saving them in separated files}
 		 \end{enumerate}
-		With this step we get the distinct nodes and a lot of edges is different paths. 
+		With this steps we get the distinct nodes and a lot of edges in different paths. 
 		\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=150mm, keepaspectratio]{figures/Electrical_fail_prediction_preprocessing_workflow.png}
-		\caption{The cleaning and ordering step by step} 
+		\caption{Cleaning and ordering step by step} 
 		\end{figure}
 %----------------------------------------------------------------------------
 		\subsubsection{Exploring}
 			\paragraph\noindent
-			Unlike the previous data set, the cleaning step is not as significant as it could be, because the data had given in a more convenient way. After the later described NA and duplicated column dropping, the data exploring can begin. But the end of the data exploring is after the making of the nodes and edges list, because it's easy to check visually a correct graph representation \footnote{for example: the path is continuous or dashed}.
+			Unlike the previous data set, the cleaning steps aren't as significant as it could be, because the data was given in a more efficient way. After the later described NA and duplicated column dropping, the data exploring can begin. However, the end of data exploring is after the making of nodes and edges list, because it's easy to check visually a correct graph representation \footnote{for example: the path is continuous or dashed}.
 			\subparagraph{Data summaries}
 			There are a lot of data summary methods (mean, median, SQRT, min, max and quarters). With these aggregations ran on the data set, it's get a first impression. 
 			\subparagraph{Visualization}
@@ -240,21 +240,22 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 %----------------------------------------------------------------------------
 		\subsubsection{Calculating RUL}
 			\paragraph{Building the graph}
-			When the previous ordering and exploring and fact checking is complete, the graph building can begin, from the generated files, the base is the nodes list all nodes should be represented in the graph, when it comes to edges the situation is different, for computational resource reasons, not all of the path should be included for sure. But the more the path the better be the prediction.
-			\paragraph{computing}
+			When the previous ordering and exploring and fact checking is completed, the graph building can begin from generated files. Thus, the base is the nodes list, moreover all nodes should be represented in the graph when it comes to edges the situation is different. For computational resource reasons, not all of the paths should be included for sure. But the more the path the better be the prediction.
+			\paragraph{Computing steps:}
 			If the graph has been build, the remaining useful life calculation steps should be the following:
 			\begin{enumerate}
-				\item{get a warning sequence, what is not represented in the graph, from the same machine, in a chronological order}
-				\item{between the oldest and the second oldest nodes given in the sequence and the graph \footnote{all the nodes in the new sequence should be int th graph too} list the machine ID-s on that path}
-				\item{iterate through the hole sequence and eliminate the machines what are absent in the current edges}
-				\item{when there is no machine shorted the sequence with eliminate the oldest node in the sequence and redo the previous search}
-				\item{the list of the machined with similar path are given, from the last and youngest node in the sequence the shortest similar machine path should be listed to the exchange part ID nodes}
+				\item{getting a warning sequence, what is not represented in the graph, from the same machine, in a chronological order}
+				\item{the machine' IDs should be listed between the oldest and the second oldest nodes given in the sequence} \footnote{all the nodes in the new sequence should be int th graph too} 
+				\item{iterating through the whole sequence and eliminating the machines which are absent in the current edges}
+				\item{when there is no machine shorted the sequence with, eliminate the oldest node in the sequence and redo the previous search}
+				\item{the list of machines with similar path are given, from the last and youngest node in the sequence. The shortest similar machine path should be listed to the exchange part ID nodes}
 				\item{from the last node the possibility could be calculated to all exchange part ID nodes, based on the similar shortest machine path count to the specific exchange part ID nodes divided by sum of to all the exchange part ID nodes}
-				\item{besides of possibility the time to the specific exchange part ID node could be computed to give more in sight about the remaining useful life, based on the similar shortest machine's distance in time}
-				\item{the result should look like a with columns like: exchange part ID node, min to that node, mean, median and max, and the computed possibility arranged by possibility and time} 
+				\item{besides of possibility the time to the specific exchange part ID node could be computed to give more insights about the remaining useful life, based on the similar shortest machine's distance in time}
+				\item{the result should look with columns like: exchange part ID node, minimal, mean, median and maximal time to that node, and the computed possibility arranged by possibility and time} 
 		 		\item{the RUL is the highest possibility with the shortest remaining time}
 		 	\end{enumerate}
-			
+		
+		\paragraph\noindent	
 		The calculation of the whole table is profitable, because the technical workers can solve more problem at one repair sessions, this could cause longer timespan on duty.
 
 		TODO explain red flags in short
