@@ -8,23 +8,23 @@
 	\noindent
 The final aim was to create data processing methods and calculated attributes from measured values for future prediction applications.
 %----------------------------------------------------------------------------
-	\subsubsection{Starting state}
-The start state was a raw CAN bus physical sensory data in a *.mat format with different measurement frequencies by sensor types.
+	\subsubsection{Initial state}
+The initial state was a raw CAN bus physical sensory data in a *.mat format with different measurement frequencies by sensor types.
 %----------------------------------------------------------------------------
 	\subsubsection{Final state}
 		\paragraph\noindent
-To achieve the final state, data sets require to transform to an CSV (Comma Separate Value) or RDS (R Data Structure) format for more convenient handling and calculating attributes.
+To achieve the final state data sets require to transform to an CSV (Comma Separate Value) or RDS (R Data Structure) format for more convenient handling and calculating attributes.
 		\paragraph\noindent
 The attributes are aggregations and summarization of connection between key values originating from expert knowledge, exploratory data analysis and several unsupervised learning technique.
 %----------------------------------------------------------------------------
 \subsubsection{Abstract Workflow}
-To accomplish the final state from the starting state, the process was partitioned from on start-to-end into smaller steps. 
+To accomplish the final state from the starting state the process was partitioned from on start-to-end into smaller steps. 
 
 \begin{enumerate}
 	\item {Cleaning:} To solve different measurement frequency problem by making a one-row/one-observation data frame.
-	\item {Exploring:} Investigating the data with exploratory data analysis tools and unsupervised learning supported by the STILL workers's, engineers's and my acquaintances's expert knowledge.
+	\item {Exploring:} To investigate the data with exploratory data analysis tools and unsupervised learning supported by the STILL workers's, engineers's and my acquaintances's expert knowledge.
  	\item {Specifying Attributes:} To introduce sustainable attribute calculating algorithms.
- 	\item {Calculating RUL (Remaining useful life):} From received target values (few tire measurement) and from the attributes calculated beforehand, present a RUL calculating algorithm for the MANTIS project.
+ 	\item {Calculating RUL (Remaining useful life):} To develop a RUL calculation algorithm for the MANTIS project. Based on received target values \footnote{few tire measurements} and from the attributes calculated beforehand.
 \end{enumerate}
 
 \begin{figure}[!ht]
@@ -37,10 +37,10 @@ To accomplish the final state from the starting state, the process was partition
 \subsection{Expert knowledge and facts}
 %----------------------------------------------------------------------------
 \paragraph\noindent
-When some kind of industrial data set is examined and processed to make educated guess about the future principles and insights from expert knowledge are really helpful to make sense and understand the data in a higher sense.\footnote{In reality the vast majority of the insight came from exploratory data analysis and unsupervised learning}
+When some kind of industrial data set is examined and processed to make educated guess about the future, principles and insights from expert knowledge are actually helpful to interpret and understand the data in a higher sense.\footnote{In reality the vast majority of the insight came from exploratory data analysis and unsupervised learning}
 
 \paragraph\noindent
-In summary, the main indicators of tire abrasion are between two tire measurement:
+In summary, the main indicators of tire abrasion are between two tire measurements:
 \begin{itemize}
 	\item{traveled distance} 
 	\item{elapsed time between}
@@ -49,27 +49,28 @@ In summary, the main indicators of tire abrasion are between two tire measuremen
 	\item{changing y direction in elapsed time}
 \end{itemize}
 
-These aggregated values can be calculated from the raw sensor data, and from data with enough tire measurement point the RUL can be calculated with a help of a built statistical model.
+These aggregated values can be calculated from the raw sensor data, and with enough tire measurement point the RUL can be calculated with a help of a previously built statistical model.
 
 %----------------------------------------------------------------------------
 \subsection{Data processing workflow design}
 %----------------------------------------------------------------------------
-As it seems from the starting and final state, in first step the *mat files has to be transformed into usable data frame, and meanwhile the not useful columns has to be dropped to save precious processor time and data storage space, especially at handling the longer files. After that the attributes has to be calculated, then the remaining useful life.
+As it seems from the starting and final state, at first the *mat files have to be transformed into usable data frame. Meanwhile the not useful columns have to be dropped to save precious processor time and data storage space, especially at handling the longer files. After that the attributes have to be calculated, then the remaining useful life.
 To plan that using planning principles is necessary\footnote{Used bibliography \cite{CSDISTILLED}\cite{DATACAMP}\cite{LeanThinking}}.
+%----------------------------------------------------------------------------
 	\subsubsection{Cleaning}
 		\paragraph\noindent
-	As it has been described in the previous section, the *.mat files has to bee transformed to a data frame with only the useful columns remaining to the further calculations.
+	As it has been described in the previous section, the *.mat files have to be transformed to a data frame with only the useful columns remaining to the further calculations.
 		\paragraph\noindent
-	To come up with a sustainable process, one has to iterate through more than one ideas, for the sake clarity, all ideas would be enumerated.
+	To establish a sustainable process, the iteration has to go through more than one ideas, for the sake of clarity, all ideas would be enumerated.
 		\paragraph{Idea One}
-			The first data shape transforming idea was to boxshort the data. In more detail:
+			The first data shape transforming idea was to boxshort the data. Item by item:
 \begin{enumerate}
-	\item{examine the longest key value pair vector maximal timestamp} 
-	\item{make a data frame with timestamp keys from zero to the max timestamp key got from the file in step of hundredth of a second}
-	\item{search every value-s place with the help of the timestamp key}
-	\item{interpolate for the missing values}
-	\item{do it for all columns in the file}
-	\item{do it for all files}
+	\item{to examine the longest key value pair vector maximal timestamp} 
+	\item{to makeg a data frame with timestamp keys from zero to the maximum timestamp key got from the file in step of a second's hundredth}
+	\item{to search every value's place with the help of the timestamp key}
+	\item{to interpolate for missing values}
+	\item{to do it for all columns in the file}
+	\item{to do it for all files}
 \end{enumerate}
 			\begin{figure}[!ht]
 			\centering
@@ -77,21 +78,21 @@ To plan that using planning principles is necessary\footnote{Used bibliography \
 			\caption{First idea to clean the raw data} 
 			\end{figure}
 		\subparagraph\noindent
-This is time consuming and slow even on the server.
+This is time consuming and slow even on the server, because not the optimal sorting algorithm for this kind of data representation.\cite{CSDISTILLED}
 		\paragraph{Idea Two}
-To get rid of the speed problem, the second idea was to aggregate the values mean by second, this solution have to be more faster than the previous one, but if there time skip in the data\footnote{there is a lot of missing rows, sometimes minutes}
+To get rid of the speed problem the second idea was to aggregate the values mean by second. This solution has to be more faster than the previous one, but if there time skip in the data\footnote{there is a lot of missing rows, sometimes minutes} this idea also won't be sufficient.
 			\begin{figure}[!ht]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/cleaning_idea_two.png}
-			\caption{Second idea to read the raw data} 
+			\caption{Second idea to clean the raw data} 
 			\end{figure}
 		\paragraph{Idea Synthesis}
-To get the advantage of the two methods it would be useful to merge them.
+To get the advantage of the two methods it would be useful to merge the to previous  ideas.
 \begin{enumerate}
 	\item{examine the longest key value pair vector maximal timestamp} 
-	\item{make a data frame with timestamp keys from zero to the max timestamp key got from the file in step of a second}
-	\item{aggregate the measurement average by second to second}
-	\item{search every value-s place with the help of the timestamp key}
+	\item{make a data frame with timestamp keys from zero to the maximal timestamp key got from the file in step of a second}
+	\item{aggregate the measurement average second by second}
+	\item{search every value-s place with the help of timestamp key}
 	\item{interpolate for the missing values}
 	\item{do it for all columns in the file}
 	\item{do it for all files}
@@ -102,26 +103,26 @@ To get the advantage of the two methods it would be useful to merge them.
 			\caption{To optimize the cleaning workflow, merged the to processes together} 
 			\end{figure}
 \subparagraph\noindent
-With this solution design, the high quality data frame, what can be used later is possible and with this idea synthesis, the problems with the previous ones are worked around.
+With this solution design the high quality data frame, what can be used later, is possible and with this idea synthesis, the problems with the previous ones are worked around.
 %----------------------------------------------------------------------------
 	\subsubsection{Exploring}
-	The data exploring and data examination, is a required step for correctly interpret the data and confirm the facts coming from expert knowledge. Without this "null hypothesis check" step, lot of human labor and energy can be thrown out.
+	The data exploring and data examination is a required step for correctly interpret the data and confirm of facts coming from experts' knowledge. Without this "null hypothesis check" step lot of human labor and energy can be discarded.
 		\paragraph{Exploratory data analysis}
-			With this steps (data summaries and visualization) one can make himself sure, the data set has some connection with the real world, the values are close to reality and further step are worth a shot.
+			With this steps \footnote{data summaries and visualization} one can make himself ensure, the data set has connection with the real world the values are close to reality and further step are worth a shot.
 			\subparagraph{Data summaries}
-			There are a lot of data summary methods (mean, median, SQRT, min, max and quarters). With these aggregations ran on the data set, it's get a first impression. It's advisable to use these resource sparing methods.
+			There are a lot of data summary methods \footnote{mean, median, SQRT, min, max and quarters}. With these aggregations ran on the data set, the first impression is given. It's advisable to use these resource sparing methods.
 			\subparagraph{Visualization}
-			The human mind can easy interpret large amount of data with correct visual representation and to go further checked the connections and facts derived from expert knowledge. \footnote{Not to mention, amend that knowledge.} 
+			The human mind can effortlessly interpret large amount of data with correct visual representation, and to go further, can check the connections and facts derived from expert knowledge. \footnote{Not to mention, amend that knowledge.} 
 		\paragraph{Unsupervised learning}\cite{UnsuplearnBook}
-		The "unsupervised learning" is a machine learning method especially to unlabeled data, it's useful to find connections and correlation between the values in a higher perspective and confirm or question expert knowledge.
+		The "unsupervised learning" is a machine learning method especially to unlabeled data it's useful to find connections and correlation between the values in a higher perspective and confirm or question expert knowledge.
 
 		\subparagraph{k-means clustering}
-		\cite{k-means}\cite{kmeans2} The k-means clustering help to estimate groups between the observation, with norming all the values to one and calculate the multi-dimensional distance between them.
-		\subparagraph{hierarchical clustering}
-		\cite{h-clust}\cite{h-clust2}\cite{Clustering} Is a k-means with a twist, because it clusters clusters hierarchically, step by step with various distance calculation method and top-down or bottom-up approach.
+		\cite{k-means}\cite{kmeans2} The k-means clustering helps to estimate groups between observations with norming all the values to one and calculating the multi-dimensional distance between them.
+		\subparagraph{Hierarchical clustering}
+		\cite{h-clust}\cite{h-clust2}\cite{Clustering} Hierarchical clustering s a k-means with a twist, because it clusters clusters hierarchically, step by step with various distance calculation method and top-down or bottom-up approach.
 		\subparagraph{Principal component analysis}
 		\cite{PCA}
-		This algorithm make an orthogonal, multi dimensional space from the values and place there the observations. This algorithm can tell the most significant values from the data set.
+		This algorithm makes an orthogonal, multi dimensional space from the values and places there the observations. This algorithm can tell the most significant values from the data set.
 %----------------------------------------------------------------------------
 	\subsubsection{Specifying Attributes}
 	From expert knowledge \footnote{and exploratory data analysis} the main components and indicators of the tire abrasion can be specified.
@@ -136,23 +137,23 @@ With this solution design, the high quality data frame, what can be used later i
 		\item{is there weight counter (max 3600 in a hour)}
 		\item{steering wheel degree change derived by time aggregated by average}\footnote{the torque and speed derived by time could be useful too}
 	\end{itemize}
-	All of them will be aggregated hour by hour\footnote{when the tire measurement interval goes down the aggregation window could and should too}, from tire change or measurement.
+	All of them will be aggregated hour by hour\footnote{when the tire measurement interval goes down the aggregation window could and should too} from tire change or measurement.
 %----------------------------------------------------------------------------
 	\subsubsection{Calculating RUL (Remaining useful life)}
 		\paragraph\noindent
 	After the specified attributes are calculated and aggregated and enough \footnote{more than one} tire measurement is available with accurate time stamp, the RUL can be calculated in the following way:
 
 	\begin{enumerate}
-		\item{join the tire measurement and the hourly aggregated attributes by timestamp}
-		\item{interpolate from the tire measurements to the hourly aggregations}
-		\item{compute the tire diameter change on all the given measurement points}
-		\item{calculate the average diameter change by hourly aggregations} with that the tire diameter change by hourly attribute change is given
-		\item{produce the attributes hourly for a new measurement}
-		\item{calculate the tire diameter change for all attributes based on proportionality}
-		\item{compute the mean tire diameter change by hour}
-		\item{summarize the tire diameter change from last know diameter}
+		\item{to join tire measurement and hourly aggregated attributes by timestamp}
+		\item{to interpolate from tire measurements to hourly aggregations}
+		\item{to compute tire diameter change on all given measurement points}
+		\item{to calculate average diameter change by hourly aggregations} with that tire diameter change by hourly attribute change is given
+		\item{to produce attributes hourly for a new measurement}
+		\item{to calculate tire diameter change for all attributes based on proportionality}
+		\item{to compute the mean tire diameter change by hour}
+		\item{to summarize the tire diameter change from last know diameter}
 		\item{if the summary is greater than a given constant, the tire should be changed}
-		\item{compute reaming useful life on the last hours abrasion rate}
+		\item{to compute reaming useful life on the last hours abrasion rate}
 	\end{enumerate}
 	\begin{figure}[!ht]
 		\centering
@@ -162,8 +163,8 @@ With this solution design, the high quality data frame, what can be used later i
 		\paragraph\noindent
 	Other not implemented solutions:
 	\begin{itemize}
-		\item{calculate RUL with machine learning} There was not enough data for this solution, the model will be over-fitted based on DataCamp case studies \cite{DataCampCaseStudies} 
-		\item{calculate RUL with deep learning} Similar then above.	
+		\item{calculate RUL with machine learning:} There was not enough data for this solution, the model will be over-fitted based on DataCamp case studies \cite{DataCampCaseStudies} 
+		\item{calculate RUL with deep learning:} Similar to above.	
 	\end{itemize}
 	
 %----------------------------------------------------------------------------
@@ -173,23 +174,24 @@ With this solution design, the high quality data frame, what can be used later i
 	\subsection{Requirement specification}
 %----------------------------------------------------------------------------
 \paragraph\noindent
-From given CAN bus warning collection form the STILL forklifts electrical parts and SAP technical database, which contains the company's technical workers comments on all repair sessions, and occasionally exchanged parts ID and name, and later described warning sequence from a random machine, the model have to estimate the remaining useful life to a next repair session.
+This prediction model encompasses given CAn bus warning collection from STILL forklifts' electrical parts and SAP technical database containing technical workers' comments on each repair sessions. Moreover, it encompasses occasionally exchanged parts' ID and name, and later described warning sequences from a random machine. The model has to estimate from these data the remaining useful life to a next repair session.
+
 \paragraph\noindent
-In the scope of this project iteration, the exchange part ID-s is the superior priority, the technical workers comments should be categorized with some natural language processing method. \cite{nlp}
+In the scope of this project iteration the exchange part IDs are the superior priority the technical workers comments should be categorized with natural language processing method. \cite{nlp}
 %----------------------------------------------------------------------------
 	\subsection{Data processing workflow design}
 %----------------------------------------------------------------------------
 \paragraph\noindent
-As previously has been mentioned the BAL Network science book \cite{BALNWSCBOOK} is an effective indicator of the later specified solution. But a lot of optimizing idea comes from the Computer Science Distilled book\cite{CSDISTILLED}, the usage of the Python language and the NetworkX package\cite{NetworkX} is the influence of the DataCamp e-learning platform \cite{DATACAMP}, and the thinking in flows, process and value streams is the cause of the Lean Thinking book\cite{LeanThinking} and the Phoenix Project book \cite{PhoenixProject}
+As it previously has been mentioned, the BAL Network science book \cite{BALNWSCBOOK} is an effective indicator of later specified solution. However, a lot of optimizing ideas come from the Computer Science Distilled book\cite{CSDISTILLED} the usage of the Python language and the NetworkX package\cite{NetworkX} is influence of the DataCamp e-learning platform \cite{DATACAMP}, and thinking in flows, process and value streams s caused by books such as the Lean Thinking book\cite{LeanThinking} and the Phoenix Project book \cite{PhoenixProject}
 
 
 %----------------------------------------------------------------------------
 		\subsubsection{Raw data's condition}
 		The data set given for this subproject is consisting three files:
 		\begin{itemize}
-			\item{xtra\_All\_errors\_with\_metainfo.txt} size of 12.9 GB, contains the warning log of 789 forklifts, with timestamp, machine ID, the ID of the warning, some extra information which is out of the scope of this project\footnote{but in a further iteration could be necessary}, and a lot of NA columns.
-			\item{ServiceReportSAPExtrakt\_FLMxFahrzeuge.txt} size of 224.7 MB, contains an export from an SAP repair database, with columns like "when was the machine repair session stared","when was the machine repair session ended", the machine's ID, the exchanged part ID number, some additional information \footnote{not all rows contain exchanged part ID, in these case the technical worker comment can be useful, but the natural language processing is not the scope of this thesis.} and lot of NA columns.
-			\item{Alle-SBs-ProActive\_droprows.xlsx} size of 4.5 MB, nearly exactly the same columns like one above, but form different forklifts and a bit different column names.
+			\item{xtra\_All\_errors\_with\_metainfo.txt} size of 12.9 GB contains the warning log of 789 forklifts, with timestamp, machine ID, the IDs of warnings, and additional information which is out of the scope of this project\footnote{but in a further iteration could be necessary}, and a lot of NA columns.
+			\item{ServiceReportSAPExtrakt\_FLMxFahrzeuge.txt} size of 224.7 MB contains an export from an SAP repair database with columns named for example as "when was the machine repair session stared","when was the machine repair session ended", the machine's ID, the exchanged part ID number, some additional information \footnote{not all rows contain exchanged part ID, in these case the technical worker comment can be useful, but the natural language processing is not the scope of this thesis.} and lot of NA columns.
+			\item{Alle-SBs-ProActive\_droprows.xlsx} size of 4.5 MB nearly exactly the same columns like one above, but form different forklifts and a bit different column names.
 		\end{itemize}
 		\subsubsection{Cleaning in two iteration}
 		\begin{itemize}
