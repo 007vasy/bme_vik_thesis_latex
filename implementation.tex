@@ -42,8 +42,12 @@ This sections would describe the algoritmization and realization of the previous
 		This idea were also implemented and the cleaning process' performance were remarkable compared to the previous one. However, as the second cleaning algorithm were tested, the data could contain whole spanning about minutes wide. This event completely ruins the process. The next step were clear, there is a need for and another cleaning solution with the avail of the two current ones.
 %----------------------------------------------------------------------------
 		\subsubsection{Idea Synthesis}
-		Implementation the IDEA Synthesis and problems with that and summary why is it the best solution
-		\#WHY
+		After redefining the corner principles of the cleaned data set, the synthesis of the two previous ideas were possible.
+		There is no need for observation in every hundredth of a second, just in second in the first place. This approach allows fast aggregation and eliminate the need for slow interpolation in this level.
+
+		After the aggregation of the values is done by second to second and the data is arranged in the by the key, it's easy to join them to a previously build data frame. After that step can come the interpolation to close the minute span gaps.
+
+		That is what were implemented as the final cleaning process. \footnote{In more detail, see the verification chapter.}
 %----------------------------------------------------------------------------		
 \subsection{Data processing and understanding}
 		Reasons describe: Why is is useful to understand the given data in depth
