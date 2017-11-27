@@ -26,17 +26,20 @@ This sections would describe the algoritmization and realization of the previous
 			\item{To change the German column names to English} 
 			\item{To boxshort all the columns in one file based on the key-value pairs in a column} 
 			\item{To diminish not useful columns for future operations} 
+			\item{To interpolate between measurement point to make a dataframe without NA-s}
 			\item{To concatenate the time related columns into one} 
 			\item{To save the cleaned files in RDS\footnote{R Data Structure} format} 
 		\end{itemize} 
 
 		\paragraph\noindent
-		The actual implementation with these packages were slightly, the algorithm described in the already mentioned section were successful. However the performance were humble with the small files already. \footnote{See in the verification chapter in more detail.} For the big MATLAB exports, the performance were close to zero, because the cleaning process were not completed in half a day.
+		The actual algorithms' implementation with these packages were slightly, this algorithm described in the already mentioned section were successfully implemented. However the performance were humble with the small files already. \footnote{See in the verification chapter in more detail.} For the big MATLAB exports, the performance were close to zero, because the cleaning process were not completed in half a day.
 		
 		These result caused the need for the second iteration on the cleaning process and the necessity for new ideas.
 %----------------------------------------------------------------------------
 		\subsubsection{Idea Two}
-		
+		The second idea was to take advantage of constant sensor frequency. This phenomenon is causing constant gaps between the columns key value pairs. The constant gap cause constant insertion volume for a column and faster interpolation.
+
+		This idea were also implemented and the cleaning process' performance were remarkable compared to the previous one. However, as the second cleaning algorithm were tested, the data could contain whole spanning about minutes wide. This event completely ruins the process. The next step were clear, there is a need for and another cleaning solution with the avail of the two current ones.
 %----------------------------------------------------------------------------
 		\subsubsection{Idea Synthesis}
 		Implementation the IDEA Synthesis and problems with that and summary why is it the best solution
