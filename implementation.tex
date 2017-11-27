@@ -2,23 +2,45 @@
 \chapter{Implementation}
 %----------------------------------------------------------------------------
 \section{CAN fingerprint data set processing method}
-\subsection\noindent
-This sections would describe the algoritmization and realization of the previously described process in the design chapter in R language.The reasons are simple, the R is one of the most common and convinient tools to process data sets and interpret them, with a fitted statistical or machine learning model.
+\paragraph\noindent
+This sections would describe the algoritmization and realization of the previously described process in the design chapter in R language.The reasons are simple, the R is one of the most common and convenient tools to process data sets and interpret them, with a fitted statistical or machine learning model.
 %----------------------------------------------------------------------------
 \subsection{Cleaning}
 %----------------------------------------------------------------------------
 		\subsubsection{Idea One}
-		Implementation the IDEA One and problems with that
-		#TODO use github and describe the algorithm
-		#WHY
+		\paragraph\noindent
+		In this first iteration, the Idea One, described under the similar section in the design chapter, has been algorithmically implemented in R language.
+
+		The following R packages were used:
+		\begin{itemize}
+			\item{R.matlab:} This package was used to handle the *.mat files, and convert column to a usable format.
+			\item{dplyr,purrr,plyr:} These three package are part of the tidyverse \cite{Tidyverse}, these are excellent for handling as especially cleaning data frames. This  advantage was used for multiple times in the implementation process. The tidyverse R package has one more benefit: The contained packages are written in C++ language, what gives a speed edge against the regular packages.
+			\item{lubridate:} Also from the the tidyverse meta package, although with a distinct purpose. This package is beneficial to handle time series and time related operation. With the MATLAB export files and timestamp key this is a needed unsavory.
+			\item{stringr:} This package is from the tidyverse as well, with the purpose of handling strings. Some of the function needed in the cleaning process automatization.
+		\end{itemize}
+
+		\paragraph\noindent
+		The cleaning algorithm is capable:
+		\begin{itemize}
+			\item{To handle multiple MATLAB export files from a single folder}
+			\item{To change the German column names to English} 
+			\item{To boxshort all the columns in one file based on the key-value pairs in a column} 
+			\item{To diminish not useful columns for future operations} 
+			\item{To concatenate the time related columns into one} 
+			\item{To save the cleaned files in RDS\footnote{R Data Structure} format} 
+		\end{itemize} 
+
+		\paragraph\noindent
+		The actual implementation with these packages were slightly, the algorithm described in the already mentioned section were successful. However the performance were humble with the small files already. \footnote{See in the verification chapter in more detail.} For the big MATLAB exports, the performance were close to zero, because the cleaning process were not completed in half a day.
+		
+		These result caused the need for the second iteration and for new ideas.
 %----------------------------------------------------------------------------
 		\subsubsection{Idea Two}
-		Implementation the IDEA Two and problems with that
-		#WHY
+
 %----------------------------------------------------------------------------
 		\subsubsection{Idea Synthesis}
 		Implementation the IDEA Synthesis and problems with that and summary why is it the best solution
-		#WHY
+		\#WHY
 %----------------------------------------------------------------------------		
 \subsection{Data processing and understanding}
 		Reasons describe: Why is is useful to understand the given data in depth
@@ -31,7 +53,7 @@ This sections would describe the algoritmization and realization of the previous
 		\paragraph{Data summaries}
 		Common Types and applied types
 		confirm expert knowledge
-		#WHY
+		\#WHY
 %----------------------------------------------------------------------------		
 		\paragraph{Visualization}
 		Common Tool and applied tool
@@ -75,40 +97,40 @@ This sections would describe the algoritmization and realization of the previous
 			\end{figure}
 	description and why some of that is used.
 	confirm expert knowledge
-	#WHY
+	\#WHY
 %----------------------------------------------------------------------------	
 \subsection{Calculating Attributes}
 	from expert knowledge, why does the solution have worked out this way
-	#WHY
+	\#WHY
 %----------------------------------------------------------------------------	
 \subsection{Calculating RUL (Remaining useful life)}
 	model description in detail.
-	#WHY
+	\#WHY
 %----------------------------------------------------------------------------	
 \subsection{Optimization}
 Possible optimizations enumerate.
-#WHY
+\#WHY
 \subsection{Results}
 Estimating result, and what causing aleatory mistakes in the model. 
-#WHY
+\#WHY
 \cite{GitHub_CAN_RUL}
 %----------------------------------------------------------------------------
 %----------------------------------------------------------------------------
 \section{Electrical fail prediction data set processing method}
 \subsection\noindent
 This sections would describe the algoritmization and realization of the previously described process in the design chapter in Python language.
-#WHY
+\#WHY
 %----------------------------------------------------------------------------
 	\subsection{Cleaning}
 Cleaning the data set in detail, why I made these choices with that In the graph target in mind
-#WHY
-		#TODO use github and describe the algorithm
+\#WHY
+		\#TODO use github and describe the algorithm
 %----------------------------------------------------------------------------
 	\subsection{Exploring}
 		\paragraph{Data summaries}
 		Common Types and applied types
 		confirm expert knowledge
-		#WHY
+		\#WHY
 %----------------------------------------------------------------------------		
 		\paragraph{Visualization}
 		Common Tool and applied tool
@@ -118,17 +140,17 @@ Cleaning the data set in detail, why I made these choices with that In the graph
 			\caption{ToDo} 
 			\end{figure}
 		confirm expert knowledge
-#WHY
+\#WHY
 %----------------------------------------------------------------------------
 	\subsection{Calculating RUL}
 model description in detail.
-#WHY
+\#WHY
 %----------------------------------------------------------------------------
 	\subsection{Optimization}
 Possible optimizations enumerate.
-#WHY
+\#WHY
 %----------------------------------------------------------------------------
 	\subsection{Result}
 Estimating result, and what causing aleatory mistakes in the model. 
-#WHY
+\#WHY
 \cite{GitHub_FP_RUL}
