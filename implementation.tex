@@ -82,44 +82,46 @@ This sections would describe the algoritmization and realization of the previous
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/clusteringf.png}
-			\caption{ToDo 3242342} 
+			\caption{As it seems, the density function of the hydraulic pressure are different in the different types of tracks. It's implicates different paths cause different encumbrance, ergo different tire abrasion.} 
 			\end{figure}
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/CrashYvsSteeringangle.png}
-			\caption{ToDo} 
+			\caption{On this figure the Y-way accelerometer on the X-axis and the Steering wheels' angle on the Y-axis. From this appear the linear connection between the two value, and it's useful for crosschecking.} 
 			\end{figure}
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/Rplot.png}
-			\caption{ToDo} 
+			\caption{This visualizations tells the mean hydraulic pressure when there is load on the machine. The blurry oscillation is caused by rough terrain and obstacles on the road.} 
 			\end{figure}		
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/speedvstorquefacet.png}
-			\caption{ToDo} 
+			\caption{The different driving profiles principle can be verified with this figure. The distinct speed-torque pairs cause different tire abrasion.} 
 			\end{figure}	
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/timevssteeringangle.png}
-			\caption{ToDo} 
+			\caption{The different driving profiles principle can be verified with this figure too. The distinct turn types cause different tire abrasion.} 
 			\end{figure}	
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/torquespeedcat.png}
-			\caption{ToDo} 
+			\caption{The connection between the two drivemotors speed and torque across the fingerprint files.} 
 			\end{figure}		
-		confirm expert knowledge
 %----------------------------------------------------------------------------		
 	\subsubsection{Unsupervised learning}
-			\begin{figure}[H]
+	The unsupervised learning is efficient to handling and examining unlabeled data in the first place.
+	
+	In this particular case it used to check the expert knowledge what says there is three driving profiles.
+	\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/clustering.png}
-			\caption{ToDo} 
-			\end{figure}
-	description and why some of that is used.
-	confirm expert knowledge
-	\#WHY
+			\caption{Clustering the speed and torque pairs with a hierarchical bottom-up clustering.} 
+	\end{figure}
+	As it seems from this figure, the expert knowledge was partly wrong, because they forgot to mention the fourth state: the standin still state.
+
+	This can be argued further, because if the machine standing still with a load it damages the tire more than moving slowly with low torque.
 %----------------------------------------------------------------------------	
 \subsection{Calculating Attributes}
 	from expert knowledge, why does the solution have worked out this way
