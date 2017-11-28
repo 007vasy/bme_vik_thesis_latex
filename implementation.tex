@@ -150,24 +150,61 @@ These attributes have been calculated from the cleaned data and aggregated hourl
 \subsection{Results}
 The results were statistically promising. However, for more precise results, there is a claim for more tire measurement.
 
-The code can be view on the following GitHub repository:\cite{GitHub_CAN_RUL}
+The code can be viewed on the following GitHub repository:\cite{GitHub_CAN_RUL}
 %---------------------------------------------------------------------------------------------------------------------------------------
 %---------------------------------------------------------------------------------------------------------------------------------------
 \section{Electrical fail prediction data set processing method}
 \paragraph\noindent
-This sections would describe the algorithmization and realization of the previously described process in the design chapter in Python language.
-\#WHY
+As it already has been mentioned for handling this dataset, the Python language was used. Especially, for the easy data representation and handling with the NetworkX package. 
 %----------------------------------------------------------------------------
 	\subsection{Cleaning}
-Cleaning the data set in detail, why I made these choices with that In the graph target in mind
-\#WHY
-		\#TODO use github and describe the algorithm
+For this data set the cleaning was far more lighter than the previous one. The data is represented in tabular separated txt and in xlsx file formats.
+To progress further two steps were made:
+\begin{itemize}
+			\item{dropping the NA and duplicated columns}
+			\item{dropping the meaningless columns for the first iteration graph building}
+\end{itemize}
+
+At the end of this process, only the following columns were kept from the files:
+\begin{itemize}
+			\item{file containing the electric errors}
+			\begin{itemize}
+				\item{s_errorcode}
+				\item{vehicle_serialnumber}
+				\item{error_occurred_timestamp}
+			\end{itemize}
+			\item{file containing the SAP fails}
+			\begin{itemize}
+				\item{exchange part number}
+				\item{vehicle_serialnumber}
+				\item{service task(s) begin}
+				\item{service task(s) end}
+			\end{itemize}
+\end{itemize}
+These views were saved in a distinct files for performance and milestone reasons.
+%----------------------------------------------------------------------------
+	\subsection{Creating nodes list and edges list}
+From the previously generated files the nodes and edges list were generated in a following way.
+\paragraph{Nodes list generation}
+The nodes list contains all the distinct s-errorcodes from the electric error files once, and the distinct exchange par numbers once from the SAP fail file. The condition space could be built.
+\paragraph{Edges list generation}
+The edges list was generated from three sources: 
+\begin{itemize}
+	\item{the electric errors} with all three columns
+	\item{the SAP fails once} with all columns except the service task(s) end timestamp
+	\item{the SAP fails once more with a twist} with all columns except the service task(s) begin timestamp
+\end{itemize}
+
+This dataframe \footnote{Containing three columns} was processed further. The dataframe's rows were grouped by the vehicle ID, were arranged by the timestamps.
+\footnote{The similar rows with close timestamp weren't been eliminated.}
+The directed edge needs a starting and ending point and to achieve that purpose the starting states were derived from the previous row ending state by vehicle ID, and after that the data was saved in distinct files by vehicle ID.
 %----------------------------------------------------------------------------
 	\subsection{Exploring}
 		\paragraph{Data summaries}
 		Common Types and applied types
 		confirm expert knowledge
 		\#WHY
+
 %----------------------------------------------------------------------------		
 		\paragraph{Visualization}
 		Common Tool and applied tool
@@ -179,6 +216,8 @@ Cleaning the data set in detail, why I made these choices with that In the graph
 		confirm expert knowledge
 		\#TODO directed graph
 \#WHY
+
+
 %----------------------------------------------------------------------------
 	\subsection{Calculating RUL}
 model description in detail.
@@ -187,4 +226,4 @@ model description in detail.
 	\subsection{Result}
 Estimating result, and what causing aleatory mistakes in the model. 
 \#WHY
-\cite{GitHub_FP_RUL}
+The code can be viewed on the following GitHub repository:\cite{GitHub_FP_RUL}
