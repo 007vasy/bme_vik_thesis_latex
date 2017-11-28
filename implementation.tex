@@ -65,7 +65,9 @@ This sections would describe the algoritmization and realization of the previous
 			\item{glimpse:} To look at the first few rows of the data table or list. However in a more eye friendly and informative way.\footnote{From the tidyverse.}
 			\item{summary:} To receive summary statistic from each row.
 			\item{describe:} To receive fast summary statistic from each row. However in also a more eye friendly and informative way.\footnote{Also from the tidyverse.}
-		\end{itemize} 
+		\end{itemize}
+
+		\footnote{The data summaries where not included, because the visualizations are more informative for a new eye.}
 %----------------------------------------------------------------------------		
 		\paragraph{Visualization}
 		The human mind could process the information visually in a fastest way, make assumptions easily, and find additional connections. 
@@ -75,6 +77,7 @@ This sections would describe the algoritmization and realization of the previous
 			\item{base:} This package is an basic tool for plotting, and there is no need for additional package for most visualization task. However this not a beneficial tool, because the visualization code isn't as reusable and convenient as it should be for this scale of repetitions. The reasons is simple code design principles were not on a high level when this package had written.
 			\item{ggplot2:} In contrast, ggplot2 is also from the tidyverse and because of this reason also written in C++, which guarantee the necessary speed for when it's high demand. Moreover, this package was designed with advanced principles and the code is mostly reusable, and handles data frames efficiently. 
 		\end{itemize} 
+
 
 		\begin{figure}[!ht]
 			\centering
@@ -133,8 +136,10 @@ Possible optimizations enumerate.
 Estimating result, and what causing aleatory mistakes in the model. 
 \#WHY
 \cite{GitHub_CAN_RUL}
-%----------------------------------------------------------------------------
-%----------------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------------------------------------------
 \section{Electrical fail prediction data set processing method}
 \paragraph\noindent
 This sections would describe the algorithmization and realization of the previously described process in the design chapter in Python language.
