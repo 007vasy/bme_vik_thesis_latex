@@ -219,21 +219,20 @@ The directed edge needs a starting and ending point and to achieve that purpose 
 
 %----------------------------------------------------------------------------
 	\subsection{Calculating RUL}
-		\subsubsection{Calculating RUL}
-			\paragraph{Building the graph}
-			When the previous ordering and exploring and fact checking is completed, the graph building can begin from generated files. Thus, the base is the nodes list, moreover all nodes should be represented in the graph when it comes to edges the situation is different. For computational resource reasons, not all of the paths should be included for sure. But the more the path the better be the prediction.
+			\paragraph{Built of the graph}
+			When the previous ordering and exploring and fact checking was completed, the graph building begun from generated files. Thus, the base is the nodes list, moreover all nodes should be represented in the graph, when it came to edges the situation was different. For computational resource reasons, not all of the paths was included for sure. But the more the path the better was the prediction.
 			\paragraph{Computing steps:}
-			If the graph has been build, the remaining useful life calculation steps should be the following:
+			The graph has been build, the remaining useful life calculation steps were following:
 			\begin{enumerate}
 				\item{getting a warning sequence, what is not represented in the graph, from the same machine, in a chronological order}
-				\item{the machine' IDs should be listed between the oldest and the second oldest nodes given in the sequence} \footnote{all the nodes in the new sequence should be int th graph too} 
+				\item{the machine' IDs were listed between the oldest and the second oldest nodes given in the sequence}
 				\item{iterating through the whole sequence and eliminating the machines which are absent in the current edges}
 				\item{when there is no machine shorted the sequence with, eliminate the oldest node in the sequence and redo the previous search}
 				\item{the list of machines with similar path are given, from the last and youngest node in the sequence. The shortest similar machine path should be listed to the exchange part ID nodes}
 				\item{from the last node the possibility could be calculated to all exchange part ID nodes, based on the similar shortest machine path count to the specific exchange part ID nodes divided by sum of to all the exchange part ID nodes}
-				\item{besides of possibility the time to the specific exchange part ID node could be computed to give more insights about the remaining useful life, based on the similar shortest machine's distance in time}
-				\item{the result should look with columns like: exchange part ID node, minimal, mean, median and maximal time to that node, and the computed possibility arranged by possibility and time} 
-		 		\item{the RUL is the highest possibility with the shortest remaining time}
+				\item{besides of possibility the time to the specific exchange part ID node was computed to give more insights about the remaining useful life, based on the similar shortest machine's distance in time}
+				\item{the result looked with columns like: exchange part ID node, minimal, mean, median and maximal time to that node, and the computed possibility arranged by possibility and time} 
+		 		\item{the RUL is the highest possibility with the shortest remaining time} \footnote{The RUL can be some kind of metascore based on some kind of time window and possibility level.}
 		 	\end{enumerate}
 %----------------------------------------------------------------------------
 	\subsection{Result}
