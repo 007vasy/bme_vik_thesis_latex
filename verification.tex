@@ -1,21 +1,66 @@
 %----------------------------------------------------------------------------
-\chapter{Verification}\footnotes{Collect footnotes and explain them in the optimization section}
+\chapter{Verification}
 %----------------------------------------------------------------------------
 \section{CAN fingerprint data set processing method}
 %----------------------------------------------------------------------------
 \subsection{Functional testing}
 %----------------------------------------------------------------------------
-TODO in development methods
-TODO results
-Applied Core principles with that estimate the solution quality
+All the written functions and workflows were manually unit tested, before the unit assembly to a grater function or workflow, because in this way the debugging were easier and the following functional testing were simpler, because of the trustworthy sub functions and sub workflows.
+
+After a wanted workflow for e.c. the cleaning, was assembled, a following steps were the integration tests. To ensure the solution quality and whole planning process validity.
+
+By reason of the large files in this data set, all of the these enormous files were tested and ran on the department Linux server \cite{Batman}.
+Moreover, the results were copied back to the personal computer for further investigation.
+
+\#TODO Applied Core principles with that estimate the solution quality
+\footnote{Collect footnotes and explain them in the optimization section}
 %----------------------------------------------------------------------------
 \subsection{Performance testing}
 %----------------------------------------------------------------------------
-TODO on machine A dataset S,L
-TODO on machine B dataset S,L
-	data volumes,processing time, etc, scalability
+The performance was investigated on various workflows, as already has been mentioned, on two computer on personal computer\cite{Latitude} and one linux server\cite{Batman}.
 
-table: estimated running time in the two machines
+The results were:
+\begin{table}[H]
+\centering
+\begin{tabular}{ |c|c|c|  }
+\hline
+\multicolumn{3}{|c|}{Performance test results on small files} \\
+\hline
+Test workflow& PC [min] & Linux Server [min]\\
+\hline
+Cleaning Idea 1 one file& 20 & 12 \\
+Cleaning Idea 1 all files& - & 120 \\
+Cleaning Idea 2 one file& 2 & 0.5 \\
+Cleaning Idea 2 all files& 10 & 6 \\
+Cleaning Synthesis 2 one file& 5 & 3 \\
+Cleaning Synthesis 2 all files& 14 & 8 \\
+Specifying attributes & 2 & - \\
+\hline
+\end{tabular}
+\caption{Performance test results on small files}
+\label{table:1}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ |c|c|c|  }
+\hline
+\multicolumn{3}{|c|}{Performance test results on large files} \\
+\hline
+Test workflow& PC [min] & Linux Server [min]\\
+\hline
+Cleaning Idea 2 one file& 10 & 5 \\
+Cleaning Idea 2 all files& - & 20 \\
+Cleaning Synthesis 2 one file& - & 5.5 \\
+Cleaning Synthesis 2 all files& - & 21 \\
+Specifying attributes & - & 3 \\
+CAL calculating RUL & - & 4 \\
+Whole RUL calculating workflow & - & 29 \\
+\hline
+\end{tabular}
+\caption{Performance test results on large files}
+\label{table:2}
+\end{table}
 %----------------------------------------------------------------------------
 \subsection{Possible functional and performance optimizations}
 Possible optimizations enumerate.
@@ -26,13 +71,18 @@ Possible optimizations enumerate.
 %----------------------------------------------------------------------------
 \subsection{Functional testing}
 %----------------------------------------------------------------------------
-TODO in development methods
-TODO results
-Metascore
-Applied Core principles with that estimate the solution quality
+Although, there is an opportunity to write automated unit and integration tests in Python, all the written functions and workflows were manually unit tested, before the unit assembly to a grater function or workflow, because in this way the debugging were easier and the following functional testing were simpler, because of the trustworthy sub functions and sub workflows.
+
+After a wanted workflow for e.c. the cleaning, was assembled, a following steps were the integration tests. To ensure the solution quality and whole planning process validity.
+
+By reason of the large files in this data set, all of the these enormous files were tested and ran on the department Linux server \cite{Batman}.
+Moreover, the results were copied back to the personal computer for further investigation.
+
+\#TODO Applied Core principles with that estimate the solution quality
 %----------------------------------------------------------------------------
 \subsection{Performance}
 %----------------------------------------------------------------------------
+
 TODO on machine A dataset S,L
 TODO on machine B dataset S,L
 	data volumes,processing time, etc, scalability
@@ -41,6 +91,6 @@ table: estimated running time in the two machines
 %----------------------------------------------------------------------------
 \subsection{Possible functional and performance optimizations}
 Possible optimizations enumerate.
-
+Metascore
 edges list by vehicle ID save
 \#WHY

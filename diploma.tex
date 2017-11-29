@@ -27,7 +27,9 @@
 \floatstyle{boxed} 
 \restylefloat{figure}
 
-
+\setlength{\arrayrulewidth}{1mm}
+\setlength{\tabcolsep}{18pt}
+\renewcommand{\arraystretch}{1.5}
 
 %--------------------------------------------------------------------------------------
 % Main variables
@@ -180,10 +182,11 @@ aboveskip=10pt}
 %\listoftables\addcontentsline{toc}{chapter}{Táblázatok jegyzéke}
 \renewcommand{\bibname}{Bibliography}
 \bibliography{mybib}
-%TODO
+
 \addcontentsline{toc}{chapter}{Bibliography}
 
 \bibliographystyle{plain}
+\listoftables
 
 \include{appendices}
 
