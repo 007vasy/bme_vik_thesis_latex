@@ -17,7 +17,7 @@ Moreover, the results were copied back to the personal computer for further inve
 %----------------------------------------------------------------------------
 \subsection{Performance testing}
 %----------------------------------------------------------------------------
-The performance was investigated on various workflows, as already has been mentioned, on two computer on personal computer\cite{Latitude} and one linux server\cite{Batman}.
+The performance was investigated on various workflows, as already has been mentioned, on two computer on personal computer\cite{Latitude} and one Linux server\cite{Batman}.
 
 The results were:
 \begin{table}[H]
@@ -29,7 +29,7 @@ The results were:
 Test workflow& PC [min] & Linux Server [min]\\
 \hline
 Cleaning Idea 1 one file& 20 & 12 \\
-Cleaning Idea 1 all files& - & 120 \\
+Cleaning Idea 1 all files& NA & 120 \\
 Cleaning Idea 2 one file& 2 & 0.5 \\
 Cleaning Idea 2 all files& 10 & 6 \\
 Cleaning Synthesis 2 one file& 5 & 3 \\
@@ -37,7 +37,7 @@ Cleaning Synthesis 2 all files& 14 & 8 \\
 Specifying attributes & 2 & - \\
 \hline
 \end{tabular}
-\caption{Performance test results on small files}
+\caption{Performance test results on CAN fingerprint's small files}
 \label{table:1}
 \end{table}
 
@@ -50,15 +50,15 @@ Specifying attributes & 2 & - \\
 Test workflow& PC [min] & Linux Server [min]\\
 \hline
 Cleaning Idea 2 one file& 10 & 5 \\
-Cleaning Idea 2 all files& - & 20 \\
-Cleaning Synthesis 2 one file& - & 5.5 \\
-Cleaning Synthesis 2 all files& - & 21 \\
-Specifying attributes & - & 3 \\
-CAL calculating RUL & - & 4 \\
-Whole RUL calculating workflow & - & 29 \\
+Cleaning Idea 2 all files& NA & 20 \\
+Cleaning Synthesis 2 one file& NA & 5.5 \\
+Cleaning Synthesis 2 all files& NA & 21 \\
+Specifying attributes & NA & 3 \\
+CAL calculating RUL & NA & 4 \\
+Whole RUL calculating workflow & NA & 29 \\
 \hline
 \end{tabular}
-\caption{Performance test results on large files}
+\caption{Performance test results on CAN fingerprint's large files}
 \label{table:2}
 \end{table}
 %----------------------------------------------------------------------------
@@ -67,12 +67,13 @@ The results in the previous section were indicating the worth of future optimiza
 
 The whole process means the data collection from the forklifts CAN bus, and the tire measurement, trough the entire calculation process to the final RUL calculation.
 
-The optimization opportunities are:
+The possible optimization opportunities are:
 \begin{itemize}
 	\item{Improving the data collection from the CAN bus, and eliminate the measurement gaps with that improvement.} With that the process could skip the interpolation step. 
 	\item{Changing file format, what the data is saved from the CAN bus.} If the file format could change from *.mat to CSV\footnote{Comma Separated Value} or RDS\footnote{R Data Structure} the process can skip a step too.
 	\item{Widening the aggregation window.} The optimal aggregation window is under search right now. However, the correct window had find, the process could speed of by the reason of fewer observation.
 	\item{Estimating the correct lower size of the speed and torque 2D binning.} The testing size were 9\*9m but if future testing shows lower is better, it could be a speed up too, because a lower attribute count.
+	\item{Weighting the attributes.} The inducted RULs by the attributes are summarized by a casual mean function, but with future testing or some machine learning algorithm the attributes calculated RULs could be weighted.
 \end{itemize} 
 %----------------------------------------------------------------------------%----------------------------------------------------------------------------
 %----------------------------------------------------------------------------%----------------------------------------------------------------------------
@@ -91,15 +92,57 @@ Moreover, the results were copied back to the personal computer for further inve
 %----------------------------------------------------------------------------
 \subsection{Performance}
 %----------------------------------------------------------------------------
+The performance was investigated on various workflows, as already has been mentioned, on two computer on personal computer\cite{Latitude} and one Linux server\cite{Batman}.
 
-TODO on machine A dataset S,L
-TODO on machine B dataset S,L
-	data volumes,processing time, etc, scalability
+The tested workflows were the following:
+\begin{enumerate}
+	\item{Dropping NA-s columns from the 12.9 GB electric\_errors.txt}
+	\item{Dropping NA-s columns from the 224.7 MB sap\_fails.txt}
+	\item{Selecting columns for the graph building from the electric\_errors.csv}
+	\item{Selecting columns for the graph building from the sap\_fails.csv}
+	\item{Fabricate nodes list}
+	\item{Fabricate edges list}
+	\item{Building the graph A\footnote{With 10 machines' path.}}
+	\item{Building the graph B\footnote{With 100 machines' path.}}
+	\item{Calculating RUL A}
+	\item{Calculating RUL B}
+	\item{Whole RUL calculating workflow A}
+	\item{Whole RUL calculating workflow B}
+\end{enumerate} 
 
-table: estimated running time in the two machines
+\begin{table}[H]
+\centering
+\begin{tabular}{ |c|c|c|  }
+\hline
+\multicolumn{3}{|c|}{Performance test results} \\
+\hline
+Test workflow& PC [min] & Linux Server [min]\\
+\hline
+1.& NA & 14 \\
+2.& 1 & NA \\
+3.& 4 & 1 \\
+4.& 1 & - \\
+5.& NA & 3 \\
+6.& NA & 4 \\
+7.& 9 & 3 \\
+8.& NA & 3 \\
+9.& 20 & 2 \\
+10.& NA & 25 \\
+11.& NA & 45 \\
+12.& NA & 180 \\
+\hline
+\end{tabular}
+\caption{Performance test results on fail prediction files}
+\label{table:3}
+\end{table}
 %----------------------------------------------------------------------------
 \subsection{Possible functional and performance optimizations}
-Possible optimizations enumerate.
-Metascore
-edges list by vehicle ID save
-\#WHY
+The results in the previous section were indicating the worth of future optimization. There are a bunch of opportunity when the whole process are under investigation.
+
+The possible optimization opportunities are:
+\begin{itemize}
+	\item{Allocating more resource to the RUL computation process.} The RUL calculation is computation heavy. However, with some cloud computing solution can speed up the process.
+	\item{Including the technical workers' comment.} As already has been mentioned, the technical workers comment with some NLP tokenisation, and categorization could bring more and preciser fail states, which could improve the predictions' precision.
+	\item{Drop paths under X path weight.} The calculation of the lower paths possibility probably worthless with further testing, the corresponding dropping level could be estimated, with that in mind the wasteful paths could be dropped.
+	\item{Saving by vehicle ID when making node list.} In the current solution, the grouping is done on the whole file, but if the edges pre-data chunk is saved to distinct files by vehicle ID, the processing computer could arrange the data file by file. This could speed up the grouping process.
+\end{itemize} 
