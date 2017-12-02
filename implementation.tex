@@ -22,13 +22,13 @@ This sections would describe the algoritmization and realization of the previous
 		\paragraph\noindent
 		The cleaning algorithm is capable:
 		\begin{itemize}
-			\item{To handle multiple MATLAB export files from a single folder}
-			\item{To change the German column names to English} 
-			\item{To boxshort all the columns in one file based on the key-value pairs in a column} 
-			\item{To diminish not useful columns for future operations} 
-			\item{To interpolate between measurement point to make a dataframe without NA-s}
-			\item{To concatenate the time related columns into one} 
-			\item{To save the cleaned files in RDS\footnote{R Data Structure} format} 
+			\item{To handle multiple MATLAB export files from a single folder,}
+			\item{To change the German column names to English,} 
+			\item{To boxshort all the columns in one file based on the key-value pairs in a column,} 
+			\item{To diminish not useful columns for future operations,} 
+			\item{To interpolate between measurement point to make a dataframe without NA-s,}
+			\item{To concatenate the time related columns into one,} 
+			\item{To save the cleaned files in RDS\footnote{R Data Structure} format.} 
 		\end{itemize} 
 
 		\paragraph\noindent
@@ -161,24 +161,24 @@ As it already has been mentioned for handling this dataset, the Python language 
 For this dataset the cleaning was far more lighter than the previous one. The data is represented in tabular separated txt and in xlsx file formats.
 To progress further two steps were made:
 \begin{itemize}
-			\item{dropping the NA and duplicated columns}
-			\item{dropping the meaningless columns for the first iteration graph building}
+			\item{dropping the NA and duplicated columns,}
+			\item{dropping the meaningless columns for the first iteration graph building.}
 \end{itemize}
 
 At the end of this process, only the following columns were kept from the files:
 \begin{itemize}
-			\item{file containing the electric errors}
+			\item{file containing the electric errors,}
 			\begin{itemize}
-				\item{s\_errorcode}
-				\item{vehicle\_serialnumber}
-				\item{error\_occurred\_time stamp}
+				\item{s\_errorcode,}
+				\item{vehicle\_serialnumber,}
+				\item{error\_occurred\_time stamp.}
 			\end{itemize}
-			\item{file containing the SAP fails}
+			\item{file containing the SAP fails.}
 			\begin{itemize}
-				\item{exchange part number}
-				\item{vehicle\_serialnumber}
-				\item{service task(s) begin}
-				\item{service task(s) end}
+				\item{exchange part number,}
+				\item{vehicle\_serialnumber,}
+				\item{service task(s) begin,}
+				\item{service task(s) end.}
 			\end{itemize}
 \end{itemize}
 These views were saved in a distinct files for performance and milestone reasons.
@@ -190,9 +190,9 @@ The nodes list contains all the distinct s-errorcodes from the electric error fi
 \paragraph{Edges list generation}
 The edges list was generated from three sources: 
 \begin{itemize}
-	\item{the electric errors} with all three columns
-	\item{the SAP fails once} with all columns except the service task(s) end time stamp
-	\item{the SAP fails once more with a twist} with all columns except the service task(s) begin time stamp
+	\item{the electric errors} with all three columns,
+	\item{the SAP fails once} with all columns except the service task(s) end time stamp,
+	\item{the SAP fails once more with a twist} with all columns except the service task(s) begin time stamp.
 \end{itemize}
 
 This dataframe \footnote{Containing three columns} was processed further. The dataframe's rows were grouped by the vehicle ID, were arranged by the time stamps.
@@ -224,15 +224,15 @@ The directed edge needs a starting and ending point and to achieve that purpose 
 			\paragraph{Computing steps:}
 			The graph has been build, the remaining useful life calculation steps were following:
 			\begin{enumerate}
-				\item{getting a warning sequence, what is not represented in the graph, from the same machine, in a chronological order}
-				\item{the machine' IDs were listed between the oldest and the second oldest nodes given in the sequence}
-				\item{iterating through the whole sequence and eliminating the machines which are absent in the current edges}
-				\item{when there is no machine shorted the sequence with, eliminate the oldest node in the sequence and redo the previous search}
-				\item{the list of machines with similar path are given, from the last and youngest node in the sequence. The shortest similar machine path should be listed to the exchange part ID nodes}
-				\item{from the last node the possibility could be calculated to all exchange part ID nodes, based on the similar shortest machine path count to the specific exchange part ID nodes divided by sum of to all the exchange part ID nodes}
-				\item{besides of possibility the time to the specific exchange part ID node was computed to give more insights about the remaining useful life, based on the similar shortest machine's distance in time}
-				\item{the result looked with columns like: exchange part ID node, minimal, mean, median and maximal time to that node, and the computed possibility arranged by possibility and time} 
-		 		\item{the RUL is the highest possibility with the shortest remaining time} \footnote{The RUL can be some kind of metascore based on some kind of time window and possibility level.}
+				\item{getting a warning sequence, what is not represented in the graph, from the same machine, in a chronological order,}
+				\item{the machine' IDs were listed between the oldest and the second oldest nodes given in the sequence,}
+				\item{iterating through the whole sequence and eliminating the machines which are absent in the current edges,}
+				\item{when there is no machine shorted the sequence with, eliminate the oldest node in the sequence and redo the previous search,}
+				\item{the list of machines with similar path are given, from the last and youngest node in the sequence. The shortest similar machine path should be listed to the exchange part ID nodes,}
+				\item{from the last node the possibility could be calculated to all exchange part ID nodes, based on the similar shortest machine path count to the specific exchange part ID nodes divided by sum of to all the exchange part ID nodes,}
+				\item{besides of possibility the time to the specific exchange part ID node was computed to give more insights about the remaining useful life, based on the similar shortest machine's distance in time,}
+				\item{the result looked with columns like: exchange part ID node, minimal, mean, median and maximal time to that node, and the computed possibility arranged by possibility and time,} 
+		 		\item{the RUL is the highest possibility with the shortest remaining time}\footnote{The RUL can be some kind of metascore based on some kind of time window and possibility level.}
 		 	\end{enumerate}
 %----------------------------------------------------------------------------
 	\subsection{Result}

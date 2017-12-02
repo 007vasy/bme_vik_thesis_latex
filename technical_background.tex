@@ -16,31 +16,31 @@ Sophisticated distributed sensing and decision making functions are performed at
 %----------------------------------------------------------------------------
 				\paragraph{Phase One: Small Fingerprints}
 				\noindent
-As it was mentioned before, STILL forklifts \cite{RX20} use the CAN technology \cite{CAN} to collect data. In my subject project two kinds of datasets are utilized \footnote{Physical sensory and internal electric part logs.}. In the first, called "CAN fingerprint dataset", the workers from the STILL had connected a special CAN bus data collector to one forklift and had done specific tasks with them. They have called them "fingerprints". The *.mat file names helped to understand the type of path\footnote{tracktype\_(with load)/(without load)\_speed} and what the forklift has gone through:
+As it was mentioned before, STILL forklifts \cite{RX20} use the CAN technology \cite{CAN} to collect data. In my subject project two kinds of datasets are utilized\footnote{Physical sensory and internal electric part logs.}. In the first, called "CAN fingerprint dataset", the workers from the STILL had connected a special CAN bus data collector to one forklift and had done specific tasks with them. They have called them "fingerprints". The *.mat file names helped to understand the type of path\footnote{tracktype\_(with load)/(without load)\_speed} and what the forklift has gone through:
 
 \begin{itemize}[noitemsep]
-    \item {800hTestDrive\_fast.mat}
-    \item {800hTestDrive\_slow.mat}
-    \item {FastTrack800h\_fast.mat}
- 	\item {FastTrack800h\_slow.mat}
-	\item {FastTrackEight\_wl\_fast.mat}
-	\item {FastTrackEight\_wl\_slow.mat}
-	\item {FastTrackEight\_wol\_fast.mat}
-	\item {FastTrackEight\_wol\_slow.mat}
-  	\item {FastTrackOval\_wl\_fast.mat}
-	\item {FastTrackOval\_wl\_slow.mat}
-	\item {FastTrackOval\_wol\_fast.mat}
-	\item {FastTrackOval\_wol\_slow.mat}
-	\item {Ramp\_wl\_fast.mat} 
-	\item {Ramp\_wl\_slow.mat}
-	\item {Ramp\_wol\_fast.mat}
-	\item {Ramp\_wol\_slow.mat}
-    \item {WorkCycle\_fast.mat}
-    \item {WorkCycle\_slow.mat}
-	\item {Shunt800h\_fast.mat}  	
-  	\item {Shunt800h\_slow.mat}
- 	\item {Shunt\_fast.mat} 	
- 	\item {Shunt\_slow.mat}
+    \item {800hTestDrive\_fast.mat,}
+    \item {800hTestDrive\_slow.mat,}
+    \item {FastTrack800h\_fast.mat,}
+ 	\item {FastTrack800h\_slow.mat,}
+	\item {FastTrackEight\_wl\_fast.mat,}
+	\item {FastTrackEight\_wl\_slow.mat,}
+	\item {FastTrackEight\_wol\_fast.mat,}
+	\item {FastTrackEight\_wol\_slow.mat,}
+  	\item {FastTrackOval\_wl\_fast.mat,}
+	\item {FastTrackOval\_wl\_slow.mat,}
+	\item {FastTrackOval\_wol\_fast.mat,}
+	\item {FastTrackOval\_wol\_slow.mat,}
+	\item {Ramp\_wl\_fast.mat,} 
+	\item {Ramp\_wl\_slow.mat,}
+	\item {Ramp\_wol\_fast.mat,}
+	\item {Ramp\_wol\_slow.mat,}
+    \item {WorkCycle\_fast.mat,}
+    \item {WorkCycle\_slow.mat,}
+	\item {Shunt800h\_fast.mat,}  	
+  	\item {Shunt800h\_slow.mat,}
+ 	\item {Shunt\_fast.mat,} 	
+ 	\item {Shunt\_slow.mat.}
 \end{itemize}
 
 				\subparagraph\noindent
@@ -61,7 +61,7 @@ With this few tire measurement divided in time, the interpolation and the RUL ca
 %----------------------------------------------------------------------------
 			\subsubsection{Electrical failure prediction dataset}
 %----------------------------------------------------------------------------
-The STILL forklift's system has an electrical CAN bus-based, electrical warning-collection subsystem. The warning comes from the part which can communicate with the bus. Engineers of STILL captured this data in a defined time frame and saved it for us in a text \footnote{txt format} file. 
+The STILL forklift's system has an electrical CAN bus-based, electrical warning-collection subsystem. The warning comes from the part which can communicate with the bus. Engineers of STILL captured this data in a defined time frame and saved it for us in a text\footnote{txt format} file. 
 
 One observation (record) in the previously mentioned file contains an unique ID of the forklift, time stamp, occurred warning and other specific data that isn't in the scope of this thesis.
 
@@ -117,7 +117,7 @@ The tidying and data preprocessing method is resource and time consuming. Thus I
 %----------------------------------------------------------------------------
 			\subsubsection{Git and GitHub}
 %----------------------------------------------------------------------------
-As a consequence of version control and open source commitment, I had chosen this common tool set \cite{Github} to control the versions of my work as it has been progressing. Including the work with the two datasets \footnote{\cite{GitHub_CAN_RUL,GitHub_FP_RUL}} and the documentation in LateX \cite{GitHub_Thesis_Text}.
+As a consequence of version control and open source commitment, I had chosen this common tool set \cite{Github} to control the versions of my work as it has been progressing. Including the work with the two datasets\footnote{\cite{GitHub_CAN_RUL,GitHub_FP_RUL}} and the documentation in LateX \cite{GitHub_Thesis_Text}.
 %----------------------------------------------------------------------------
 			\subsubsection{PyCharm}
 %----------------------------------------------------------------------------
