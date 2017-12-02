@@ -15,7 +15,7 @@ This sections would describe the algoritmization and realization of the previous
 		\begin{itemize}
 			\item{R.matlab:} This package was used to handle the *.mat files, and convert column to a usable format.
 			\item{dplyr,purrr,plyr:} These three package are part of the tidyverse \cite{Tidyverse}, these are excellent for handling as especially cleaning data frames. This  advantage was used for multiple times in the implementation process. The tidyverse R package has one more benefit: The contained packages are written in C++ language, what gives a speed edge against the regular packages.
-			\item{lubridate:} Also from the the tidyverse meta package, although with a distinct purpose. This package is beneficial to handle time series and time related operation. With the MATLAB export files and time stamp key this is a needed unsavory.
+			\item{lubridate:} Also from the the tidyverse meta package, although with a distinct purpose. This package is beneficial to handle time series and time related operation. With the MATLAB export files and timestamp key this is a needed unsavory.
 			\item{stringr:} This package is from the tidyverse as well, with the purpose of handling strings. Some of the function needed in the cleaning process automatization.
 		\end{itemize}
 
@@ -54,7 +54,7 @@ This sections would describe the algoritmization and realization of the previous
 		The reason is seems trivial, however, it is easy to overlook.When the data scientist don't understand the data it could cause wrong models. This induces the need for exploratory data analysis.
 %----------------------------------------------------------------------------
 	\subsubsection{Exploratory data analysis}
-		Exploratory data analysis is the tool set, what help to catch the underlying principles and connection hidden between the values. It is advantageous to involve this step in the predicting model developing process. In this case new principles and connections can be found, and the old ones derived from the expert knowledge can be verified.
+		Exploratory data analysis is the tool set, what help to catch the underlying principles and connection hidden between the values. It is advantageous to involve this step in the predicting model developing process. In this case new principles and connections can be found, and the old ones derived from the experts' knowledge can be verified.
 %----------------------------------------------------------------------------
 		\paragraph{Data summaries}
 		When the cleaning is ready, the easiest, and fastest way to get the first impression about the given dataset is the build in data summaries and some from the tidyverse package.
@@ -113,13 +113,13 @@ This sections would describe the algoritmization and realization of the previous
 	\subsubsection{Unsupervised learning}
 	The unsupervised learning is efficient to handling and examining unlabeled data in the first place.
 	
-	In this particular case it used to check the expert knowledge what says there is three driving profiles.
+	In this particular case it used to check the experts' knowledge what says there is three driving profiles.
 	\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/clustering.png}
 			\caption{Clustering the speed and torque pairs with a hierarchical bottom-up clustering.} 
 	\end{figure}
-	As it seems from this figure, the expert knowledge was partly wrong, because they forgot to mention the fourth state: the standin still state.
+	As it seems from this figure, the experts' knowledge was partly wrong, because they forgot to mention the fourth state: the standin still state.
 
 	This can be argued further, because if the machine standing still with a load it damages the tire more than moving slowly with low torque.
 %----------------------------------------------------------------------------	
@@ -142,7 +142,7 @@ These attributes have been calculated from the cleaned data and aggregated hourl
 %----------------------------------------------------------------------------	
 \subsection{Calculating RUL (Remaining Useful Life)}
 	After the previous step had been done, and the attributes are calculated, the remaining useful life calculation can begin.
-	The hourly aggregated attributes are in a dataframe without the sensory values. A new columns have generated with NA-s and the tire measurements are imported with multiple measurement points. Moreover, inserted to the new columns next to the appropriate hourly time stamp key. When it is done the interpolation should begin to all aggregations points. \footnote{The interpolation was linear. Thus it could be more precise when the interpolation is based on some metascore the elapsed time and travelled distance involved, or with some machine learning algorithm.}
+	The hourly aggregated attributes are in a dataframe without the sensory values. A new columns have generated with NA-s and the tire measurements are imported with multiple measurement points. Moreover, inserted to the new columns next to the appropriate hourly timestamp key. When it is done the interpolation should begin to all aggregations points. \footnote{The interpolation was linear. Thus it could be more precise when the interpolation is based on some metascore the elapsed time and travelled distance involved, or with some machine learning algorithm.}
 
 	Whit this step and more precise tire measurements on multiple occasions, the aggregated values can indicate a mean tire abrasion change. If that change is more than specified constant the tire should be changed. From the last hour a tire abrasion rate was calculated \footnote{Based on elapsed time} and with that the remaining useful life had calculated.
 	\#Enumerate the steps?
@@ -171,7 +171,7 @@ At the end of this process, only the following columns were kept from the files:
 			\begin{itemize}
 				\item{s\_errorcode,}
 				\item{vehicle\_serialnumber,}
-				\item{error\_occurred\_time stamp.}
+				\item{error\_occurred\_timestamp.}
 			\end{itemize}
 			\item{file containing the SAP fails.}
 			\begin{itemize}
@@ -191,12 +191,12 @@ The nodes list contains all the distinct s-errorcodes from the electric error fi
 The edges list was generated from three sources: 
 \begin{itemize}
 	\item{the electric errors} with all three columns,
-	\item{the SAP fails once} with all columns except the service task(s) end time stamp,
-	\item{the SAP fails once more with a twist} with all columns except the service task(s) begin time stamp.
+	\item{the SAP fails once} with all columns except the service task(s) end timestamp,
+	\item{the SAP fails once more with a twist} with all columns except the service task(s) begin timestamp.
 \end{itemize}
 
-This dataframe \footnote{Containing three columns} was processed further. The dataframe's rows were grouped by the vehicle ID, were arranged by the time stamps.
-\footnote{The similar rows with close time stamp weren't been eliminated.}
+This dataframe \footnote{Containing three columns} was processed further. The dataframe's rows were grouped by the vehicle ID, were arranged by the timestamps.
+\footnote{The similar rows with close timestamp weren't been eliminated.}
 The directed edge needs a starting and ending point and to achieve that purpose the starting states were derived from the previous row ending state by vehicle ID, and after that the data was saved in distinct files by vehicle ID.
 %----------------------------------------------------------------------------
 	\subsection{Exploring}

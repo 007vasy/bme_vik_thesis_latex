@@ -14,16 +14,16 @@ The initial state was a raw CAN bus physical sensory data in a *.mat format with
 	\subsubsection{Final state}
 To achieve the final state, datasets require to be transformed into a CSV (Comma Separated Value) or RDS (R Data Structure) format for more convenient handling and calculating attributes.
 
-The attributes are aggregations and summarization of connection between key values originating from expert knowledge, exploratory data analysis, and several unsupervised learning techniques.
+The attributes are aggregations and summarizations of connection between key values originating from experts' knowledge, exploratory data analysis, and several unsupervised learning techniques.
 %----------------------------------------------------------------------------
 \subsubsection{Abstract Workflow}
 To accomplish the final state from the starting state, the process was partitioned from on start-to-end into smaller steps. 
 
 \begin{enumerate}
 	\item {Cleaning:} To solve different measurement frequency problems by making a one-row/one-observation data frame.
-	\item {Exploring:} To investigate the data with exploratory data analysis tools and unsupervised learning supported by the STILL workers', engineers' and my acquaintances' expert knowledge.
+	\item {Exploring:} To investigate the data with exploratory data analysis tools and unsupervised learning supported by the STILL workers', engineers' and my acquaintances' experts' knowledge.
  	\item {Specifying Attributes:} To introduce sustainable attribute calculating algorithms.
- 	\item {Calculating RUL (Remaining Useful Life):} To develop a RUL calculation algorithm for the MANTIS project. This is based on received target values\footnote{few tire measurements} and from the attributes calculated beforehand.
+ 	\item {Calculating RUL (Remaining Useful Life):} To develop a RUL calculation algorithm for the MANTIS project. This is based on received target values\footnote{few tire measurements}, and attributes calculated beforehand.
 \end{enumerate}
 
 \begin{figure}[!ht]
@@ -36,7 +36,7 @@ To accomplish the final state from the starting state, the process was partition
 \subsection{Expert knowledge and facts}
 %----------------------------------------------------------------------------
 \paragraph\noindent
-When some kind of industrial dataset is examined and processed to make educated guess about the future, principles and insights from expert knowledge are actually helpful to interpret and understand the data in a higher sense.\footnote{In reality the vast majority of the insight came from exploratory data analysis and unsupervised learning}
+When some kind of industrial dataset is examined and processed to make educated guess about the future, principles and insights from experts' knowledge are actually helpful to interpret and understand the data in a higher sense.\footnote{In reality the vast majority of the insight came from exploratory data analysis and unsupervised learning}
 
 In summary, the main indicators of tire abrasion are between two tire measurements:
 \begin{itemize}
@@ -52,19 +52,19 @@ These aggregated values can be calculated from the raw sensor data, and with eno
 %----------------------------------------------------------------------------
 \subsection{Data processing workflow design}
 %----------------------------------------------------------------------------
-As it can be seen from the starting and final state, at first the *.mat files have to be transformed into usable data frame. Meanwhile the not useful columns have to be dropped to save precious processor time and data storage space, especially at handling the longer files. After that the attributes have to be calculated, then the remaining useful life has to be estimated.
-TVarious planning principles can be utilized during this design phase \cite{CSDISTILLED},\cite{DATACAMP},\cite{LeanThinking}.
+As it can be seen from the starting and final state, at first the *.mat files have to be transformed into usable data frame. Meanwhile, the not useful columns have to be dropped to save precious processor time and data storage space, especially by handling the longer files. After that the attributes should to be calculated, then the remaining useful life has to be estimated.
+Various planning principles can be utilized during this design phase \cite{CSDISTILLED},\cite{DATACAMP},\cite{LeanThinking}.
 %----------------------------------------------------------------------------
 	\subsubsection{Cleaning}
-	As it has been described in the previous section, the *.mat files have to be transformed to a data frame with only the useful columns remaining to the further calculations.
+	As it has been described in the previous section, the *.mat files have to be transformed to a data frame with only the useful columns remaining to further calculations.
 
-	To establish a sustainable process, the iteration has to go through more than one ideas, for the sake of clarity, all ideas would be enumerated.
+	To establish a sustainable process, the iteration has to go through more than one ideas. For the sake of clarity, all ideas would be enumerated.
 		\paragraph{Idea One}
 			The first data shape transforming idea was to box-short the data. Item by item:
 \begin{enumerate}
-	\item{to examine the longest key-value pair vector maximal time stamp,} 
-	\item{to makeg a data frame with time stamp keys from zero to the maximum time stamp key got from the file in step of 10 milliseconds,}
-	\item{to search every value's place with the help of the time stamp key,}
+	\item{to examine the longest key-value pair vector maximal timestamp,} 
+	\item{to make a data frame with timestamp keys from zero to the maximum timestamp key got from the file in step of 10 milliseconds,}
+	\item{to search every value's place with the help of timestamp key,}
 	\item{to interpolate for missing values,}
 	\item{to do it for all columns in the file,}
 	\item{to do it for all files.}
@@ -88,10 +88,10 @@ To get rid of the processing-speed problem, the second idea was to aggregate the
 		\paragraph{Idea Synthesis}
 To get the advantage of the two methods, it would be useful to merge the to previous  ideas.
 \begin{enumerate}
-	\item{examine the longest key-value pair vector maximal time stamp,} 
-	\item{make a data frame with time stamp keys from zero to the maximal time stamp key got from the file in step of a second,}
+	\item{examine the longest key-value pair vector maximal timestamp,} 
+	\item{make a data frame with timestamp keys from zero to the maximal timestamp key got from the file in step of a second,}
 	\item{aggregate the measurement average second by second,}
-	\item{search every values' place with the help of time stamp key,}
+	\item{search every values' place with the help of timestamp key,}
 	\item{interpolate for the missing values,}
 	\item{do it for all columns in the file,}
 	\item{do it for all files.}
@@ -114,10 +114,10 @@ With this solution design the high quality data frame, what can be used later, i
 			There are a lot of data summary methods\footnote{mean, median, SQRT, min, max and quarters}. With these aggregations ran on the dataset, the first impression is given. It is advisable to use these resource sparing methods.
 %----------------------------------------------------------------------------			
 			\subparagraph{Visualization}
-			The human mind can effortlessly interpret large amount of data with correct visual representation. Furthermore, can check the connections and facts derived from expert knowledge\footnote{Not to mention, amend that knowledge.}. 
+			The human mind can effortlessly interpret large amount of data with correct visual representation. Furthermore, can check the connections and facts derived from experts' knowledge\footnote{Not to mention, amend that knowledge.}. 
 %----------------------------------------------------------------------------		
 		\paragraph{Unsupervised learning}
-		The "unsupervised learning" \cite{UnsuplearnBook} is a machine learning method used especially to unlabeled data. It is useful to find connections and correlation between the values in a higher perspective and confirm or question expert knowledge.
+		The "unsupervised learning" \cite{UnsuplearnBook} is a machine learning method used especially to unlabeled data. It is useful to find connections and correlation between the values in a higher perspective and confirm or question experts' knowledge.
 %----------------------------------------------------------------------------
 			\subparagraph{k-means clustering}
 			The k-means clustering \cite{k-means},\cite{kmeans2} helps to estimate groups between observations with norming all the values to one and calculating the multi-dimensional distance between them.
@@ -127,7 +127,7 @@ With this solution design the high quality data frame, what can be used later, i
 			The PCA \cite{PCA} algorithm makes an orthogonal, multi dimensional space from the values and places there the observations. This algorithm can tell the most significant values from the dataset.
 %----------------------------------------------------------------------------
 	\subsubsection{Specifying Attributes}
-	From expert knowledge\footnote{and exploratory data analysis} the main components and indicators of the tire abrasion can be specified.
+	From experts' knowledge\footnote{and exploratory data analysis} the main components and indicators of the tire abrasion can be specified.
 
 	These attributes are:
 	\begin{itemize}
@@ -142,10 +142,10 @@ With this solution design the high quality data frame, what can be used later, i
 	All of them will be aggregated hour by hour\footnote{if the tire measurement interval goes down the aggregation window could and should too} from tire change or measurement.
 %----------------------------------------------------------------------------
 	\subsubsection{Calculating RUL}
-	After the specified attributes are calculated and aggregated and enough\footnote{more than one} tire measurement is available with accurate time stamp, the RUL can be calculated in the following way:
+	After the specified attributes are calculated and aggregated and enough\footnote{more than one} tire measurement is available with accurate timestamp, the RUL can be calculated in the following way:
 
 	\begin{enumerate}
-		\item{to join tire measurement and hourly aggregated attributes by time stamp,}
+		\item{to join tire measurement and hourly aggregated attributes by timestamp,}
 		\item{to interpolate from tire measurements to hourly aggregations,}
 		\item{to compute tire diameter change on all given measurement points,}
 		\item{to calculate average diameter change by hourly aggregations} with that tire diameter change by hourly attribute change is given,
@@ -190,7 +190,7 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 		\subsubsection{Raw data's condition}
 		The dataset given for this subproject is consisting three files:
 		\begin{itemize}
-			\item{xtra\_All\_errors\_with\_metainfo.txt} size of 12.9 GB contains the warning log of 789 forklifts, with time stamp, machine ID, the IDs of warnings, and additional information which is out of the scope of this project\footnote{but in a further iteration could be necessary}, and a lot of NA columns.
+			\item{xtra\_All\_errors\_with\_metainfo.txt} size of 12.9 GB contains the warning log of 789 forklifts, with timestamp, machine ID, the IDs of warnings, and additional information which is out of the scope of this project\footnote{but in a further iteration could be necessary}, and a lot of NA columns.
 			\item{ServiceReportSAPExtrakt\_FLMxFahrzeuge.txt} size of 224.7 MB contains an export from an SAP repair database with columns named for example as "when was the machine repair session stared","when was the machine repair session ended", the machine's ID, the exchanged part ID number, some additional information\footnote{not all rows contain exchanged part ID, in these cases the technical worker's comments can be useful, but natural language processing is not the scope of this thesis.} and lot of NA columns.
 			\item{Alle-SBs-ProActive\_droprows.xlsx} size of 4.5 MB nearly exactly the same columns like one above, but form different forklifts and a bit different column names.
 		\end{itemize}
@@ -198,12 +198,12 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 		\subsubsection{Cleaning in two iteration}
 		\begin{itemize}
 			\item{Eliminating NA-s columns, and duplications:} This step is required to reduce the further resource cost of the operations, and to have a filebase for further method development.
-			\item{Discarding not useful columns} For the first iteration graph building, the time stamp, machine ID and ID of the warning is required from the firstly mentioned file. From the second and third repair session' starting and ending time the machine ID and the exchange part ID is essential. When there is no exchange part ID just technical worker comment, for fast method's development, it could be handy to give a temporary distinct ID. The temporary ones have to differ from real exchange part IDs.\footnote{this can be a starting point of subcategorizing, with the help of NLP} 
+			\item{Discarding not useful columns} For the first iteration graph building, the timestamp, machine ID and ID of the warning is required from the firstly mentioned file. From the second and third repair session' starting and ending time the machine ID and the exchange part ID is essential. When there is no exchange part ID just technical worker comment, for fast method's development, it could be handy to give a temporary distinct ID. The temporary ones have to differ from real exchange part IDs.\footnote{this can be a starting point of subcategorizing, with the help of NLP} 
 		\end{itemize}
 %----------------------------------------------------------------------------
 		\subsubsection{Creating nodes list and edges list}
 		\paragraph\noindent
-		From previously generated files the nodes and edges, the two vital components of the graph can be generated. The nodes list should contains all the distinct warning and exchange part ID-s, the edges list should contain the time stamp, the from and to node's ID , and the vehicle ID.
+		From previously generated files the nodes and edges, the two vital components of the graph can be generated. The nodes list should contains all the distinct warning and exchange part ID-s, the edges list should contain the timestamp, the from and to node's ID , and the vehicle ID.
 %----------------------------------------------------------------------------
 		\paragraph{Making the nodes list}
 		The previously generated files contain a lot of duplicated warning and exchange part ID along with a multitudinous not needed columns.
@@ -242,7 +242,7 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 			There are a lot of data summary methods (mean, median, SQRT, min, max and quarters). With these aggregations ran on the dataset, it is get a first impression. 
 %----------------------------------------------------------------------------
 			\subparagraph{Visualization}
-			The human mind can easy interpret large amount of data with correct visual representation and to go further checked the connections and facts derived from expert knowledge.\footnote{Not to mention, amend that knowledge.}
+			The human mind can easy interpret large amount of data with correct visual representation and to go further checked the connections and facts derived from experts' knowledge.\footnote{Not to mention, amend that knowledge.}
 %----------------------------------------------------------------------------
 		\subsubsection{Calculating RUL}
 %----------------------------------------------------------------------------
