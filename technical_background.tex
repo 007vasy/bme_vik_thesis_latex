@@ -3,7 +3,7 @@
 %----------------------------------------------------------------------------
 	\section{The MANTIS project}
 %----------------------------------------------------------------------------
-		\subsection{Overall picture about MANTIS project}
+		\subsection{Overview of the MANTIS project}
 %----------------------------------------------------------------------------
 The MANTIS pilot project is a data-driven decision making system. The collected information comes from industrial sensors. Through a popular IoT communication protocol (MQTT) communicate with given company cloud service where data clarification and prediction happens. These processes are providing future insights to the company's employees for pre-maintenance leading to potential reduction of human, financial, and material resources.\cite{Mantis}
 
@@ -57,7 +57,7 @@ With this few tire measurement divided in time the interpolation and the RUL cal
 
 \#TODO enumerate column names in English.
 %----------------------------------------------------------------------------
-			\subsubsection{Electrical fail prediction dataset}
+			\subsubsection{Electrical failure prediction dataset}
 %----------------------------------------------------------------------------
 \paragraph\noindent
 The STILL forklift's system has an electrical CAN bus warning collection subsystem. The warning comes from the part which can communicate with the bus. Engineers of STILL captured this data in a defined time frame and saved it for us in a txt file. 
@@ -66,7 +66,7 @@ The STILL forklift's system has an electrical CAN bus warning collection subsyst
 One observation in the previously mentioned file involves a forklift unique ID, time stamp, occurred warning and other specific data what isn't in the scope of this thesis.
 
 \paragraph\noindent
-In the world of Electrical fail prediction dataset there are two additional file to work with, one is an SAP database export in a txt format and other one is and xls file all two have truck ID, exchanged part ID, and time stamp in one observation along with additional information what is not in the spectrum of this project.
+In the world of Electrical failure prediction dataset there are two additional file to work with, one is an SAP database export in a txt format and other one is and xls file all two have truck ID, exchanged part ID, and time stamp in one observation along with additional information what is not in the spectrum of this project.
 
 \paragraph\noindent
 For the sake of completeness the last two files have technical worker comments and not all observations have exchanged part ID. For that we can use some Natural Language Processing Methods but this is also not in the scope of this piece of writing.
@@ -86,12 +86,12 @@ In this case, the *.mat files involved a special treatment called box-shorting t
 
 Once the tidying is done, the \textit{exploratory} data analysis comes to make sense about the data mass and develop ways to achieve the best prediction possible, and short out unnecessary columns to make the future process faster.
 %----------------------------------------------------------------------------
-		\subsection{Electrical fail prediction}
+		\subsection{Electrical failure prediction}
 For knowledge broadation and easy network-like data representation I had chosen Python language, and the Pycharm software \cite{PyCharm} along with NetworkX Python package\cite{NetworkX}.
 
 This is an another coding language useful for data science related to making solutions along with an enormous web community.
 %----------------------------------------------------------------------------
-	\section{Developing tools}
+	\section{Development environment}
 %----------------------------------------------------------------------------
 		\subsection{Hardware}
 %----------------------------------------------------------------------------
@@ -128,7 +128,7 @@ As a consequence of version control and open source commitment I had chosen this
 %----------------------------------------------------------------------------
 			\subsubsection{PyCharm}
 %----------------------------------------------------------------------------
-At working with the Electrical fail prediction data set, I had used python for various reasons, mainly because there is a package called \textit{NetworkX} \cite{NetworkX}. Moreover, for python developing for me the most convenient tool is PyCharm because it's high functionality.
+At working with the Electrical failure prediction data set, I had used python for various reasons, mainly because there is a package called \textit{NetworkX} \cite{NetworkX}. Moreover, for python developing for me the most convenient tool is PyCharm because it's high functionality.
 \cite{PyCharm}	
 %----------------------------------------------------------------------------
 		\subsection{Management}

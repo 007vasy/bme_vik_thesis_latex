@@ -123,7 +123,7 @@ This sections would describe the algoritmization and realization of the previous
 
 	This can be argued further, because if the machine standing still with a load it damages the tire more than moving slowly with low torque.
 %----------------------------------------------------------------------------	
-\subsection{Calculating Attributes}
+\subsection{Calculating attributes}
 As already have been mentioned in the design section the attributes are coming from the experts' knowledge and exploratory data analysis.
 
 The attributes are allocated hourly, because the tire abrasion is a relative slow process and it would be disadvantageous to go into higher time resolution.
@@ -140,7 +140,7 @@ These attributes have been calculated from the cleaned data and aggregated hourl
 		\footnote{the torque and speed derived by time could be useful too}
 	\end{itemize}
 %----------------------------------------------------------------------------	
-\subsection{Calculating RUL (Remaining useful life)}
+\subsection{Calculating RUL (Remaining Useful Life)}
 	After the previous step had been done, and the attributes are calculated, the remaining useful life calculation can begin.
 	The hourly aggregated attributes are in a dataframe without the sensory values. A new columns have generated with NA-s and the tire measurements are imported with multiple measurement points. Moreover, inserted to the new columns next to the appropriate hourly timestamp key. When it's done the interpolation should begin to all aggregations points. \footnote{The interpolation was linear. Thus it could be more precise when the interpolation is based on some metascore the elapsed time and travelled distance involved, or with some machine learning algorithm.}
 
@@ -153,7 +153,7 @@ The results were statistically promising. However, for more precise results, the
 The code can be viewed on the following GitHub repository:\cite{GitHub_CAN_RUL}
 %---------------------------------------------------------------------------------------------------------------------------------------
 %---------------------------------------------------------------------------------------------------------------------------------------
-\section{Electrical fail prediction data set processing method}
+\section{Electrical failure prediction data set processing method}
 \paragraph\noindent
 As it already has been mentioned for handling this dataset, the Python language was used. Especially, for the easy data representation and handling with the NetworkX package. 
 %----------------------------------------------------------------------------
