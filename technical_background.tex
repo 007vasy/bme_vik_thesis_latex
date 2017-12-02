@@ -76,16 +76,18 @@ From this three previously described files, when it's represented in a tidy, the
 	\section{Data processing methods}
 %----------------------------------------------------------------------------
 		\subsection{CAN fingerprint}
-Assuming someone wants to make an educated guess about the future, the neat arrangement of data is demanded, often called tidy format, as it is advised and required for preparation for most of data mining methods. And for that reasons I had chosen the R language to tackle this objective.
+Assuming someone wants to make an educated guess about the future, the neat arrangement of data is demanded. This is often called tidy format, as it is advised and required for preparation for most of data mining methods. For that reasons, I have chosen the R language to tackle this objective.
 
-In this case, the *.mat files involved a special treatment called box-shorting to achieve the clean and usable tidy state. During the box-shorting procedure mentioned before the researcher has to know the range of shorting key (in this dataset's case the time stamp key's range) and with that one can make a large data table with a lot of "NA"-s, but it's needed to organize the multi-frequency sensory data.
+In this case, the *.mat files involved a special treatment called box-shorting\footnote{Or bucket-short} \cite{Bucketshort} to achieve the clean and usable tidy state. During the box-shorting procedure the researcher has to know the range of shorting key (in this dataset's case the time stamp key's range) and with that, one can make a large data table with the keys and a column with "NA"-s. It's needed to organize the multi-frequency sensory data.
 
-Once the tidying is done, the \textit{exploratory} data analysis comes to make sense about the data mass and develop ways to achieve the best prediction possible, and short out unnecessary columns to make the future process faster.
+Once the tidying is done, the \textit{exploratory} data analysis comes to make sense about the data mass, and develop ways to achieve the best prediction possible, and short out unnecessary columns to make the future process faster.
 %----------------------------------------------------------------------------
 		\subsection{Electrical failure prediction}
 For knowledge broadation and easy network-like data representation I had chosen Python language, and the Pycharm software \cite{PyCharm} along with NetworkX Python package\cite{NetworkX}.
 
-This is an another coding language useful for data science related to making solutions along with an enormous web community.
+This is an another coding language useful for data science related to making solutions along with an enormous web community. 
+
+With these tools the processing of the dataset is relative easy and the it's helps to maintain the focus on the algorithm design, and development.
 %----------------------------------------------------------------------------
 	\section{Development environment}
 %----------------------------------------------------------------------------
@@ -93,40 +95,34 @@ This is an another coding language useful for data science related to making sol
 %----------------------------------------------------------------------------
 			\subsubsection{Personal computer}
 %----------------------------------------------------------------------------
-My PC is a Dell Latitude E6320 64 bit with an Intel(R) Core(TM) i5-2520M CPU @ 2.50GHz processor.
-\cite{Latitude}
+My PC is a Dell Latitude E6320 64 bit with an Intel(R) Core(TM) i5-2520M CPU @ 2.50GHz processor \cite{Latitude}.
 %----------------------------------------------------------------------------
 			\subsubsection{Department Linux R and Python server}
 %----------------------------------------------------------------------------
-The Department's super computer called "batman" is Linux based R and Python server and it's capable of running R and Python script's on enormous dataset's. It has two Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz processors, each of them has 6 cores and is capable of running 12 Threads.
-\cite{Batman}
+The TMIT Department's super computer called "batman" is a Linux based R and Python server, and it is capable of running R and Python scripts on enormous datasets. It has two Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz processors, each of them has 6 cores and is capable of running 12 Threads \cite{Batman}.
 %----------------------------------------------------------------------------
 		\subsection{Software}
 %----------------------------------------------------------------------------
 			\subsubsection{Linux Ubuntu 17.04}
 %----------------------------------------------------------------------------
-The operation system in the title is an open source software, stable and convenient for an advanced user, and to go further, it's the easiest way to communicate with to Linux system via SSH.
-\cite{Ubuntu}
+The operation system in the title is an open source software, stable and convenient for an advanced user. As a sidenote, it is the easiest way to communicate with a Linux system \cite{Ubuntu} via SSH \cite{SSH}.
 %----------------------------------------------------------------------------				
 			\subsubsection{RStudio}
 %----------------------------------------------------------------------------
-RStudio is the most common tool for developing R projects, it has good package controlling application.
-\cite{RStudio}
+RStudio is the most common tool for developing R projects, it has good package controlling application \cite{RStudio}.
 %----------------------------------------------------------------------------	
 			\subsubsection{Termius Android mobile phone application}
 %----------------------------------------------------------------------------
-The tidying and data preprocessing method is resource and time consuming. Thus I have optimized it for every-day life with an application via 4G or HSDPA internet access to maintain an SSH connection to the Linux R server. In addition, supervise and check the process's progress from time to time and hand the occasional errors and bugs.
-\cite{Termius}
+The tidying and data preprocessing method is resource and time consuming. Thus I have optimized it for every-day life with an application via 4G or HSDPA internet access to maintain an SSH connection to the Linux R server. In addition, supervise and check the process's progress from time to time and handle the occasional errors and bugs \cite{Termius}.
 %----------------------------------------------------------------------------
 			\subsubsection{Git and GitHub}
 %----------------------------------------------------------------------------
-As a consequence of version control and open source commitment I had chosen this common tool set \cite{Github} to save my work as it has been progressing. Including the work with the two datasets \footnote{\cite{GitHub_CAN_RUL,GitHub_FP_RUL}} and the documentation in LateX \cite{GitHub_Thesis_Text}.
+As a consequence of version control and open source commitment, I had chosen this common tool set \cite{Github} to control the versions of my work as it has been progressing. Including the work with the two datasets \footnote{\cite{GitHub_CAN_RUL,GitHub_FP_RUL}} and the documentation in LateX \cite{GitHub_Thesis_Text}.
 %----------------------------------------------------------------------------
 			\subsubsection{PyCharm}
 %----------------------------------------------------------------------------
-At working with the Electrical failure prediction dataset, I had used python for various reasons, mainly because there is a package called \textit{NetworkX} \cite{NetworkX}. Moreover, for python developing for me the most convenient tool is PyCharm because it's high functionality.
-\cite{PyCharm}	
+During working with the Electrical failure prediction dataset, I had used Python for various reasons, mainly because there is a package called \textit{NetworkX} \cite{NetworkX}. Moreover, for Python development, for me the most convenient tool is PyCharm because it's high number of useful functions \cite{PyCharm}.	
 %----------------------------------------------------------------------------
 		\subsection{Management}
 %----------------------------------------------------------------------------
-according my demand of productivity, I use the GTD\cite{GTD} methodology concluded from 10 years of experience. It provides clarity, focus and flexible planning for me. Additionally, I implemented it in Wrike \cite{WRIKE} project management software available free for students. For more information visit the developer company's support website: \cite{WRIKE_for_students}
+According my demand of productivity, I use the GTD \cite{GTD} methodology concluded from 10 years of experience. It provides clarity, focus, and flexible planning for me. Additionally, I implemented it in Wrike \cite{WRIKE} project management software available for students free of charge \cite{WRIKE_for_students}.
