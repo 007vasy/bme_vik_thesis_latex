@@ -5,16 +5,18 @@
 %----------------------------------------------------------------------------
 		\subsection{Overview of the MANTIS project}
 %----------------------------------------------------------------------------
-The MANTIS pilot project is a data-driven decision making system. The collected information comes from industrial sensors. Through a popular IoT communication protocol (MQTT) communicate with given company cloud service where data clarification and prediction happens. These processes are providing future insights to the company's employees for pre-maintenance leading to potential reduction of human, financial, and material resources.\cite{Mantis}
+MANTIS’ proactive service maintenance platform and its associated architecture draw inspiration from the Cyber Physical System approach. Physical systems (e.g. industrial machines, vehicles, renewable energy assets) and the environment they operate in are monitored continuously by a broad and diverse range of intelligent sensors, resulting in massive amounts of data that characterize the usage history, operational condition, location, movement and other physical properties of those systems. These systems form part of a larger network of heterogeneous and collaborative systems (e.g. vehicle fleets or photovoltaic and windmill parks) connected via robust communication mechanisms able to operate in challenging environments.
+
+Sophisticated distributed sensing and decision making functions are performed at different levels in a collaborative way ranging from (i) local nodes that pre-process raw sensor data and extract relevant information before transmitting it, thereby reducing bandwidth requirements of communication, (ii) over intermediate nodes that offer asset-specific analytics to locally optimize performance and maintenance, (iii) to cloud-based platforms that integrate information from ERP, CRM and CMMS systems and execute distributed processing and analytics algorithms for global decision making \cite{Mantis}.
 
 %----------------------------------------------------------------------------
-		\subsection{Data sets from STILL}
+		\subsection{datasets from STILL}
 %----------------------------------------------------------------------------
 			\subsubsection{CAN fingerprint dataset}
 %----------------------------------------------------------------------------
-				\paragraph{Phase One}
+				\paragraph{Phase One: Small Fingerprints}
 				\noindent
-As it was mentioned before, STILL forklifts \cite{RX20} use the CAN technology to collect data. In this project two kinds of them are utilized \footnote{Physical sensory and internal electric part logs.}. In one of the two called CAN fingerprint data set, the workers from the STILL had connected a special CAN bus data collector to one forklift and had done with them specific tasks. They have called them "fingerprints". The *.mat file names helped to understand the type of path and what the forklift has gone through:
+As it was mentioned before, STILL forklifts \cite{RX20} use the CAN technology \cite{CAN} to collect data. In my subject project two kinds of datasets are utilized \footnote{Physical sensory and internal electric part logs.}. In the first, called "CAN fingerprint dataset", the workers from the STILL had connected a special CAN bus data collector to one forklift and had done specific tasks with them. They have called them "fingerprints". The *.mat file names helped to understand the type of path\footnote{tracktype\_(with load)/(without load)\_speed} and what the forklift has gone through:
 
 \begin{itemize}[noitemsep]
     \item {800hTestDrive\_fast.mat}
@@ -39,50 +41,44 @@ As it was mentioned before, STILL forklifts \cite{RX20} use the CAN technology t
   	\item {Shunt800h\_slow.mat}
  	\item {Shunt\_fast.mat} 	
  	\item {Shunt\_slow.mat}
-\end{itemize}\footnote{tracktype\_(with load)/(without load)\_speed}
+\end{itemize}
 
 				\subparagraph\noindent
-As it easily can be seen in the file names, the workers carried out various tests with the trucks more than one time with various speed and load on over various tracks.
+As it easily can be seen in the file names, the workers carried out various tests with the trucks more than one time with various speed and load over various tracks.
 
-However, in this first iteration, STILL did not provide any target value for tire abrasion. Thus from this first iteration I was able to make only exploratory data analysis to fuel further data collection. With enough target values in adequate resolution and quality predictive models can be trained based on that data.
-				\subparagraph\noindent
-In the second iteration on data provided on 10.2017 I received more information in a quite similar fashion, but from working forklifts and a top on that with some additional tire measurement. The CAN-bus sensor data contain approximately two months in time, but there were just a few measurements for tire wear from every third week. Unfortunately, this is just nearly sufficient to make predictions, but required for further iterations to develop and upgrade the model.
+However, in this first iteration, STILL did not provide any target value for tire abrasion. Thus from this first iteration I was able to make only exploratory data analysis to fuel further data collection. With enough target values in adequate resolution and quality, predictive models can be trained.
+
+In the second iteration over the data provided on 10.2017 I received more information in a quite similar fashion, but from working forklifts and on top of that with some additional tire measurement. The CAN-bus sensor data contains approximately two months in time, but there were just a few measurements for tire wear from every third week. Unfortunately, this is just nearly sufficient to make predictions, but it was required required for further iterations to develop and upgrade the model.
 
 \#TODO enumerate column names in English.
 %----------------------------------------------------------------------------
-				\paragraph{Phase Two}
+				\paragraph{Phase Two: Long measurement with additional target values}
 In the second iteration our team was given some additional data from STILL. It included 3 forklifts' CAN bus data with additional tire measurements and a little change in the columns names and values.
 				\subparagraph\noindent
-With this few tire measurement divided in time the interpolation and the RUL calculation become possible, despite of high risk of over-fitting the machine learning model or a statistical model, which could cause the lack of satisfying results.
+With this few tire measurement divided in time, the interpolation and the RUL calculation become possible, despite the high risk of over-fitting \cite{OverFitting} the machine learning model or a statistical model, which could cause the lack of satisfying results.
 
 \#TODO enumerate column names in English.
 %----------------------------------------------------------------------------
 			\subsubsection{Electrical failure prediction dataset}
 %----------------------------------------------------------------------------
-\paragraph\noindent
-The STILL forklift's system has an electrical CAN bus warning collection subsystem. The warning comes from the part which can communicate with the bus. Engineers of STILL captured this data in a defined time frame and saved it for us in a txt file. 
+The STILL forklift's system has an electrical CAN bus-based, electrical warning-collection subsystem. The warning comes from the part which can communicate with the bus. Engineers of STILL captured this data in a defined time frame and saved it for us in a text \footnote{txt format} file. 
 
-\paragraph\noindent
-One observation in the previously mentioned file involves a forklift unique ID, time stamp, occurred warning and other specific data what isn't in the scope of this thesis.
+One observation (record) in the previously mentioned file contains an unique ID of the forklift, time stamp, occurred warning and other specific data that isn't in the scope of this thesis.
 
-\paragraph\noindent
-In the world of Electrical failure prediction dataset there are two additional file to work with, one is an SAP database export in a txt format and other one is and xls file all two have truck ID, exchanged part ID, and time stamp in one observation along with additional information what is not in the spectrum of this project.
+When considering the full dataset for fault prediction regarding the STILL case, there are two additional files to work with, one is an SAP database export in a txt format, another one is and xls file. Both have truck ID, exchanged part ID, and time stamp in one observation along with additional information what is not in the spectrum of this project.
 
-\paragraph\noindent
-For the sake of completeness the last two files have technical worker comments and not all observations have exchanged part ID. For that we can use some Natural Language Processing Methods but this is also not in the scope of this piece of writing.
+For the sake of completeness, the last two files have technical worker comments and not all observations have exchanged part ID. For that we can use some Natural Language Processing Methods, but this is also not in the scope of this piece of writing.
 
-\paragraph\noindent
-From this three previously described file when it's represented in a normally workable way, the wanted remaining useful life can be calculated.
+From this three previously described files, when it's represented in a tidy, the wanted remaining useful life  - our final, expected result - can be calculated.
 
 \#TODO enumerate column names in English.
 %----------------------------------------------------------------------------
 	\section{Data processing methods}
 %----------------------------------------------------------------------------
 		\subsection{CAN fingerprint}
-				\paragraph\noindent
-Assuming someone wants to make educated guess about the future, the neat arrangement of data is demanded, often called tidy format, as it is advised and required for preparation for most of data mining methods. And for that reasons I had chosen the R language to tackle this objective.
-				\paragraph\noindent
-In this case, the *.mat files involved a special treatment called box-shorting to achieve the clean and usable tidy state. During the box-shorting procedure mentioned before the researcher has to know the range of shorting key (in this data set's case the time stamp key's range) and with that one can make a large data table with a lot of "NA"-s, but it's needed to organize the multi-frequency sensory data.
+Assuming someone wants to make an educated guess about the future, the neat arrangement of data is demanded, often called tidy format, as it is advised and required for preparation for most of data mining methods. And for that reasons I had chosen the R language to tackle this objective.
+
+In this case, the *.mat files involved a special treatment called box-shorting to achieve the clean and usable tidy state. During the box-shorting procedure mentioned before the researcher has to know the range of shorting key (in this dataset's case the time stamp key's range) and with that one can make a large data table with a lot of "NA"-s, but it's needed to organize the multi-frequency sensory data.
 
 Once the tidying is done, the \textit{exploratory} data analysis comes to make sense about the data mass and develop ways to achieve the best prediction possible, and short out unnecessary columns to make the future process faster.
 %----------------------------------------------------------------------------
@@ -102,7 +98,7 @@ My PC is a Dell Latitude E6320 64 bit with an Intel(R) Core(TM) i5-2520M CPU @ 2
 %----------------------------------------------------------------------------
 			\subsubsection{Department Linux R and Python server}
 %----------------------------------------------------------------------------
-The Department's super computer called "batman" is Linux based R and Python server and it's capable of running R and Python script's on enormous data set's. It has two Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz processors, each of them has 6 cores and is capable of running 12 Threads.
+The Department's super computer called "batman" is Linux based R and Python server and it's capable of running R and Python script's on enormous dataset's. It has two Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz processors, each of them has 6 cores and is capable of running 12 Threads.
 \cite{Batman}
 %----------------------------------------------------------------------------
 		\subsection{Software}
@@ -124,11 +120,11 @@ The tidying and data preprocessing method is resource and time consuming. Thus I
 %----------------------------------------------------------------------------
 			\subsubsection{Git and GitHub}
 %----------------------------------------------------------------------------
-As a consequence of version control and open source commitment I had chosen this common tool set \cite{Github} to save my work as it has been progressing. Including the work with the two data sets \footnote{\cite{GitHub_CAN_RUL,GitHub_FP_RUL}} and the documentation in LateX \cite{GitHub_Thesis_Text}.
+As a consequence of version control and open source commitment I had chosen this common tool set \cite{Github} to save my work as it has been progressing. Including the work with the two datasets \footnote{\cite{GitHub_CAN_RUL,GitHub_FP_RUL}} and the documentation in LateX \cite{GitHub_Thesis_Text}.
 %----------------------------------------------------------------------------
 			\subsubsection{PyCharm}
 %----------------------------------------------------------------------------
-At working with the Electrical failure prediction data set, I had used python for various reasons, mainly because there is a package called \textit{NetworkX} \cite{NetworkX}. Moreover, for python developing for me the most convenient tool is PyCharm because it's high functionality.
+At working with the Electrical failure prediction dataset, I had used python for various reasons, mainly because there is a package called \textit{NetworkX} \cite{NetworkX}. Moreover, for python developing for me the most convenient tool is PyCharm because it's high functionality.
 \cite{PyCharm}	
 %----------------------------------------------------------------------------
 		\subsection{Management}

@@ -1,7 +1,7 @@
 %----------------------------------------------------------------------------
 \chapter{Design}
 %----------------------------------------------------------------------------
-\section{CAN fingerprint data set processing method}
+\section{CAN fingerprint dataset processing method}
 %----------------------------------------------------------------------------
 \subsection{Requirement specification}
 %----------------------------------------------------------------------------
@@ -12,9 +12,8 @@ The final aim was to create data processing methods and calculated attributes fr
 The initial state was a raw CAN bus physical sensory data in a *.mat format with different measurement frequencies by sensor types.
 %----------------------------------------------------------------------------
 	\subsubsection{Final state}
-		\paragraph\noindent
-To achieve the final state data sets require to transform to an CSV (Comma Separate Value) or RDS (R Data Structure) format for more convenient handling and calculating attributes.
-		\paragraph\noindent
+To achieve the final state datasets require to transform to an CSV (Comma Separate Value) or RDS (R Data Structure) format for more convenient handling and calculating attributes.
+
 The attributes are aggregations and summarization of connection between key values originating from expert knowledge, exploratory data analysis and several unsupervised learning technique.
 %----------------------------------------------------------------------------
 \subsubsection{Abstract Workflow}
@@ -37,9 +36,8 @@ To accomplish the final state from the starting state the process was partitione
 \subsection{Expert knowledge and facts}
 %----------------------------------------------------------------------------
 \paragraph\noindent
-When some kind of industrial data set is examined and processed to make educated guess about the future, principles and insights from expert knowledge are actually helpful to interpret and understand the data in a higher sense.\footnote{In reality the vast majority of the insight came from exploratory data analysis and unsupervised learning}
+When some kind of industrial dataset is examined and processed to make educated guess about the future, principles and insights from expert knowledge are actually helpful to interpret and understand the data in a higher sense.\footnote{In reality the vast majority of the insight came from exploratory data analysis and unsupervised learning}
 
-\paragraph\noindent
 In summary, the main indicators of tire abrasion are between two tire measurements:
 \begin{itemize}
 	\item{traveled distance} 
@@ -58,16 +56,15 @@ As it seems from the starting and final state, at first the *mat files have to b
 To plan that using planning principles is necessary\footnote{Used bibliography \cite{CSDISTILLED}\cite{DATACAMP}\cite{LeanThinking}}.
 %----------------------------------------------------------------------------
 	\subsubsection{Cleaning}
-		\paragraph\noindent
 	As it has been described in the previous section, the *.mat files have to be transformed to a data frame with only the useful columns remaining to the further calculations.
-		\paragraph\noindent
+
 	To establish a sustainable process, the iteration has to go through more than one ideas, for the sake of clarity, all ideas would be enumerated.
 		\paragraph{Idea One}
 			The first data shape transforming idea was to boxshort the data. Item by item:
 \begin{enumerate}
-	\item{to examine the longest key value pair vector maximal timestamp} 
-	\item{to makeg a data frame with timestamp keys from zero to the maximum timestamp key got from the file in step of a second's hundredth}
-	\item{to search every value's place with the help of the timestamp key}
+	\item{to examine the longest key value pair vector maximal time stamp} 
+	\item{to makeg a data frame with time stamp keys from zero to the maximum time stamp key got from the file in step of a second's hundredth}
+	\item{to search every value's place with the help of the time stamp key}
 	\item{to interpolate for missing values}
 	\item{to do it for all columns in the file}
 	\item{to do it for all files}
@@ -89,10 +86,10 @@ To get rid of the speed problem the second idea was to aggregate the values mean
 		\paragraph{Idea Synthesis}
 To get the advantage of the two methods it would be useful to merge the to previous  ideas.
 \begin{enumerate}
-	\item{examine the longest key value pair vector maximal timestamp} 
-	\item{make a data frame with timestamp keys from zero to the maximal timestamp key got from the file in step of a second}
+	\item{examine the longest key value pair vector maximal time stamp} 
+	\item{make a data frame with time stamp keys from zero to the maximal time stamp key got from the file in step of a second}
 	\item{aggregate the measurement average second by second}
-	\item{search every value-s place with the help of timestamp key}
+	\item{search every value-s place with the help of time stamp key}
 	\item{interpolate for the missing values}
 	\item{do it for all columns in the file}
 	\item{do it for all files}
@@ -108,9 +105,9 @@ With this solution design the high quality data frame, what can be used later, i
 	\subsubsection{Exploring}
 	The data exploring and data examination is a required step for correctly interpret the data and confirm of facts coming from experts' knowledge. Without this "null hypothesis check" step lot of human labor and energy can be discarded.
 		\paragraph{Exploratory data analysis}
-			With this steps \footnote{data summaries and visualization} one can make himself ensure, the data set has connection with the real world the values are close to reality and further step are worth a shot.
+			With this steps \footnote{data summaries and visualization} one can make himself ensure, the dataset has connection with the real world the values are close to reality and further step are worth a shot.
 			\subparagraph{Data summaries}
-			There are a lot of data summary methods \footnote{mean, median, SQRT, min, max and quarters}. With these aggregations ran on the data set, the first impression is given. It's advisable to use these resource sparing methods.
+			There are a lot of data summary methods \footnote{mean, median, SQRT, min, max and quarters}. With these aggregations ran on the dataset, the first impression is given. It's advisable to use these resource sparing methods.
 			\subparagraph{Visualization}
 			The human mind can effortlessly interpret large amount of data with correct visual representation, and to go further, can check the connections and facts derived from expert knowledge. \footnote{Not to mention, amend that knowledge.} 
 		\paragraph{Unsupervised learning}\cite{UnsuplearnBook}
@@ -122,7 +119,7 @@ With this solution design the high quality data frame, what can be used later, i
 		\cite{h-clust}\cite{h-clust2}\cite{Clustering} Hierarchical clustering s a k-means with a twist, because it clusters clusters hierarchically, step by step with various distance calculation method and top-down or bottom-up approach.
 		\subparagraph{Principal component analysis}
 		\cite{PCA}
-		This algorithm makes an orthogonal, multi dimensional space from the values and places there the observations. This algorithm can tell the most significant values from the data set.
+		This algorithm makes an orthogonal, multi dimensional space from the values and places there the observations. This algorithm can tell the most significant values from the dataset.
 %----------------------------------------------------------------------------
 	\subsubsection{Specifying Attributes}
 	From expert knowledge \footnote{and exploratory data analysis} the main components and indicators of the tire abrasion can be specified.
@@ -140,11 +137,10 @@ With this solution design the high quality data frame, what can be used later, i
 	All of them will be aggregated hour by hour\footnote{when the tire measurement interval goes down the aggregation window could and should too} from tire change or measurement.
 %----------------------------------------------------------------------------
 	\subsubsection{Calculating RUL (Remaining useful life)}
-		\paragraph\noindent
 	After the specified attributes are calculated and aggregated and enough \footnote{more than one} tire measurement is available with accurate time stamp, the RUL can be calculated in the following way:
 
 	\begin{enumerate}
-		\item{to join tire measurement and hourly aggregated attributes by timestamp}
+		\item{to join tire measurement and hourly aggregated attributes by time stamp}
 		\item{to interpolate from tire measurements to hourly aggregations}
 		\item{to compute tire diameter change on all given measurement points}
 		\item{to calculate average diameter change by hourly aggregations} with that tire diameter change by hourly attribute change is given
@@ -169,7 +165,7 @@ With this solution design the high quality data frame, what can be used later, i
 	
 %----------------------------------------------------------------------------
 %----------------------------------------------------------------------------
-\section{Electrical failure prediction data set processing method}
+\section{Electrical failure prediction dataset processing method}
 %----------------------------------------------------------------------------
 	\subsection{Requirement specification}
 %----------------------------------------------------------------------------
@@ -187,20 +183,20 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 
 %----------------------------------------------------------------------------
 		\subsubsection{Raw data's condition}
-		The data set given for this subproject is consisting three files:
+		The dataset given for this subproject is consisting three files:
 		\begin{itemize}
-			\item{xtra\_All\_errors\_with\_metainfo.txt} size of 12.9 GB contains the warning log of 789 forklifts, with timestamp, machine ID, the IDs of warnings, and additional information which is out of the scope of this project\footnote{but in a further iteration could be necessary}, and a lot of NA columns.
+			\item{xtra\_All\_errors\_with\_metainfo.txt} size of 12.9 GB contains the warning log of 789 forklifts, with time stamp, machine ID, the IDs of warnings, and additional information which is out of the scope of this project\footnote{but in a further iteration could be necessary}, and a lot of NA columns.
 			\item{ServiceReportSAPExtrakt\_FLMxFahrzeuge.txt} size of 224.7 MB contains an export from an SAP repair database with columns named for example as "when was the machine repair session stared","when was the machine repair session ended", the machine's ID, the exchanged part ID number, some additional information \footnote{not all rows contain exchanged part ID, in these cases the technical worker's comments can be useful, but natural language processing is not the scope of this thesis.} and lot of NA columns.
 			\item{Alle-SBs-ProActive\_droprows.xlsx} size of 4.5 MB nearly exactly the same columns like one above, but form different forklifts and a bit different column names.
 		\end{itemize}
 		\subsubsection{Cleaning in two iteration}
 		\begin{itemize}
 			\item{Eliminating NA-s columns, and duplications:} This step is required to reduce the further resource cost of the operations, and to have a filebase for further method development.
-			\item{Discarding not useful columns} For the first iteration graph building, the timestamp, machine ID and ID of the warning is required from the firstly mentioned file. From the second and third repair session' starting and ending time the machine ID and the exchange part ID is essential. When there is no exchange part ID just technical worker comment, for fast method's development, it could be handy to give a temporary distinct ID. The temporary ones have to differ from real exchange part IDs. \footnote{this can be a starting point of subcategorizing, with the help of NLP} 
+			\item{Discarding not useful columns} For the first iteration graph building, the time stamp, machine ID and ID of the warning is required from the firstly mentioned file. From the second and third repair session' starting and ending time the machine ID and the exchange part ID is essential. When there is no exchange part ID just technical worker comment, for fast method's development, it could be handy to give a temporary distinct ID. The temporary ones have to differ from real exchange part IDs. \footnote{this can be a starting point of subcategorizing, with the help of NLP} 
 		\end{itemize}
 		\subsubsection{Creating nodes list and edges list}
 		\paragraph\noindent
-		From previously generated files the nodes and edges, the two vital components of the graph can be generated. The nodes list should contains all the distinct warning and exchange part ID-s, the edges list should contain the timestamp, the from and to node's ID , and the vehicle ID.
+		From previously generated files the nodes and edges, the two vital components of the graph can be generated. The nodes list should contains all the distinct warning and exchange part ID-s, the edges list should contain the time stamp, the from and to node's ID , and the vehicle ID.
 		\paragraph{Making the nodes list}
 		The previously generated files contain a lot of duplicated warning and exchange part ID along with a multitudinous not needed columns.
 		Is this case the planned steps should be:
@@ -232,9 +228,9 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 %----------------------------------------------------------------------------
 		\subsubsection{Exploring}
 			\paragraph\noindent
-			Unlike the previous data set, the cleaning steps aren't as significant as it could be, because the data was given in a more efficient way. After the later described NA and duplicated column dropping, the data exploring can begin. However, the end of data exploring is after the making of nodes and edges list, because it's easy to check visually a correct graph representation \footnote{for example: the path is continuous or dashed}.
+			Unlike the previous dataset, the cleaning steps aren't as significant as it could be, because the data was given in a more efficient way. After the later described NA and duplicated column dropping, the data exploring can begin. However, the end of data exploring is after the making of nodes and edges list, because it's easy to check visually a correct graph representation \footnote{for example: the path is continuous or dashed}.
 			\subparagraph{Data summaries}
-			There are a lot of data summary methods (mean, median, SQRT, min, max and quarters). With these aggregations ran on the data set, it's get a first impression. 
+			There are a lot of data summary methods (mean, median, SQRT, min, max and quarters). With these aggregations ran on the dataset, it's get a first impression. 
 			\subparagraph{Visualization}
 			The human mind can easy interpret large amount of data with correct visual representation and to go further checked the connections and facts derived from expert knowledge. \footnote{Not to mention, amend that knowledge.}
 %----------------------------------------------------------------------------

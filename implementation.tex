@@ -1,9 +1,9 @@
 %----------------------------------------------------------------------------
 \chapter{Implementation}
 %----------------------------------------------------------------------------
-\section{CAN fingerprint data set processing method}
+\section{CAN fingerprint dataset processing method}
 \paragraph\noindent
-This sections would describe the algoritmization and realization of the previously described process in the design chapter in R language.The reasons are simple, the R is one of the most common and convenient tools to process data sets and interpret them, with a fitted statistical or machine learning model.
+This sections would describe the algoritmization and realization of the previously described process in the design chapter in R language.The reasons are simple, the R is one of the most common and convenient tools to process datasets and interpret them, with a fitted statistical or machine learning model.
 %----------------------------------------------------------------------------
 \subsection{Cleaning}
 %----------------------------------------------------------------------------
@@ -15,7 +15,7 @@ This sections would describe the algoritmization and realization of the previous
 		\begin{itemize}
 			\item{R.matlab:} This package was used to handle the *.mat files, and convert column to a usable format.
 			\item{dplyr,purrr,plyr:} These three package are part of the tidyverse \cite{Tidyverse}, these are excellent for handling as especially cleaning data frames. This  advantage was used for multiple times in the implementation process. The tidyverse R package has one more benefit: The contained packages are written in C++ language, what gives a speed edge against the regular packages.
-			\item{lubridate:} Also from the the tidyverse meta package, although with a distinct purpose. This package is beneficial to handle time series and time related operation. With the MATLAB export files and timestamp key this is a needed unsavory.
+			\item{lubridate:} Also from the the tidyverse meta package, although with a distinct purpose. This package is beneficial to handle time series and time related operation. With the MATLAB export files and time stamp key this is a needed unsavory.
 			\item{stringr:} This package is from the tidyverse as well, with the purpose of handling strings. Some of the function needed in the cleaning process automatization.
 		\end{itemize}
 
@@ -42,7 +42,7 @@ This sections would describe the algoritmization and realization of the previous
 		This idea were also implemented and the cleaning process' performance were remarkable compared to the previous one. However, as the second cleaning algorithm were tested, the data could contain whole spanning about minutes wide. This event completely ruins the process. The next step were clear, there is a need for and another cleaning solution with the avail of the two current ones.
 %----------------------------------------------------------------------------
 		\subsubsection{Idea Synthesis}
-		After redefining the corner principles of the cleaned data set, the synthesis of the two previous ideas were possible.
+		After redefining the corner principles of the cleaned dataset, the synthesis of the two previous ideas were possible.
 		There is no need for observation in every hundredth of a second, just in second in the first place. This approach allows fast aggregation and eliminate the need for slow interpolation in this level.
 
 		After the aggregation of the values is done by second to second and the data is arranged in the by the key, it's easy to join them to a previously build data frame. After that step can come the interpolation to close the minute span gaps.
@@ -57,7 +57,7 @@ This sections would describe the algoritmization and realization of the previous
 		Exploratory data analysis is the tool set, what help to catch the underlying principles and connection hidden between the values. It's advantageous to involve this step in the predicting model developing process. In this case new principles and connections can be found, and the old ones derived from the expert knowledge can be verified.
 %----------------------------------------------------------------------------
 		\paragraph{Data summaries}
-		When the cleaning is ready, the easiest, and fastest way to get the first impression about the given data set is the build in data summaries and some from the tidyverse package.
+		When the cleaning is ready, the easiest, and fastest way to get the first impression about the given dataset is the build in data summaries and some from the tidyverse package.
 
 		The most frequently used data summary functions in this thesis:
 		\begin{itemize}
@@ -142,7 +142,7 @@ These attributes have been calculated from the cleaned data and aggregated hourl
 %----------------------------------------------------------------------------	
 \subsection{Calculating RUL (Remaining Useful Life)}
 	After the previous step had been done, and the attributes are calculated, the remaining useful life calculation can begin.
-	The hourly aggregated attributes are in a dataframe without the sensory values. A new columns have generated with NA-s and the tire measurements are imported with multiple measurement points. Moreover, inserted to the new columns next to the appropriate hourly timestamp key. When it's done the interpolation should begin to all aggregations points. \footnote{The interpolation was linear. Thus it could be more precise when the interpolation is based on some metascore the elapsed time and travelled distance involved, or with some machine learning algorithm.}
+	The hourly aggregated attributes are in a dataframe without the sensory values. A new columns have generated with NA-s and the tire measurements are imported with multiple measurement points. Moreover, inserted to the new columns next to the appropriate hourly time stamp key. When it's done the interpolation should begin to all aggregations points. \footnote{The interpolation was linear. Thus it could be more precise when the interpolation is based on some metascore the elapsed time and travelled distance involved, or with some machine learning algorithm.}
 
 	Whit this step and more precise tire measurements on multiple occasions, the aggregated values can indicate a mean tire abrasion change. If that change is more than specified constant the tire should be changed. From the last hour a tire abrasion rate was calculated \footnote{Based on elapsed time} and with that the remaining useful life had calculated.
 	\#Enumerate the steps?
@@ -153,12 +153,12 @@ The results were statistically promising. However, for more precise results, the
 The code can be viewed on the following GitHub repository:\cite{GitHub_CAN_RUL}
 %---------------------------------------------------------------------------------------------------------------------------------------
 %---------------------------------------------------------------------------------------------------------------------------------------
-\section{Electrical failure prediction data set processing method}
+\section{Electrical failure prediction dataset processing method}
 \paragraph\noindent
 As it already has been mentioned for handling this dataset, the Python language was used. Especially, for the easy data representation and handling with the NetworkX package. 
 %----------------------------------------------------------------------------
 	\subsection{Cleaning}
-For this data set the cleaning was far more lighter than the previous one. The data is represented in tabular separated txt and in xlsx file formats.
+For this dataset the cleaning was far more lighter than the previous one. The data is represented in tabular separated txt and in xlsx file formats.
 To progress further two steps were made:
 \begin{itemize}
 			\item{dropping the NA and duplicated columns}
@@ -171,7 +171,7 @@ At the end of this process, only the following columns were kept from the files:
 			\begin{itemize}
 				\item{s\_errorcode}
 				\item{vehicle\_serialnumber}
-				\item{error\_occurred\_timestamp}
+				\item{error\_occurred\_time stamp}
 			\end{itemize}
 			\item{file containing the SAP fails}
 			\begin{itemize}
@@ -191,12 +191,12 @@ The nodes list contains all the distinct s-errorcodes from the electric error fi
 The edges list was generated from three sources: 
 \begin{itemize}
 	\item{the electric errors} with all three columns
-	\item{the SAP fails once} with all columns except the service task(s) end timestamp
-	\item{the SAP fails once more with a twist} with all columns except the service task(s) begin timestamp
+	\item{the SAP fails once} with all columns except the service task(s) end time stamp
+	\item{the SAP fails once more with a twist} with all columns except the service task(s) begin time stamp
 \end{itemize}
 
-This dataframe \footnote{Containing three columns} was processed further. The dataframe's rows were grouped by the vehicle ID, were arranged by the timestamps.
-\footnote{The similar rows with close timestamp weren't been eliminated.}
+This dataframe \footnote{Containing three columns} was processed further. The dataframe's rows were grouped by the vehicle ID, were arranged by the time stamps.
+\footnote{The similar rows with close time stamp weren't been eliminated.}
 The directed edge needs a starting and ending point and to achieve that purpose the starting states were derived from the previous row ending state by vehicle ID, and after that the data was saved in distinct files by vehicle ID.
 %----------------------------------------------------------------------------
 	\subsection{Exploring}
