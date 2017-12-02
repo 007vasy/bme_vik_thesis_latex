@@ -241,24 +241,24 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 		\subsubsection{Calculating RUL}
 %----------------------------------------------------------------------------
 			\paragraph{Building the graph:}
-			When the previous ordering and exploring and fact checking is completed, the graph building can begin from generated files. Thus, the base is the nodes list, moreover all nodes should be represented in the graph when it comes to edges the situation is different. For computational resource reasons, not all of the paths should be included for sure. But the more the path the better be the prediction.
+			When the previous ordering, exploring, and fact checking are completed, the graph building can begin from generated files. Thus the base is the nodes list, all nodes should be represented in the graph, when it comes to edges, the situation is different. For computational resource reasons not all of the paths should be included for sure. But the more the paths, the better is the prediction.
 %----------------------------------------------------------------------------
 			\paragraph{Computing steps:}
-			If the graph has been build, the remaining useful life calculation steps should be the following:
+			If the graph has been built, the remaining useful life calculation steps should be the following:
 			\begin{enumerate}
 				\item{getting a warning sequence, what is not represented in the graph, from the same machine, in a chronological order,}
-				\item{the machine' IDs should be listed between the oldest and the second oldest nodes given in the sequence}\footnote{all the nodes in the new sequence should be int th graph too,} 
+				\item{listing the machine' IDs between the oldest and the second oldest nodes given in the sequence}\footnote{all the nodes in the new sequence should be int th graph too,} 
 				\item{iterating through the whole sequence and eliminating the machines which are absent in the current edges,}
-				\item{when there is no machine shorted the sequence with, eliminate the oldest node in the sequence and redo the previous search,}
-				\item{the list of machines with similar path are given, from the last and youngest node in the sequence. The shortest similar machine path should be listed to the exchange part ID nodes,}
-				\item{from the last node the possibility could be calculated to all exchange part ID nodes, based on the similar shortest machine path count to the specific exchange part ID nodes divided by sum of to all the exchange part ID nodes,}
-				\item{besides of possibility the time to the specific exchange part ID node could be computed to give more insights about the remaining useful life, based on the similar shortest machine's distance in time,}
+				\item{eliminating the oldest node in the sequence and redo the previous search, when there is no machine shorted with the sequence,}
+				\item{listing the shortest similar machine paths to the exchange part ID nodes, from the last and youngest node in the sequence.}
+				\item{from the last node the possibility calculating to all exchange part ID nodes, based on the similar shortest machine path count to the specific exchange part ID nodes dividing by sum of to all the exchange part ID nodes,}
+				\item{besides of possibility, computing the distance in time  to the specific exchange part ID node, to give more insights about the remaining useful life, based on the similar shortest machine's distance in time,}
 				\item{the result should look with columns like: exchange part ID node, minimal, mean, median and maximal time to that node, and the computed possibility arranged by possibility and time,} 
 		 		\item{the RUL is the highest possibility with the shortest remaining time.}
 		 	\end{enumerate}
 		
 		\paragraph\noindent	
-		The calculation of the whole table could be profitable, because the technical workers can solve more problem at one repair sessions, this could cause longer timespan on duty.
+		The calculation of the whole table could be profitable because the technical workers can solve more problem at one repair sessions which could cause longer timespan on duty.
 
 		\#TODO explain red flags in short
 		\begin{figure}[!ht]
