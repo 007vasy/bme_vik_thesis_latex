@@ -45,47 +45,47 @@ This sections will describe the algoritmization and realization of of process pr
 		After redefining the corner principles of the cleaned dataset the synthesis of the two previous ideas were possible.
 		There is no need for observation in every 10 milliseconds, just in a second in the first place. This approach allows significantly faster aggregation and eliminate the need for slow interpolation in this level.
 
-		After the aggregation of values are done second by second and the data is arranged by the key. It is easy to join them to a previously build data frame. After that step, the interpolation came, to close the minute span gaps.
+		After the aggregation of values are done second by second and the data is arranged by the key. It is easy to join them to a previously build data frame. After that step, the interpolation came, to close the minute wide gaps.
 
 		That is what were implemented as the final cleaning process\footnote{See in the verification chapter more in detail.}.
 %----------------------------------------------------------------------------		
 \subsection{Data processing and understanding}
-		The data processing and understanding in depth is an essential step for developing a proper data handling, and predicting model.
-		The reason is seems trivial, however, it is easy to overlook.When the data scientist don't understand the data it could cause wrong models. This induces the need for exploratory data analysis.
+		The data processing and understanding in depth is an essential step for developing a proper data handling and predicting model.
+		The reasons are trivial, however, it is easy to overlook. When a data scientist do not understand the data, it could cause wrong models. This induces the need for exploratory data analysis.
 %----------------------------------------------------------------------------
 	\subsubsection{Exploratory data analysis}
-		Exploratory data analysis is the tool set, what help to catch the underlying principles and connection hidden between the values. It is advantageous to involve this step in the predicting model developing process. In this case new principles and connections can be found, and the old ones derived from the experts' knowledge can be verified.
+		Exploratory data analysis is the tool set what help to catch the underlying principles and connections hidden between the values. It is advantageous to involve this step in the predicting model developing process. In this case new principles and connections can be found and old ones derived from the experts' knowledge can be verified.
 %----------------------------------------------------------------------------
-		\paragraph{Data summaries}
-		When the cleaning is ready, the easiest, and fastest way to get the first impression about the given dataset is the build in data summaries and some from the tidyverse package.
+		\paragraph{Data summaries:}
+		When the cleaning is ready, the easiest and fastest way to get the first impression about the given dataset is the build in data summaries and some from the tidyverse package.
 
 		The most frequently used data summary functions in this thesis\footnote{The data summaries where not included, because the visualizations are more informative for a new eye.}:
 		\begin{itemize}
-			\item{head:} To look at the first few rows of the data table or list.
-			\item{glimpse:} To look at the first few rows of the data table or list. However in a more eye friendly and informative way\footnote{From the tidyverse.}.
-			\item{summary:} To receive summary statistic from each row.
-			\item{describe:} To receive fast summary statistic from each row. However in also a more eye friendly and informative way\footnote{Also from the tidyverse.}.
+			\item{head:} To look at the first few rows of a data table or list.
+			\item{glimpse:} To look at the first few rows of a data table or list. However in a more eye friendly and informative way\footnote{From the tidyverse.}.
+			\item{summary:} To receive summary statistics from each row.
+			\item{describe:} To receive fast summary statistic from each row. However, in also a more eye friendly and informative way\footnote{Also from the tidyverse.}.
 		\end{itemize}
 %----------------------------------------------------------------------------		
-		\paragraph{Visualization}
-		The human mind could process the information visually in a fastest way, make assumptions easily, and find additional connections. 
+		\paragraph{Visualization:}
+		A human mind could process information visually in a fastest way, make assumptions easily, and find additional connections. 
 
 		To fulfill this purpose two package had used from the R language tool set:
 		\begin{itemize}
-			\item{base:} This package is an basic tool for plotting, and there is no need for additional package for most visualization task. However this not a beneficial tool, because the visualization code isn't as reusable and convenient as it should be for this scale of repetitions. The reasons is simple code design principles were not on a high level when this package had written.
-			\item{ggplot2:} In contrast, ggplot2 is also from the tidyverse and because of this reason also written in C++, which guarantee the necessary speed for when it is high demand. Moreover, this package was designed with advanced principles and the code is mostly reusable, and handles data frames efficiently. 
+			\item{base:} This package is a basic tool for plotting, and there is no need for additional package for most visualization task. However, this is not a beneficial tool, because the visualization code is not as reusable and convenient as it should be for this scale of repetitions. The reasons are simple, code design principles were not on high level when this package had written.
+			\item{ggplot2:} On the contrary, , ggplot2 is also from the tidyverse and because of this reason also written in C++, which guarantees the necessary speed for when it is high demand. Moreover, this package was designed with advanced principles, and the code is mostly reusable, and handles data frames efficiently. 
 		\end{itemize} 
 
 
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/clusteringf.png}
-			\caption{As it seems, the density function of the hydraulic pressure are different in the different types of tracks. It's implicates different paths cause different encumbrance, ergo different tire abrasion.} 
+			\caption{As it seems, the density functions of hydraulic pressure are different in the different types of tracks. It is implicates, different paths are causing distinct encumbrance, ergo different tire abrasion.} 
 			\end{figure}
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/CrashYvsSteeringangle.png}
-			\caption{On this figure the Y-way accelerometer on the X-axis and the Steering wheels' angle on the Y-axis. From this appear the linear connection between the two value, and it is useful for crosschecking.} 
+			\caption{On this figure, the Y-way accelerometer on the X-axis and the Steering wheels' angle on the Y-axis. From this, appears the linear connection between the two value, and it is useful for crosschecking.} 
 			\end{figure}
 		\begin{figure}[H]
 			\centering
@@ -109,27 +109,28 @@ This sections will describe the algoritmization and realization of of process pr
 			\end{figure}		
 %----------------------------------------------------------------------------		
 	\subsubsection{Unsupervised learning}
-	The unsupervised learning is efficient to handling and examining unlabeled data in the first place.
+	Unsupervised learning is efficient handling and examining unlabeled data in the first place.
 	
 	In this particular case it used to check the experts' knowledge what says there is three driving profiles.
 	\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/clustering.png}
-			\caption{Clustering the speed and torque pairs with a hierarchical bottom-up clustering.} 
+			\caption{Clustering speed and torque pairs with a hierarchical bottom-up clustering.} 
 	\end{figure}
-	As it seems from this figure, the experts' knowledge was partly wrong, because they forgot to mention the fourth state: the standin still state.
+	As it seems from this figure, the experts' knowledge was partly wrong, because they forgot to mention the fourth state: the standing still state.
 
-	This can be argued further, because if the machine standing still with a load it damages the tire more than moving slowly with low torque.
+	This can be argued further, because if the machine is standing still with a load, it damages the tire more than moving slowly with low torque.
 %----------------------------------------------------------------------------	
+\newpage
 \subsection{Calculating attributes}
-As already have been mentioned in the design section the attributes are coming from the experts' knowledge and exploratory data analysis.
+As is already have been mentioned in the design section the attributes are coming from the experts' knowledge and exploratory data analysis.
 
-The attributes are allocated hourly, because the tire abrasion is a relative slow process and it would be disadvantageous to go into higher time resolution.
+The attributes were allocated hourly, because the tire abrasion is a relative slow process and it would be disadvantageous to go into higher time resolution.
 
-These attributes have been calculated from the cleaned data and aggregated hourly:
+These attributes had been calculated from the cleaned data and aggregated hourly:
 	\begin{itemize}
 		\item{elapsed time:} From the starting point where is the last tire measurement was in time.
-		\item{traveled distance:} Calculated second by second then aggregated hourly using the derivative distance formula: $s = dv*dt + 1/2*da*dt^2$.
+		\item{traveled distance:} It is calculated second by second then aggregated hourly using the derivative distance formula: $s = dv*dt + 1/2*da*dt^2$.
 		\item{count in various speed and torque state:} By reason of the different driving profiles, various speed and torque pairs must be categorized second by second and summed hourly. The categorization is done by normalization and 2D binning, with the help of the dplyr package.
 		\item{changing x direction:} Calculated second by second, if the previous value of the speed was different than the current changing in x direction happened. This also summed hourly.
 		\item{changing y direction:} Same as above. However with a twist, for this one secondary variable have been calculated if the machine goes in a straight line this secondary value is TRUE.
@@ -139,7 +140,7 @@ These attributes have been calculated from the cleaned data and aggregated hourl
 %----------------------------------------------------------------------------	
 \subsection{Calculating RUL (Remaining Useful Life)}
 	After the previous step had been done, and the attributes are calculated, the remaining useful life calculation can begin.
-	The hourly aggregated attributes are in a dataframe without the sensory values. A new columns have generated with NA-s and the tire measurements are imported with multiple measurement points. Moreover, inserted to the new columns next to the appropriate hourly timestamp key. When it is done the interpolation should begin to all aggregations points\footnote{The interpolation was linear. Thus it could be more precise when the interpolation is based on some metascore the elapsed time and travelled distance involved, or with some machine learning algorithm.}.
+	The hourly aggregated attributes are in a dataframe without the sensory values. A new columns have generated with NA-s and the tire measurements are imported with multiple measurement points. Moreover, inserted to the new columns next to the appropriate hourly timestamp key. When it is done the interpolation should begin to all aggregations points\footnote{The interpolation was linear. Thus it could be more precise when the interpolation is based on some metascore the elapsed time and traveled distance involved, or with some machine learning algorithm.}.
 
 	Whit this step and more precise tire measurements on multiple occasions, the aggregated values can indicate a mean tire abrasion change. If that change is more than specified constant the tire should be changed. From the last hour a tire abrasion rate was calculated\footnote{Based on elapsed time} and with that the remaining useful life had calculated.
 	\#Enumerate the steps?
@@ -191,7 +192,7 @@ The edges list was generated from three sources:
 	\item{the SAP fails once more with a twist} with all columns except the service task(s) begin timestamp.
 \end{itemize}
 
-This dataframe\footnote{Containing three columns} was processed further. The dataframe's rows were grouped by the vehicle ID, were arranged by the timestamps\footnote{The similar rows with close timestamp weren't been eliminated.}.
+This dataframe\footnote{Containing three columns} was processed further. The dataframe's rows were grouped by the vehicle ID, were arranged by the timestamps\footnote{The similar rows with close timestamp were not been eliminated.}.
 The directed edge needs a starting and ending point and to achieve that purpose the starting states were derived from the previous row ending state by vehicle ID, and after that the data was saved in distinct files by vehicle ID.
 %----------------------------------------------------------------------------
 	\subsection{Exploring}

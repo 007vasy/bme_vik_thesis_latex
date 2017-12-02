@@ -78,7 +78,7 @@ Various planning principles can be utilized during this design phase \cite{CSDIS
 This is time consuming and slow even on the server, because it is not the optimal sorting algorithm for this kind of data representation \cite{CSDISTILLED}.
 %----------------------------------------------------------------------------
 		\paragraph{Idea Two:}
-To get rid of the processing-speed problem, the second idea was to aggregate the values' mean by second. This solution has to be more faster than the previous one, but if there time skip in the data\footnote{there is a lot of missing rows, sometimes effecting minutes of operational data}, this idea won't be sufficient, either.
+To get rid of the processing-speed problem, the second idea was to aggregate the values' mean by second. This solution has to be more faster than the previous one, but if there time skip in the data\footnote{there is a lot of missing rows, sometimes effecting minutes of operational data}, this idea would not be sufficient, either.
 			\begin{figure}[!ht]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/cleaning_idea_two.png}
@@ -230,7 +230,7 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 		\end{figure}
 %----------------------------------------------------------------------------
 		\subsubsection{Exploring:}
-			Unlike the previous dataset, the cleaning steps aren't as significant as they could be, because the data was given in a more efficient way. After the later described NA and duplicated column dropping, the data exploring can begin. However, the end of data exploring is after the making of nodes and edges list, because it is easy to check visually a correct graph representation\footnote{for example: the path is continuous or dashed}.
+			Unlike the previous dataset, the cleaning steps are not as significant as they could be, because the data was given in a more efficient way. After the later described NA and duplicated column dropping, the data exploring can begin. However, the end of data exploring is after the making of nodes and edges list, because it is easy to check visually a correct graph representation\footnote{for example: the path is continuous or dashed}.
 %----------------------------------------------------------------------------
 			\subparagraph{Data summaries:}
 			There are a lot of data summary methods (mean, median, SQRT, min, max and quarters). With these aggregations ran on the dataset, it is get a first impression. 
