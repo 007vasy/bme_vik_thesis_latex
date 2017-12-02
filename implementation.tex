@@ -45,16 +45,16 @@ This sections would describe the algoritmization and realization of the previous
 		After redefining the corner principles of the cleaned dataset, the synthesis of the two previous ideas were possible.
 		There is no need for observation in every hundredth of a second, just in second in the first place. This approach allows fast aggregation and eliminate the need for slow interpolation in this level.
 
-		After the aggregation of the values is done by second to second and the data is arranged in the by the key, it's easy to join them to a previously build data frame. After that step can come the interpolation to close the minute span gaps.
+		After the aggregation of the values is done by second to second and the data is arranged in the by the key, it is easy to join them to a previously build data frame. After that step can come the interpolation to close the minute span gaps.
 
 		That is what were implemented as the final cleaning process. \footnote{In more detail, see the verification chapter.}
 %----------------------------------------------------------------------------		
 \subsection{Data processing and understanding}
 		The data processing and understanding in depth is an essential step for developing a proper data handling, and predicting model.
-		The reason is seems trivial, however, it's easy to overlook.When the data scientist don't understand the data it could cause wrong models. This induces the need for exploratory data analysis.
+		The reason is seems trivial, however, it is easy to overlook.When the data scientist don't understand the data it could cause wrong models. This induces the need for exploratory data analysis.
 %----------------------------------------------------------------------------
 	\subsubsection{Exploratory data analysis}
-		Exploratory data analysis is the tool set, what help to catch the underlying principles and connection hidden between the values. It's advantageous to involve this step in the predicting model developing process. In this case new principles and connections can be found, and the old ones derived from the expert knowledge can be verified.
+		Exploratory data analysis is the tool set, what help to catch the underlying principles and connection hidden between the values. It is advantageous to involve this step in the predicting model developing process. In this case new principles and connections can be found, and the old ones derived from the expert knowledge can be verified.
 %----------------------------------------------------------------------------
 		\paragraph{Data summaries}
 		When the cleaning is ready, the easiest, and fastest way to get the first impression about the given dataset is the build in data summaries and some from the tidyverse package.
@@ -75,7 +75,7 @@ This sections would describe the algoritmization and realization of the previous
 		To fulfill this purpose two package had used from the R language tool set:
 		\begin{itemize}
 			\item{base:} This package is an basic tool for plotting, and there is no need for additional package for most visualization task. However this not a beneficial tool, because the visualization code isn't as reusable and convenient as it should be for this scale of repetitions. The reasons is simple code design principles were not on a high level when this package had written.
-			\item{ggplot2:} In contrast, ggplot2 is also from the tidyverse and because of this reason also written in C++, which guarantee the necessary speed for when it's high demand. Moreover, this package was designed with advanced principles and the code is mostly reusable, and handles data frames efficiently. 
+			\item{ggplot2:} In contrast, ggplot2 is also from the tidyverse and because of this reason also written in C++, which guarantee the necessary speed for when it is high demand. Moreover, this package was designed with advanced principles and the code is mostly reusable, and handles data frames efficiently. 
 		\end{itemize} 
 
 
@@ -87,7 +87,7 @@ This sections would describe the algoritmization and realization of the previous
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/CrashYvsSteeringangle.png}
-			\caption{On this figure the Y-way accelerometer on the X-axis and the Steering wheels' angle on the Y-axis. From this appear the linear connection between the two value, and it's useful for crosschecking.} 
+			\caption{On this figure the Y-way accelerometer on the X-axis and the Steering wheels' angle on the Y-axis. From this appear the linear connection between the two value, and it is useful for crosschecking.} 
 			\end{figure}
 		\begin{figure}[H]
 			\centering
@@ -142,7 +142,7 @@ These attributes have been calculated from the cleaned data and aggregated hourl
 %----------------------------------------------------------------------------	
 \subsection{Calculating RUL (Remaining Useful Life)}
 	After the previous step had been done, and the attributes are calculated, the remaining useful life calculation can begin.
-	The hourly aggregated attributes are in a dataframe without the sensory values. A new columns have generated with NA-s and the tire measurements are imported with multiple measurement points. Moreover, inserted to the new columns next to the appropriate hourly time stamp key. When it's done the interpolation should begin to all aggregations points. \footnote{The interpolation was linear. Thus it could be more precise when the interpolation is based on some metascore the elapsed time and travelled distance involved, or with some machine learning algorithm.}
+	The hourly aggregated attributes are in a dataframe without the sensory values. A new columns have generated with NA-s and the tire measurements are imported with multiple measurement points. Moreover, inserted to the new columns next to the appropriate hourly time stamp key. When it is done the interpolation should begin to all aggregations points. \footnote{The interpolation was linear. Thus it could be more precise when the interpolation is based on some metascore the elapsed time and travelled distance involved, or with some machine learning algorithm.}
 
 	Whit this step and more precise tire measurements on multiple occasions, the aggregated values can indicate a mean tire abrasion change. If that change is more than specified constant the tire should be changed. From the last hour a tire abrasion rate was calculated \footnote{Based on elapsed time} and with that the remaining useful life had calculated.
 	\#Enumerate the steps?
@@ -208,7 +208,7 @@ The directed edge needs a starting and ending point and to achieve that purpose 
 		\paragraph{Visualization}
 		The visualizations are beneficial when it comes to a graph represented data. In this project i had used a the NetworkX build in graph building and visualization, and the matplotlib package plotting functions.
 
-		As is seems it's difficult to make a guess but it can be seen the opportunity to statistically used the states and the edges' weight to make a prediction.
+		As is seems it is difficult to make a guess but it can be seen the opportunity to statistically used the states and the edges' weight to make a prediction.
 			\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/fault_pred_files/path.png}
