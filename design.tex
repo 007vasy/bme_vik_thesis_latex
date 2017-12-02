@@ -113,7 +113,7 @@ With this solution design the high quality data frame, what can be used later, i
 			\subparagraph{Data summaries:}
 			There are a lot of data summary methods\footnote{mean, median, SQRT, min, max and quarters}. With these aggregations ran on the dataset, the first impression is given. It is advisable to use these resource sparing methods.
 %----------------------------------------------------------------------------			
-			\subparagraph{Visualization:}
+			\subparagraph{Visualizations:}
 			Human mind can effortlessly interpret large amount of data with correct visual representation. Furthermore, can check the connections and facts derived from experts' knowledge\footnote{Not to mention, amend that knowledge.}. 
 %----------------------------------------------------------------------------		
 		\paragraph{Unsupervised learning:}
@@ -196,10 +196,10 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 			\item{Discarding not useful columns:} For the first iteration graph building, the timestamp, machine ID, and ID of the warning is required from the first file mentioned before. From the second and third repair sessions' starting and ending time the machine ID, and the exchange part ID is essential. When there is no exchange part ID just technical worker comment, for fast method's development, it could be handy to give a temporary distinct ID. The temporary ones have to differ from real exchange part IDs.\footnote{this can be a starting point of subcategorizing, with the help of NLP} 
 		\end{itemize}
 %----------------------------------------------------------------------------
-		\subsubsection{Creating nodes list and edges list}
-		From previously generated files the nodes and edges, the two vital components of the graph, can be generated. The nodes list should contain all the distinct warning and exchange part ID-s, the edges' list should contain\footnote{One edge in a row.} the timestamps, the from and to nodes' ID , and the vehicles' ID.
+		\subsubsection{Creating nodes' list and edges' list}
+		From previously generated files the nodes and edges, the two vital components of the graph, can be generated. The nodes' list should contain all the distinct warning and exchange part ID-s, the edges' list should contain\footnote{One edge in a row.} the timestamps, the from and to nodes' ID , and the vehicles' ID.
 %----------------------------------------------------------------------------
-		\paragraph{Making the nodes list:}
+		\paragraph{Making the nodes' list:}
 		The previously generated files contain a lot of duplicated warning and exchange part ID along with a multitudinous not needed columns.
 		Is this case the planned steps should be:
 		\begin{enumerate}
@@ -210,7 +210,7 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 			\item{to save it.}
 		 \end{enumerate}
 %----------------------------------------------------------------------------
-		\paragraph{Making the edges list, machine by machine:}
+		\paragraph{Making the edges' list, machine by machine:}
 		For easier handling, better performance, and disk space sparing reasons, it would be wise to generate the paths of all machines.
 		The steps should be:
 		\begin{enumerate}
@@ -230,18 +230,18 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 		\end{figure}
 %----------------------------------------------------------------------------
 		\subsubsection{Exploring:}
-			Unlike the previous dataset, the cleaning steps are not as significant as they could be, because the data was given in a more efficient way. After the later described NA and duplicated column dropping, the data exploring can begin. However, the end of data exploring is after the making of nodes and edges list, because it is easy to check visually a correct graph representation\footnote{for example: the path is continuous or dashed}.
+			Unlike the previous dataset, the cleaning steps are not as significant as they could be, because the data was given in a more efficient way. After the later described NA and duplicated column dropping, the data exploring can begin. However, the end of data exploring is after the making of nodes and edges' list, because it is easy to check visually a correct graph representation\footnote{for example: the path is continuous or dashed}.
 %----------------------------------------------------------------------------
 			\subparagraph{Data summaries:}
 			There are a lot of data summary methods (mean, median, SQRT, min, max and quarters). With these aggregations ran on the dataset, it is get a first impression. 
 %----------------------------------------------------------------------------
-			\subparagraph{Visualization:}
+			\subparagraph{Visualizations:}
 			The human mind can easily interpret large amount of data with correct visual representation and to go further check the connections and facts derived from experts' knowledge\footnote{Not to mention, amend that knowledge.}.
 %----------------------------------------------------------------------------
 		\subsubsection{Calculating RUL}
 %----------------------------------------------------------------------------
 			\paragraph{Building the graph:}
-			When the previous ordering, exploring, and fact checking are completed, the graph building can begin from generated files. Thus the base is the nodes list, all nodes should be represented in the graph, when it comes to edges, the situation is different. For computational resource reasons not all of the paths should be included for sure. But the more the paths, the better is the prediction.
+			When the previous ordering, exploring, and fact checking are completed, the graph building can begin from generated files. Thus the base is the nodes' list, all nodes should be represented in the graph, when it comes to edges, the situation is different. For computational resource reasons not all of the paths should be included for sure. But the more the paths, the better is the prediction.
 %----------------------------------------------------------------------------
 			\paragraph{Computing steps:}
 			If the graph has been built, the remaining useful life calculation steps should be the following:

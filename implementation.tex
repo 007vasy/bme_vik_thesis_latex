@@ -67,7 +67,7 @@ This sections will describe the algoritmization and realization of of process pr
 			\item{describe:} To receive fast summary statistic from each row. However, in also a more eye friendly and informative way\footnote{Also from the tidyverse.}.
 		\end{itemize}
 %----------------------------------------------------------------------------		
-		\paragraph{Visualization:}
+		\paragraph{Visualizations:}
 		A human mind could process information visually in a fastest way, make assumptions easily, and find additional connections. 
 
 		To fulfill this purpose two package had used from the R language tool set:
@@ -153,11 +153,11 @@ The code can be viewed on my GitHub repository \cite{GitHub_CAN_RUL}.
 %---------------------------------------------------------------------------------------------------------------------------------------
 \paragraph\noindent
 \section{Electrical failure prediction dataset processing method}
-As it already has been mentioned for handling this dataset, the Python language was used. Especially, for the easy data representation and handling with the NetworkX package. 
+As it already had been mentioned, for handling this dataset, the Python language was used. Especially, for easy data representation and handling with the NetworkX package. 
 %----------------------------------------------------------------------------
 	\subsection{Cleaning}
-For this dataset the cleaning was far more lighter than the previous one. The data is represented in tabular separated txt and in xlsx file formats.
-To progress further two steps were made:
+For this dataset the cleaning was far more easier than the previous one. The data is represented in tabular separated txt and in xlsx file formats.
+To progress further, two steps were made:
 \begin{itemize}
 			\item{dropping the NA and duplicated columns,}
 			\item{dropping the meaningless columns for the first iteration graph building.}
@@ -181,61 +181,61 @@ At the end of this process, only the following columns were kept from the files:
 \end{itemize}
 These views were saved in a distinct files for performance and milestone reasons.
 %----------------------------------------------------------------------------
-	\subsection{Creating nodes list and edges list}
-From the previously generated files the nodes and edges list were generated in a following way.
+	\subsection{Creating nodes' list and edges' list}
+from files created previously, the nodes' and edges' lists were generated in the following way.
 \paragraph{Nodes' list generation:}
-The nodes list contains all the distinct s-errorcodes from the electric error files once, and the distinct exchange par numbers once from the SAP fail file. The condition space could be built.
+The nodes' list contains all the distinct s-errorcodes from the electric error files once, and the distinct exchange par numbers once from the SAP fail file. From these, the condition space could be built.
 \paragraph{Edges' list generation:}
-The edges list was generated from three sources: 
+The edges' list was generated from three sources: 
 \begin{itemize}
-	\item{the electric errors} with all three columns,
-	\item{the SAP fails once} with all columns except the service task(s) end timestamp,
-	\item{the SAP fails once more with a twist} with all columns except the service task(s) begin timestamp.
+	\item{electric errors} with all three columns,
+	\item{SAP fails once} with all columns except the service task(s) end timestamp,
+	\item{SAP fails once more with a twist} all columns except the service task(s) begin timestamp.
 \end{itemize}
 
-This dataframe\footnote{Containing three columns} was processed further. The dataframe's rows were grouped by the vehicle ID, were arranged by the timestamps\footnote{The similar rows with close timestamp were not been eliminated.}.
-The directed edge needs a starting and ending point and to achieve that purpose the starting states were derived from the previous row ending state by vehicle ID, and after that the data was saved in distinct files by vehicle ID.
+This dataframe\footnote{Containing three columns} was processed further. The dataframe's rows were grouped by vehicle ID and arranged by the timestamps\footnote{The similar rows with close timestamp were not been eliminated.}.
+The directed edges need a starting and ending point. To achieve that purpose, the starting states were derived from the previous row ending state by vehicle ID. After that, the data was saved in distinct files by vehicle ID.
 %----------------------------------------------------------------------------
 	\subsection{Exploring}
 		\paragraph{Data summaries:}
-		With this special dataset, the common data summary functions are nearly useless, because the lack of quantitative variables, and the condition state representation.
-		The useful data summaries are length of the dissimilar edges' and nodes' lists, because it helped to confirm the quality of the data for the graph representation and RUL calculation. 
+		With this special dataset the common data summary functions are nearly useless, because of the lack of quantitative variables, and the condition state representation.
+		The useful data summaries were informative about the length of the dissimilar edges' and nodes' lists, because it helped to confirm the quality of the data for graph representation and RUL calculation. 
 
 %----------------------------------------------------------------------------		
-		\paragraph{Visualization:}
-		The visualizations are beneficial when it comes to a graph represented data. In this project i had used a the NetworkX build in graph building and visualization, and the matplotlib package plotting functions.
+		\paragraph{Visualizations:}
+		The visualizations are beneficial when it comes to a graph represented data. In this project I had used a the NetworkX built in graph building and visualization, and the matplotlib package plotting functions.
 
-		As is seems it is difficult to make a guess but it can be seen the opportunity to statistically used the states and the edges' weight to make a prediction.
+		As is seems, it is difficult to make a guess, but it can be seen the opportunity to statistically using the states and the edges' weight to make a prediction.
 			\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/fault_pred_files/path.png}
-			\caption{ToDo} 
+			\caption{Ten forklifts' paths displayed undirected.} 
 			\end{figure}
 		\#TODO directed graph
 \#WHY
 
 %----------------------------------------------------------------------------
 	\subsection{Calculating RUL}
-			\paragraph{Built of the graph:}
-			When the previous ordering and exploring and fact checking was completed, the graph building begun from generated files. Thus, the base is the nodes list, moreover all nodes should be represented in the graph, when it came to edges the situation was different. For computational resource reasons, not all of the paths was included for sure. But the more the path the better was the prediction.
+			\paragraph{Built of graph:}
+			When the previous ordering, exploring, and fact checking were completed, the graph building could begun from generated files. Thus the base is the nodes' list, moreover, all nodes should be represented in the graph. When it came to edges the situation was different. For computational resource reasons not all of the paths were included for sure. But more the paths the better was the prediction.
 			\paragraph{Computing steps:}
-			The graph has been build, the remaining useful life calculation steps were following:
+			When graph has been build, the remaining useful life calculation steps were the following:
 			\begin{enumerate}
-				\item{getting a warning sequence, what is not represented in the graph, from the same machine, in a chronological order,}
-				\item{the machine' IDs were listed between the oldest and the second oldest nodes given in the sequence,}
-				\item{iterating through the whole sequence and eliminating the machines which are absent in the current edges,}
-				\item{when there is no machine shorted the sequence with, eliminate the oldest node in the sequence and redo the previous search,}
-				\item{the list of machines with similar path are given, from the last and youngest node in the sequence. The shortest similar machine path should be listed to the exchange part ID nodes,}
-				\item{from the last node the possibility could be calculated to all exchange part ID nodes, based on the similar shortest machine path count to the specific exchange part ID nodes divided by sum of to all the exchange part ID nodes,}
-				\item{besides of possibility the time to the specific exchange part ID node was computed to give more insights about the remaining useful life, based on the similar shortest machine's distance in time,}
-				\item{the result looked with columns like: exchange part ID node, minimal, mean, median and maximal time to that node, and the computed possibility arranged by possibility and time,} 
-		 		\item{the RUL is the highest possibility with the shortest remaining time}\footnote{The RUL can be some kind of metascore based on some kind of time window and possibility level.}
+				\item{getting a warning sequence, what is not represented in the graph from the same machine in a chronological order,}
+				\item{listing the machine' IDs between the oldest and the second oldest nodes given in the sequence,}
+				\item{iterating through the whole sequence and eliminating the machines which were absent in the current edges,}
+				\item{eliminating and redo when there is no machine ID was returned by the sequence,}
+				\item{the list of machines with similar path are given from the last and youngest node in the sequence. The shortest similar machine path was listed to the exchange part ID nodes,}
+				\item{from the last node the possibility calculated to all exchange part ID nodes, based on the similar shortest machine path count to the specific exchange part ID nodes divided by sum of to all the exchange part ID nodes,}
+				\item{besides of possibility, the time to the specific exchange part ID node was computed to give more insights about the remaining useful life based on the similar shortest machine's distance in time,}
+				\item{the result were contained following columns: exchange part ID node, minimal, mean, median and maximal time to that node, and the computed possibility arranged by possibility and time,} 
+		 		\item{the RUL is the highest possibility with the shortest remaining time\footnote{The RUL can be some kind of metascore based on time window and possibility level.}}
 		 	\end{enumerate}
 %----------------------------------------------------------------------------
 	\subsection{Result}
-The calculation of the whole table is profitable, because the technical workers can solve more problem at one repair sessions, this could cause longer timespan on duty.
+The calculation of the whole table is profitable, because technical workers can solve more problem at one repair sessions, resalting in longer timespan on duty for the machines.
 
-Estimating result, and what causing aleatory mistakes in the model. 
+\#TODO Estimating result, and what causing aleatory mistakes in the model. 
 \#WHY
 
 The code can be viewed on my GitHub repository \cite{GitHub_FP_RUL}.
