@@ -131,26 +131,27 @@ These attributes had been calculated from the cleaned data and aggregated hourly
 	\begin{itemize}
 		\item{elapsed time:} From the starting point where is the last tire measurement was in time.
 		\item{traveled distance:} It is calculated second by second then aggregated hourly using the derivative distance formula: $s = dv*dt + 1/2*da*dt^2$.
-		\item{count in various speed and torque state:} By reason of the different driving profiles, various speed and torque pairs must be categorized second by second and summed hourly. The categorization is done by normalization and 2D binning, with the help of the dplyr package.
-		\item{changing x direction:} Calculated second by second, if the previous value of the speed was different than the current changing in x direction happened. This also summed hourly.
-		\item{changing y direction:} Same as above. However with a twist, for this one secondary variable have been calculated if the machine goes in a straight line this secondary value is TRUE.
-		\item{is there weight counter (max 3600 in a hour):} If the minutely mean hydraulic pressure is over the constants from the visualization there is load on the truck. This us also collected hourly.
-		\item{steering wheel degree change derived by time aggregated by average:}The derivation is made second by second, the summary is calculated hourly\footnote{the torque and speed derived by time could be useful too}.
+		\item{count in various speed and torque state:} By reasons of the different driving profiles various speed and torque pairs must be categorized second by second and summed hourly. The categorization was done by normalization and 2D binning with the help of the dplyr package.
+		\item{changing x direction:} It is calculated second by second, if the previous values of the speed were different than the current changing in x direction happened. This was also summed hourly.
+		\item{changing y direction:} Same as above. However, with a twist. For this one secondary variable had been calculated if the machine goes in a straight line this secondary value is TRUE.
+		\item{"is there weight" counter (max 3600 in a hour):} If the minutely mean hydraulic pressure is over the constants from the visualization, there is load on the truck. This was also collected hourly.
+		\item{steering wheel degree change derived by time aggregated by average:} The derivation is made second by second, the summary is calculated hourly\footnote{torque and speed derived by time could be useful too}.
 	\end{itemize}
 %----------------------------------------------------------------------------	
 \subsection{Calculating RUL (Remaining Useful Life)}
-	After the previous step had been done, and the attributes are calculated, the remaining useful life calculation can begin.
-	The hourly aggregated attributes are in a dataframe without the sensory values. A new columns have generated with NA-s and the tire measurements are imported with multiple measurement points. Moreover, inserted to the new columns next to the appropriate hourly timestamp key. When it is done the interpolation should begin to all aggregations points\footnote{The interpolation was linear. Thus it could be more precise when the interpolation is based on some metascore the elapsed time and traveled distance involved, or with some machine learning algorithm.}.
+	After the previous steps had been done, and the attributes were calculated, the remaining useful life calculation can begin.
+	The hourly aggregated attributes were in a dataframe without sensory values. A new columns had generated with NA-s and the tire measurements are imported with multiple measurement points. Moreover, there were inserted to the new columns next to the appropriate hourly timestamp key. When it is done, the interpolation should begin to all aggregations points\footnote{The interpolation was linear. Thus it could be more precise when the interpolation is based on some metascore involving elapsed time and traveled distance, or with some machine learning algorithm.}.
 
-	Whit this step and more precise tire measurements on multiple occasions, the aggregated values can indicate a mean tire abrasion change. If that change is more than specified constant the tire should be changed. From the last hour a tire abrasion rate was calculated\footnote{Based on elapsed time} and with that the remaining useful life had calculated.
+	Whit this step and more precise tire measurements on multiple occasions the aggregated values can indicate a mean tire abrasion change. If that change was more than specified constant the tire should be changed. From the last hour a tire abrasion rate was calculated\footnote{Based on elapsed time} and with that the remaining useful life had calculated.
 	\#Enumerate the steps?
 %----------------------------------------------------------------------------	
 \subsection{Results}
-The results were statistically promising. However, for more precise results, there is a claim for more tire measurement.
+The results were statistically promising. However, for more precise results there is a claim for more tire measurement.
 
 The code can be viewed on my GitHub repository \cite{GitHub_CAN_RUL}.
 %---------------------------------------------------------------------------------------------------------------------------------------
 %---------------------------------------------------------------------------------------------------------------------------------------
+\paragraph\noindent
 \section{Electrical failure prediction dataset processing method}
 As it already has been mentioned for handling this dataset, the Python language was used. Especially, for the easy data representation and handling with the NetworkX package. 
 %----------------------------------------------------------------------------
