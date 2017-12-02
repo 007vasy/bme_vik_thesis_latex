@@ -5,7 +5,7 @@
 %----------------------------------------------------------------------------
 		\subsection{Overview of the MANTIS project}
 %----------------------------------------------------------------------------
-MANTIS’ proactive service maintenance platform and its associated architecture draw inspiration from the Cyber Physical System approach. Physical systems (e.g. industrial machines, vehicles, renewable energy assets) and the environment they operate in are monitored continuously by a broad and diverse range of intelligent sensors, resulting in massive amounts of data that characterize the usage history, operational condition, location, movement and other physical properties of those systems. These systems form part of a larger network of heterogeneous and collaborative systems (e.g. vehicle fleets or photovoltaic and windmill parks) connected via robust communication mechanisms able to operate in challenging environments.
+MANTIS' proactive service maintenance platform and its associated architecture draw inspiration from the Cyber Physical System approach. Physical systems (e.g. industrial machines, vehicles, renewable energy assets) and the environment they operate in are monitored continuously by a broad and diverse range of intelligent sensors, resulting in massive amounts of data that characterize the usage history, operational condition, location, movement and other physical properties of those systems. These systems form part of a larger network of heterogeneous and collaborative systems (e.g. vehicle fleets or photovoltaic and windmill parks) connected via robust communication mechanisms able to operate in challenging environments.
 
 Sophisticated distributed sensing and decision making functions are performed at different levels in a collaborative way ranging from (i) local nodes that pre-process raw sensor data and extract relevant information before transmitting it, thereby reducing bandwidth requirements of communication, (ii) over intermediate nodes that offer asset-specific analytics to locally optimize performance and maintenance, (iii) to cloud-based platforms that integrate information from ERP, CRM and CMMS systems and execute distributed processing and analytics algorithms for global decision making \cite{Mantis}.
 
@@ -14,7 +14,7 @@ Sophisticated distributed sensing and decision making functions are performed at
 %----------------------------------------------------------------------------
 			\subsubsection{CAN fingerprint dataset}
 %----------------------------------------------------------------------------
-				\paragraph{Phase One: Small Fingerprints}
+				\paragraph{Phase One: Small Fingerprints - }
 				\noindent
 As it was mentioned before, STILL forklifts \cite{RX20} use the CAN technology \cite{CAN} to collect data. In my subject project two kinds of datasets are utilized\footnote{Physical sensory and internal electric part logs.}. In the first, called "CAN fingerprint dataset", the workers from the STILL had connected a special CAN bus data collector to one forklift and had done specific tasks with them. They have called them "fingerprints". The *.mat file names helped to understand the type of path\footnote{tracktype\_(with load)/(without load)\_speed} and what the forklift has gone through:
 
@@ -52,7 +52,7 @@ In the second iteration over the data provided on 10.2017 I received more inform
 
 \#TODO enumerate column names in English.
 %----------------------------------------------------------------------------
-				\paragraph{Phase Two: Long measurement with additional target values}
+				\paragraph{Phase Two: Long measurement with additional target values - }
 In the second iteration our team was given some additional data from STILL. It included 3 forklifts' CAN bus data with additional tire measurements and a little change in the columns names and values.
 				\subparagraph\noindent
 With this few tire measurement divided in time, the interpolation and the RUL calculation become possible, despite the high risk of over-fitting \cite{OverFitting} the machine learning model or a statistical model, which could cause the lack of satisfying results.

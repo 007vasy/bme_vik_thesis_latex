@@ -185,9 +185,9 @@ These views were saved in a distinct files for performance and milestone reasons
 %----------------------------------------------------------------------------
 	\subsection{Creating nodes list and edges list}
 From the previously generated files the nodes and edges list were generated in a following way.
-\paragraph{Nodes list generation}
+\paragraph{Nodes' list generation:}
 The nodes list contains all the distinct s-errorcodes from the electric error files once, and the distinct exchange par numbers once from the SAP fail file. The condition space could be built.
-\paragraph{Edges list generation}
+\paragraph{Edges' list generation:}
 The edges list was generated from three sources: 
 \begin{itemize}
 	\item{the electric errors} with all three columns,
@@ -200,12 +200,12 @@ This dataframe \footnote{Containing three columns} was processed further. The da
 The directed edge needs a starting and ending point and to achieve that purpose the starting states were derived from the previous row ending state by vehicle ID, and after that the data was saved in distinct files by vehicle ID.
 %----------------------------------------------------------------------------
 	\subsection{Exploring}
-		\paragraph{Data summaries}
+		\paragraph{Data summaries:}
 		With this special dataset, the common data summary functions are nearly useless, because the lack of quantitative variables, and the condition state representation.
 		The useful data summaries are length of the dissimilar edges' and nodes' lists, because it helped to confirm the quality of the data for the graph representation and RUL calculation. 
 
 %----------------------------------------------------------------------------		
-		\paragraph{Visualization}
+		\paragraph{Visualization:}
 		The visualizations are beneficial when it comes to a graph represented data. In this project i had used a the NetworkX build in graph building and visualization, and the matplotlib package plotting functions.
 
 		As is seems it is difficult to make a guess but it can be seen the opportunity to statistically used the states and the edges' weight to make a prediction.
@@ -219,7 +219,7 @@ The directed edge needs a starting and ending point and to achieve that purpose 
 
 %----------------------------------------------------------------------------
 	\subsection{Calculating RUL}
-			\paragraph{Built of the graph}
+			\paragraph{Built of the graph:}
 			When the previous ordering and exploring and fact checking was completed, the graph building begun from generated files. Thus, the base is the nodes list, moreover all nodes should be represented in the graph, when it came to edges the situation was different. For computational resource reasons, not all of the paths was included for sure. But the more the path the better was the prediction.
 			\paragraph{Computing steps:}
 			The graph has been build, the remaining useful life calculation steps were following:
