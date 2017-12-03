@@ -5,7 +5,7 @@
 %----------------------------------------------------------------------------
 \subsection{Functional testing}
 %----------------------------------------------------------------------------
-All written functions and workflows were manually unit tested before the unit assembly to a grater function or workflow. Thus debugging were easier and following functional testing were simpler because of the trustworthy sub functions and sub workflows.
+All written functions and workflows were manually unit tested before the unit assembly to a grater function or workflow. Thus debugging were easier and following functional testing was simpler because of the trustworthy sub functions and sub workflows.
 
 After a wanted workflow for example the cleaning was assembled, following steps were integration tests, to ensure the solution's quality and whole planning and implementation process' validity.
 
@@ -17,7 +17,7 @@ Afterwards, the results were copied back to the personal computer for further in
 %----------------------------------------------------------------------------
 \subsection{Performance testing}
 %----------------------------------------------------------------------------
-The performance was investigated on various workflows, as they already had been presented, on two computer on personal computer \cite{Latitude} and on Linux server \cite{Batman}.
+The performance was investigated on various workflows, as they already had been presented, on two computer on personal computer \cite{Latitude}, and on Linux server \cite{Batman}.
 
 The results were:
 \begin{table}[H]
@@ -81,18 +81,18 @@ The possible optimization opportunities are:
 %----------------------------------------------------------------------------
 \subsection{Functional testing}
 %----------------------------------------------------------------------------
-Although, there is an opportunity to write automated unit and integration tests in Python, all the written functions and workflows were manually unit tested, before the unit assembly to a grater function or workflow, because in this way the debugging were easier and the following functional testing were simpler, because of the trustworthy sub functions and sub workflows.
+Although there is an opportunity to write automated unit and integration tests in Python, all written functions and workflows were manually unit tested, before the unit assembly to a grater function or workflow. Therefore the debugging were easier and following functional testing was simpler because of trustworthy sub functions and sub workflows.
 
-After a wanted workflow for e.c. the cleaning, was assembled, a following steps were the integration tests. To ensure the solution quality and whole planning process validity.
+After a wanted workflow e.c. the cleaning, was assembled, following steps were the integration tests, to ensure the solution quality and whole planning process validity of the new approach.
 
-By reason of the large files in this dataset, all of the these enormous files were tested and ran on the department Linux server \cite{Batman}.
+Thus the large file in this dataset, the enormous file was tested and ran on the department Linux server \cite{Batman}.
 Moreover, the results were copied back to the personal computer for further investigation.
 
 \#TODO Applied Core principles with that estimate the solution quality
 %----------------------------------------------------------------------------
-\subsection{Performance}
+\subsection{Performance testing}
 %----------------------------------------------------------------------------
-The performance was investigated on various workflows, as already has been mentioned, on two computer on personal computer \cite{Latitude} and one Linux server \cite{Batman}.
+The performance was investigated on various workflows, as they already had been mentioned, on two computer: on personal computer \cite{Latitude}, and one Linux server \cite{Batman}.
 
 The tested workflows were the following:
 \begin{enumerate}
@@ -100,8 +100,8 @@ The tested workflows were the following:
 	\item{Dropping NA-s columns from the 224.7 MB sap\_fails.txt,}
 	\item{Selecting columns for the graph building from the electric\_errors.csv,}
 	\item{Selecting columns for the graph building from the sap\_fails.csv,}
-	\item{Fabricate nodes list,}
-	\item{Fabricate edges list,}
+	\item{Fabricating nodes list,}
+	\item{Fabricating edges list,}
 	\item{Building the graph A\footnote{With 10 machines' path.},}
 	\item{Building the graph B\footnote{With 100 machines' path.},}
 	\item{Calculating RUL A,}
@@ -137,12 +137,12 @@ Test workflow& PC [min] & Linux Server [min]\\
 \end{table}
 %----------------------------------------------------------------------------
 \subsection{Possible functional and performance optimizations}
-The results in the previous section were indicating the worth of future optimization. There are a bunch of opportunity when the whole process are under investigation.
+Results in previous section were indicating the worth of future optimization. There are a lot of opportunities when the whole process are under investigation.
 
 The possible optimization opportunities are:
 \begin{itemize}
-	\item{Allocating more resource to the RUL computation process.} The RUL calculation is computation heavy. However, with some cloud computing solution can speed up the process.
-	\item{Including the technical workers' comment.} As already has been mentioned, the technical workers comment with some NLP tokenization, and categorization could bring more and preciser fail states, which could improve the predictions' precision.
-	\item{Drop paths under X path weight.} The calculation of the lower paths possibility probably worthless with further testing, the corresponding dropping level could be estimated, with that in mind the wasteful paths could be dropped.
-	\item{Saving by vehicle ID when making node list.} In the current solution, the grouping is done on the whole file, but if the edges pre-data chunk is saved to distinct files by vehicle ID, the processing computer could arrange the data file by file. This could speed up the grouping process.
+	\item{Allocating more resources to RUL computation process.} Thus RUL calculation is computation heavy. However, with some cloud computing solution can speed up the process.
+	\item{Including technical workers' comment.} As they already had been mentioned, the technical workers' comment with NLP tokenization, and categorization could bring more and preciser fail states which could improve the predictions' precision.
+	\item{Drop paths under X path weight.} The calculation of lower paths' possibility could be probably worthless with further testing. Corresponding a dropping level could be estimated, with that in mind the wasteful paths could be dropped.
+	\item{Saving by vehicle ID when making node list.} In the current solution grouping was done on the whole file, but if the edges pre-data chunk is saved to distinct files by vehicle ID, the processing computer could arrange data file by file. This could accelerate the grouping process.
 \end{itemize} 
