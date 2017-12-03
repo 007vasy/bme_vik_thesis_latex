@@ -65,15 +65,15 @@ Whole RUL calculating workflow & NA & 29 \\
 \subsection{Possible functional and performance optimizations}
 The results in previous section were indicating the worth of future optimization. There are a lot of opportunities when the whole process are under investigation.
 
-The whole process means the data collection from the forklifts CAN bus, and the tire measurement, trough the entire calculation process to the final RUL calculation.
+The whole process means from the data collection on the forklifts CAN bus, and the tire measurement, trough the entire computation processes to the final RUL calculation.
 
 The possible optimization opportunities are:
 \begin{itemize}
-	\item{Improving the data collection from the CAN bus, and eliminate the measurement gaps with that improvement.} With that the process could skip the interpolation step. 
-	\item{Changing file format, what the data is saved from the CAN bus.} If the file format could change from *.mat to CSV\footnote{Comma Separated Value} or RDS\footnote{R Data Structure} the process can skip a step too.
-	\item{Widening the aggregation window.} The optimal aggregation window is under search right now. However, the correct window had find, the process could speed of by the reason of fewer observation.
-	\item{Estimating the correct lower size of the speed and torque 2D binning.} The testing size were 9\*9m but if future testing shows lower is better, it could be a speed up too, because a lower attribute count.
-	\item{Weighting the attributes.} The inducted RULs by the attributes are summarized by a casual mean function, but with future testing or some machine learning algorithm the attributes calculated RULs could be weighted.
+	\item{Improving the data collection from CAN bus, and eliminating measurement gaps with that improvement.} Thus the process could skip the interpolation step. 
+	\item{Changing file format, which the data is saved from the CAN bus.} If the file format could change from *.mat to CSV\footnote{Comma Separated Value} or RDS\footnote{R Data Structure}, the process can skip a step too.
+	\item{Widening the aggregation window.} The optimal aggregation window is under search right now. However, when the correct window was found, the process could speed up because of fewer observations to handle.
+	\item{Estimating the correct lower size of speed and torque 2D binning.} The testing size were $9*9$ but if future testing shows lower is better, it could be an acceleration too, because a lower attribute count and it means lower processing time.
+	\item{Weighting the attributes.} Inducted RULs by the attributes are summarized by a casual mean function, but with future testing or some machine learning algorithm the RUL calculating attributes could be weighted for additional precision.
 \end{itemize} 
 %----------------------------------------------------------------------------%----------------------------------------------------------------------------
 %----------------------------------------------------------------------------%----------------------------------------------------------------------------
