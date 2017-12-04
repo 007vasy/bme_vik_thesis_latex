@@ -8,9 +8,9 @@
 MANTIS' proactive service maintenance platform and its associated architecture draw inspiration from the Cyber Physical System approach. Physical systems (e.g. industrial machines, vehicles, renewable energy assets) and the environment they operate in are monitored continuously by a broad and diverse range of intelligent sensors, resulting in massive amounts of data that characterize the usage history, operational condition, location, movement and other physical properties of those systems. These systems form part of a larger network of heterogeneous and collaborative systems (e.g. vehicle fleets or photovoltaic and windmill parks) connected via robust communication mechanisms able to operate in challenging environments.
 
 Sophisticated distributed sensing and decision making functions are performed at different levels in a collaborative way ranging from (i) local nodes that pre-process raw sensor data and extract relevant information before transmitting it, thereby reducing bandwidth requirements of communication, (ii) over intermediate nodes that offer asset-specific analytics to locally optimize performance and maintenance, (iii) to cloud-based platforms that integrate information from ERP, CRM and CMMS systems and execute distributed processing and analytics algorithms for global decision making \cite{Mantis}.
-
+\clearpage
 %----------------------------------------------------------------------------
-		\subsection{datasets from STILL}
+		\subsection{Datasets from STILL}
 %----------------------------------------------------------------------------
 			\subsubsection{CAN fingerprint dataset}
 %----------------------------------------------------------------------------
@@ -51,7 +51,7 @@ However, in this first iteration, STILL did not provide any target value for tir
 In the second iteration over the data provided on 10.2017 I received more information in a quite similar fashion, but from working forklifts and on top of that with some additional tire measurement. The CAN-bus sensor data contains approximately two months in time, but there were just a few measurements for tire wear from every third week. Unfortunately, this is just nearly sufficient to make predictions, but it was required required for further iterations to develop and upgrade the model.
 
 The usable columns in this sub-dataset are:
-	\begin{itemize}
+	\begin{itemize}[noitemsep]
 		\item{time\_ID\_s,}
 		\item{Second\_s,}
 		\item{Minute\_m,}
@@ -77,13 +77,14 @@ The usable columns in this sub-dataset are:
 		\item{Torque\_Drivemotor\_1\_Nm.}
 	\end{itemize}
 %----------------------------------------------------------------------------
+\clearpage
 				\paragraph{Phase Two: Long measurement with additional target values - }
 In the second iteration our team was given some additional data from STILL. It included 3 forklifts' CAN bus data with additional tire measurements and a little change in the columns names and values.
 				\subparagraph\noindent
 With this few tire measurement divided in time, the interpolation and the RUL calculation become possible, despite the high risk of over-fitting \cite{OverFitting} the machine learning model or a statistical model, which could cause the lack of satisfying results.
 
 The usable columns in this sub-dataset are:
-	\begin{itemize}
+	\begin{itemize}[noitemsep]
 		\item{time\_ID\_s,}
 		\item{Second\_s,}
 		\item{Minute\_m,}
@@ -108,6 +109,7 @@ The usable columns in this sub-dataset are:
 		\item{Torque\_Drivemotor\_2\_Nm,}
 		\item{Torque\_Drivemotor\_1\_Nm.}
 	\end{itemize}
+\clearpage
 %----------------------------------------------------------------------------
 			\subsubsection{Electrical failure prediction dataset}
 %----------------------------------------------------------------------------
@@ -122,9 +124,9 @@ For the sake of completeness, the last two files have technical worker comments 
 From this three previously described files, when it is represented in a tidy, the wanted remaining useful life  - our final, expected result - can be calculated.
 
 The usable columns in these files are:
-\begin{itemize}
+\begin{itemize}[noitemsep]
 	\item{xtra\_All\_errors\_with\_metainfo.txt,} 12 GB file with the electric errors.
-	\begin{itemize}
+	\begin{itemize}[noitemsep]
 		\item{componentoperatingseconds,}
 		\item{error\_occurred\_timestamp,}
 		\item{vehicle\_serialnumber,}
@@ -132,7 +134,7 @@ The usable columns in these files are:
 		\item{s\_errorcode,}
 	\end{itemize}
 	\item{ServiceReportSAPExtrakt\_FLMxFahrzeuge.txt and Alle-SBs-ProActive\_droprows.csv,}
-	\begin{itemize}
+	\begin{itemize}[noitemsep]
 		\item{customers STILL Sales Unit,}
 		\item{serialnumber,}
 		\item{internal SAP type of service task,}
@@ -149,7 +151,7 @@ The usable columns in these files are:
 		\item{truck year of construction,}
 		\item{truck purchase date,}
 		\item{service technician technical comment,}
-		\item{service technician internal comment,}
+		\item{service technician internal comment.}
 	\end{itemize}
 \end{itemize}
 %----------------------------------------------------------------------------
@@ -161,6 +163,7 @@ Assuming someone wants to make an educated guess about the future, the neat arra
 In this case, the *.mat files involved a special treatment called box-shorting\footnote{Or bucket-short} \cite{Bucketshort} to achieve the clean and usable tidy state. During the box-shorting procedure the researcher has to know the range of shorting key (in this dataset's case the timestamp key's range) and with that, one can make a large data table with the keys and a column with "NA"-s. It is needed to organize multi-frequency sensory data.
 
 Once the tidying is done, the \textit{exploratory} data analysis comes to make sense about the data mass, and develop ways to achieve the best prediction possible, and to short out unnecessary columns to make the future process faster.
+
 %----------------------------------------------------------------------------
 		\subsection{Electrical failure prediction}
 For knowledge broadation and easy network-like data representation I had chosen Python language, and the Pycharm software \cite{PyCharm} along with NetworkX Python package \cite{NetworkX}.

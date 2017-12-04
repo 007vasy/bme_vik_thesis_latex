@@ -15,6 +15,7 @@ The initial state was a raw CAN bus physical sensory data in a *.mat format with
 To achieve the final state, datasets require to be transformed into a CSV (Comma Separated Value) or RDS (R Data Structure) format for more convenient handling and calculating attributes.
 
 The attributes are aggregations and summarizations of connection between key values originating from experts' knowledge, exploratory data analysis, and several unsupervised learning techniques.
+\clearpage
 %----------------------------------------------------------------------------
 \subsubsection{Abstract Workflow}
 To accomplish the final state from the starting state, the process was partitioned from on start-to-end into smaller steps. 
@@ -238,7 +239,7 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 			\paragraph{Building the graph:}
 			When the previous ordering, exploring, and fact checking are completed, the graph building can begin from generated files. Thus the base is the nodes' list, all nodes should be represented in the graph, when it comes to edges, the situation is different. For computational resource reasons not all of the paths should be included for sure. But the more the paths, the better is the prediction.
 %----------------------------------------------------------------------------
-			\paragraph{Computing steps:}
+\clearpage\paragraph{Computing steps:}
 			If the graph has been built, the remaining useful life calculation steps should be the following:
 			\begin{enumerate}
 				\item{getting a warning sequence, what is not represented in the graph, from the same machine, in a chronological order,}
