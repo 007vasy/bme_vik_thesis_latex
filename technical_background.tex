@@ -16,7 +16,7 @@ Sophisticated distributed sensing and decision making functions are performed at
 %----------------------------------------------------------------------------
 				\paragraph{Phase One: Small Fingerprints - }
 				\noindent
-As it was mentioned before, STILL forklifts \cite{RX20} use the CAN technology \cite{CAN} to collect data. In my subject project two kinds of datasets are utilized\footnote{Physical sensory and internal electric part logs.}. In the first, called "CAN fingerprint dataset", the workers from the STILL had connected a special CAN bus data collector to one forklift and had done specific tasks with them. They have called them "fingerprints". The *.mat file names helped to understand the type of path\footnote{tracktype\_(with load)/(without load)\_speed} and what the forklift has gone through:
+As it was mentioned before, STILL forklifts \cite{RX20} use the CAN technology \cite{CAN} to collect data. In my subject project two kinds of datasets are utilized\footnote{Physical sensory and internal electric part logs.}. In the first, called "CAN fingerprint dataset,} the workers from the STILL had connected a special CAN bus data collector to one forklift and had done specific tasks with them. They have called them "fingerprints". The *.mat file names helped to understand the type of path\footnote{tracktype\_(with load)/(without load)\_speed} and what the forklift has gone through:
 
 \begin{itemize}[noitemsep]
     \item {800hTestDrive\_fast.mat,}
@@ -50,14 +50,64 @@ However, in this first iteration, STILL did not provide any target value for tir
 
 In the second iteration over the data provided on 10.2017 I received more information in a quite similar fashion, but from working forklifts and on top of that with some additional tire measurement. The CAN-bus sensor data contains approximately two months in time, but there were just a few measurements for tire wear from every third week. Unfortunately, this is just nearly sufficient to make predictions, but it was required required for further iterations to develop and upgrade the model.
 
-\#TODO enumerate column names in English.
+The usable columns in this sub-dataset are:
+	\begin{itemize}
+		\item{time\_ID\_s,}
+		\item{Second\_s,}
+		\item{Minute\_m,}
+		\item{Hour\_h,}
+		\item{Day\_d,}
+		\item{Month\_mo,}
+		\item{Year\_y,}
+		\item{Speed\_Steering\_wheel\_RPM,}
+		\item{Steering\_angle\_angle,}
+		\item{Speed\_pump\_motor\_RPM,}
+		\item{Torque\_pump\_motor\_Nm,}
+		\item{Crash\_Z\_0.01g,}
+		\item{Crash\_Y\_0.01g,}
+		\item{Crash\_X\_0.01g,}
+		\item{Pressure\_Hydraulic\_main\_mast\_bar,}
+		\item{Lever\_position\_Add2\_mV\_base\_4000mV,}
+		\item{Lever\_position\_Add1\_mV\_base\_4000mV,}
+		\item{Lever\_position\_tilting\_mV\_base\_4000mV,}
+		\item{Lever\_position\_lifting\_mV\_base\_4000mV,}
+		\item{Speed\_Drivemotor\_2\_RPM,}
+		\item{Speed\_Drivemotor\_1\_RPM,}
+		\item{Torque\_Drivemotor\_2\_Nm,}
+		\item{Torque\_Drivemotor\_1_Nm.}
+	\end{itemize}
 %----------------------------------------------------------------------------
 				\paragraph{Phase Two: Long measurement with additional target values - }
 In the second iteration our team was given some additional data from STILL. It included 3 forklifts' CAN bus data with additional tire measurements and a little change in the columns names and values.
 				\subparagraph\noindent
 With this few tire measurement divided in time, the interpolation and the RUL calculation become possible, despite the high risk of over-fitting \cite{OverFitting} the machine learning model or a statistical model, which could cause the lack of satisfying results.
 
-\#TODO enumerate column names in English.
+The usable columns in this sub-dataset are:
+	\begin{itemize}
+		\item{time\_ID\_s,}
+		\item{Second\_s,}
+		\item{Minute\_m,}
+		\item{Hour\_h,}
+		\item{Day\_d,}
+		\item{Month\_mo,}
+		\item{Year\_y,}
+		\item{Speed\_Steering\_wheel\_RPM,}
+		\item{Steering\_angle\_angle,}
+		\item{Speed\_pump\_motor\_RPM,}
+		\item{Torque\_pump\_motor\_Nm,}
+		\item{Crash\_Z\_0.01g,}
+		\item{Crash\_Y\_0.01g,}
+		\item{Crash\_X\_0.01g,}
+		\item{Crash\_W\_0.01g,}
+		\item{Lever\_position\_Add2\_mV\_base\_4000mV,}
+		\item{Lever\_position\_Add1\_mV\_base\_4000mV,}
+		\item{Lever\_position\_tilting\_mV\_base\_4000mV,}
+		\item{Lever\_position\_lifting\_mV\_base\_4000mV,}
+		\item{Speed\_Drivemotor\_2\_RPM,}
+		\item{Speed\_Drivemotor\_1\_RPM,}
+		\item{Torque\_Drivemotor\_2\_Nm,}
+		\item{Torque\_Drivemotor\_1\_Nm.}
+	\end{itemize}
 %----------------------------------------------------------------------------
 			\subsubsection{Electrical failure prediction dataset}
 %----------------------------------------------------------------------------
@@ -71,7 +121,37 @@ For the sake of completeness, the last two files have technical worker comments 
 
 From this three previously described files, when it is represented in a tidy, the wanted remaining useful life  - our final, expected result - can be calculated.
 
-\#TODO enumerate column names in English.
+The usable columns in these files are:
+\begin{itemize}
+	\item{xtra\_All\_errors\_with\_metainfo.txt,} 12 GB file with the electric errors.
+	\begin{itemize}
+		\item{componentoperatingseconds,}
+		\item{error\_occurred\_timestamp,}
+		\item{vehicle\_serialnumber,}
+		\item{error\_description,} Few useful information with a lot of empty rows.
+		\item{s\_errorcode,}
+	\end{itemize}
+	\item{ServiceReportSAPExtrakt\_FLMxFahrzeuge.txt and Alle-SBs-ProActive\_droprows.csv,}
+	\begin{itemize}
+		\item{customers STILL Sales Unit,}
+		\item{serialnumber,}
+		\item{internal SAP type of service task,}
+		\item{service technician identifier,}
+		\item{customer number,}
+		\item{customer name,}
+		\item{service task(s) begin},
+		\item{service task(s) end,}
+		\item{damage type,}
+		\item{exchange part number,}
+		\item{exchange part name,}
+		\item{trucks production company},
+		\item{truck type,}
+		\item{truck year of construction,}
+		\item{truck purchase date,}
+		\item{service technician technical comment,}
+		\item{service technician internal comment,}
+	\end{itemize}
+\end{itemize}
 %----------------------------------------------------------------------------
 	\section{Data processing methods}
 %----------------------------------------------------------------------------
