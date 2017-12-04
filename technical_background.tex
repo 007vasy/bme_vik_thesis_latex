@@ -7,7 +7,7 @@
 %----------------------------------------------------------------------------
 MANTIS' proactive service maintenance platform and its associated architecture draw inspiration from the Cyber Physical System approach. Physical systems (e.g. industrial machines, vehicles, renewable energy assets) and the environment they operate in are monitored continuously by a broad and diverse range of intelligent sensors, resulting in massive amounts of data that characterize the usage history, operational condition, location, movement and other physical properties of those systems. These systems form part of a larger network of heterogeneous and collaborative systems (e.g. vehicle fleets or photovoltaic and windmill parks) connected via robust communication mechanisms able to operate in challenging environments.
 
-Sophisticated distributed sensing and decision making functions are performed at different levels in a collaborative way ranging from (i) local nodes that pre-process raw sensor data and extract relevant information before transmitting it, thereby reducing bandwidth requirements of communication, (ii) over intermediate nodes that offer asset-specific analytics to locally optimize performance and maintenance, (iii) to cloud-based platforms that integrate information from ERP, CRM and CMMS systems and execute distributed processing and analytics algorithms for global decision making \cite{Mantis}.
+Sophisticated distributed sensing and decision-making functions are performed at different levels in a collaborative way ranging from (i) local nodes that pre-process raw sensor data and extract relevant information before transmitting it, thereby reducing bandwidth requirements of communication, (ii) over intermediate nodes that offer asset-specific analytics to locally optimize performance and maintenance, (iii) to cloud-based platforms that integrate information from ERP, CRM and CMMS systems and execute distributed processing and analytics algorithms for global decision-making \cite{Mantis}.
 \clearpage
 %----------------------------------------------------------------------------
 		\subsection{Datasets from STILL}
@@ -46,9 +46,9 @@ As it was mentioned before, STILL forklifts \cite{RX20} use the CAN technology \
 				\subparagraph\noindent
 As it easily can be seen in the file names, the workers carried out various tests with the trucks more than one time with various speed and load over various tracks.
 
-However, in this first iteration, STILL did not provide any target value for tire abrasion. Thus from this first iteration I was able to make only exploratory data analysis to fuel further data collection. With enough target values in adequate resolution and quality, predictive models can be trained.
+However, in this first iteration, STILL did not provide any target value for tire abrasion. Thus, from this first iteration I was able to make only exploratory data analysis to fuel further data collection. With enough target values in adequate resolution and quality, predictive models can be trained.
 
-In the second iteration over the data provided on 10.2017 I received more information in a quite similar fashion, but from working forklifts and on top of that with some additional tire measurement. The CAN-bus sensor data contains approximately two months in time, but there were just a few measurements for tire wear from every third week. Unfortunately, this is just nearly sufficient to make predictions, but it was required required for further iterations to develop and upgrade the model.
+In the second iteration over the data provided on 10.2017 I received more information in a quite similar fashion, but from working forklifts and on top of that with some additional tire measurement. The CAN-bus sensor data contains approximately two months in time, but there were just a few measurements for tire wear from every third week. Unfortunately, this is just nearly sufficient to make predictions, but it was required for further iterations to develop and upgrade the model.
 
 The usable columns in this sub-dataset are:
 	\begin{itemize}[noitemsep]
@@ -115,7 +115,7 @@ The usable columns in this sub-dataset are:
 %----------------------------------------------------------------------------
 The STILL forklift's system has an electrical CAN bus-based, electrical warning-collection subsystem. The warning comes from the part which can communicate with the bus. Engineers of STILL captured this data in a defined time frame and saved it for us in a text\footnote{txt format} file. 
 
-One observation (record) in the previously mentioned file contains an unique ID of the forklift, timestamp, occurred warning and other specific data that isn't in the scope of this thesis.
+One observation (record) in the previously mentioned file contains a unique ID of the forklift, timestamp, occurred warning and other specific data that isn't in the scope of this thesis.
 
 When considering the full dataset for fault prediction regarding the STILL case, there are two additional files to work with, one is an SAP database export in a txt format, another one is and xls file. Both have truck ID, exchanged part ID, and timestamp in one observation along with additional information what is not in the spectrum of this project.
 
@@ -158,7 +158,7 @@ The usable columns in these files are:
 	\section{Data processing methods}
 %----------------------------------------------------------------------------
 		\subsection{CAN fingerprint}
-Assuming someone wants to make an educated guess about the future, the neat arrangement of data is demanded. This is often called tidy format, as it is advised and required for preparation for most of data mining methods. For that reasons, I have chosen the R language to achieve this objective.
+Assuming someone wants to make an educated guess about the future, the neat arrangement of data is demanded. This is often called tidy format, as it is advised and required for preparation for most of the data mining methods. For that reasons, I have chosen the R language to achieve this objective.
 
 In this case, the *.mat files involved a special treatment called box-shorting\footnote{Or bucket-short} \cite{Bucketshort} to achieve the clean and usable tidy state. During the box-shorting procedure the researcher has to know the range of shorting key (in this dataset's case the timestamp key's range) and with that, one can make a large data table with the keys and a column with "NA"-s. It is needed to organize multi-frequency sensory data.
 
@@ -196,7 +196,7 @@ RStudio is the most commonly used tool for developing R projects, it has good pa
 %----------------------------------------------------------------------------	
 			\subsubsection{Termius Android mobile phone application}
 %----------------------------------------------------------------------------
-The task of tidying \cite{Tidy} and preprocessing the data is resource and time consuming. Thus I have optimized it for every-day life with an application via 4G or HSDPA internet access to maintain an SSH connection to the Linux R server. In addition, supervise and check the processes' progress from time to time and handle the occasional errors and bugs \cite{Termius}.
+The task of tidying \cite{Tidy} and preprocessing the data is resource and time consuming. Thus, I have optimized it for every-day life with an application via 4G or HSDPA internet access to maintain an SSH connection to the Linux R server. In addition, supervise and check the processes' progress from time to time and handle the occasional errors and bugs \cite{Termius}.
 %----------------------------------------------------------------------------
 			\subsubsection{Git and GitHub}
 %----------------------------------------------------------------------------

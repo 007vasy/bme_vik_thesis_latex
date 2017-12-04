@@ -3,7 +3,7 @@
 %----------------------------------------------------------------------------
 \section{CAN fingerprint dataset processing method}
 \paragraph\noindent
-This chapter will describe the algoritmization and realization of the process presented previously in Design chapter, in R language. The reasons are simple, the R is one of the most common and convenient tool to process datasets and interpret them with a fitted statistical or machine learning model.
+This chapter will describe the algorithmization and realization of the process presented previously in Design chapter, in R language. The reasons are simple, the R is one of the most common and convenient tool to process datasets and interpret them with a fitted statistical or machine learning model.
 %----------------------------------------------------------------------------
 \subsection{Cleaning}
 %----------------------------------------------------------------------------
@@ -19,7 +19,7 @@ This chapter will describe the algoritmization and realization of the process pr
 		\begin{itemize}
 			\item{R.matlab:} This package was used to handle the *.mat files, and convert columns to a usable format.
 			\item{dplyr, purrr, plyr:} These three packages are part of the tidyverse \cite{Tidyverse}, and excellent for handling as especially cleaning data frames. This  advantage was used for multiple times in the implementation process. The tidyverse R package has one additional benefit: the contained packages are written in C++ language, which gives a speed edge against the regular packages.
-			\item{lubridate:} It is also from the the tidyverse meta package, although with a distinct purpose. This package is beneficial to handle time series and time related operation. With the MATLAB export files and timestamp key this is a needed unsavory.
+			\item{lubridate:} It is also from the tidyverse meta package, although with a distinct purpose. This package is beneficial to handle time series and time related operation. With the MATLAB export files and timestamp key this is a needed unsavoury.
 			\item{stringr:} This package is from the tidyverse as well, with the purpose of handling strings. Some of the functions are needed in cleaning process automatization.
 		\end{itemize}
 
@@ -43,13 +43,13 @@ This chapter will describe the algoritmization and realization of the process pr
 		\subsubsection{Idea Two}
 		The second idea was to take advantage of constant sensor frequency. This phenomenon was causing constant gaps between the columns' key-value pairs. The constant gaps resulted constant insertion volume for a column and faster interpolation.
 
-		This idea was also implemented and the cleaning process' performance was remarkable compared to the previous one. However, as the second cleaning algorithm was tested, the data contained holes, spanned about minutes wide. This fact completely ruined the process. The next steps were clear, there was a need for an other cleaning solution with the avail of the two current ones.
+		This idea was also implemented and the cleaning process' performance was remarkable compared to the previous one. However, as the second cleaning algorithm was tested, the data contained holes, spanned about minutes wide. This fact completely ruined the process. The next steps were clear, there was a need for another cleaning solution with the avail of the two current ones.
 %----------------------------------------------------------------------------
 \clearpage\subsubsection{Idea Synthesis}
-		After redefining the corner principles of the cleaned dataset the synthesis of the two previous ideas were possible.
+		After redefining the corner principles of the cleaned dataset, the synthesis of the two previous ideas were possible.
 		There is no need for observation in every 10 milliseconds, just in a second in the first place. This approach allows significantly faster aggregation and eliminate the need for slow interpolation in this level.
 
-		After the aggregation of values are done second by second and the data was arranged by the key. It is easy to join them to a previously build data frame. After that step, the interpolation came, to close the minute wide gaps.
+		After the aggregation of values are done second by second and the data was arranged by the key. It is easy to join them to a previously built data frame. After that step, the interpolation came, to close the minute wide gaps.
 
 		This was implemented as the final cleaning process\footnote{See in the verification chapter more in detail.}.
 %----------------------------------------------------------------------------		
@@ -65,19 +65,19 @@ This chapter will describe the algoritmization and realization of the process pr
 
 		The most frequently used data summary functions in this thesis\footnote{The data summaries where not included, because the visualizations are more informative for a new eye.}:
 		\begin{itemize}
-			\item{head:} To look at the first few rows of a data table or list.
-			\item{glimpse:} To look at the first few rows of a data table or list. However in a more eye friendly and informative way\footnote{From the tidyverse.}.
-			\item{summary:} To receive summary statistics from each row.
-			\item{describe:} To receive fast summary statistic from each row. However, in also a more eye friendly and informative way\footnote{Also from the tidyverse.}.
+			\item{head:} to look at the first few rows of a data table or list.
+			\item{glimpse:} to look at the first few rows of a data table or list. However, in a more eye friendly and informative way\footnote{From the tidyverse.}.
+			\item{summary:} to receive summary statistics from each row.
+			\item{describe:} to receive fast summary statistic from each row. However, in also a more eye friendly and informative way\footnote{Also from the tidyverse.}.
 		\end{itemize}
 %----------------------------------------------------------------------------		
 		\paragraph{Visualizations:}
-		A human mind could process information visually in a fastest way, make assumptions easily, and find additional connections. 
+		A human mind could process information visually in the fastest way, make assumptions easily, and find additional connections. 
 
-		To fulfill this purpose two package had used from the R language tool set:
+		To fulfil this purpose two package had used from the R language tool set:
 		\begin{itemize}
 			\item{base:} This package is a basic tool for plotting, and there is no need for additional package for most visualization task. However, this is not a beneficial tool, because the visualization code is not as reusable and convenient as it should be for this scale of repetitions. The reasons are simple, code design principles were not on high level when this package had written.
-			\item{ggplot2:} On the contrary, , ggplot2 is also from the tidyverse and because of this reason also written in C++, which guarantees the necessary speed for when it is high demand. Moreover, this package was designed with advanced principles, and the code is mostly reusable, and handles data frames efficiently. 
+			\item{ggplot2:} On the contrary, ggplot2 is also from the tidyverse and because of this reason also written in C++, which guarantees the necessary speed for when it is high demand. Moreover, this package was designed with advanced principles, and the code is mostly reusable, and handles data frames efficiently. 
 		\end{itemize} 
 
 
@@ -89,12 +89,12 @@ This chapter will describe the algoritmization and realization of the process pr
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/CrashYvsSteeringangle.png}
-			\caption{On this figure, the Y-way accelerometer on the X-axis and the Steering wheels' angle on the Y-axis. From this, appears the linear connection between the two value, and it is useful for crosschecking.} 
+			\caption{On this figure, the Y-way accelerometer on the X-axis and the Steering wheels' angle on the Y-axis. From this, appears the linear connection between the two value, and it is useful for cross-checking.} 
 			\end{figure}
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/Rplot.png}
-			\caption{This visualizations tells the mean hydraulic pressure when there is load on the machine. The blurry oscillation is caused by rough terrain and obstacles on the road.} 
+			\caption{These visualizations tell the mean hydraulic pressure when there is load on the machine. The blurry oscillation is caused by rough terrain and obstacles on the road.} 
 			\end{figure}		
 		\begin{figure}[H]
 			\centering
@@ -109,11 +109,11 @@ This chapter will describe the algoritmization and realization of the process pr
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/torquespeedcat.png}
-			\caption{The connection between the two drivemotors speed and torque across the fingerprint files.} 
+			\caption{The connection between the two drive motors speed and torque across the fingerprint files.} 
 			\end{figure}		
 %----------------------------------------------------------------------------		
 	\subsubsection{Unsupervised learning}
-	Unsupervised learning is efficient handling and examining unlabeled data in the first place.
+	Unsupervised learning is efficient handling and examining unlabelled data in the first place.
 	
 	In this particular case it used to check the experts' knowledge what says there is three driving profiles.
 	\begin{figure}[H]
@@ -127,7 +127,7 @@ This chapter will describe the algoritmization and realization of the process pr
 %----------------------------------------------------------------------------	
 \newpage
 \subsection{Calculating attributes}
-As I already have been mentioned in the design section the attributes are coming from the experts' knowledge and exploratory data analysis.
+As I already have been mentioned in the design section, the attributes are coming from the experts' knowledge and exploratory data analysis.
 
 The attributes were allocated hourly, because the tire abrasion is a relative slow process and it would be disadvantageous to go into higher time resolution.
 
@@ -136,21 +136,21 @@ These attributes had been calculated from the cleaned data and aggregated hourly
 		\item{elapsed time:} From the starting point where is the last tire measurement was in time.
 		\item{traveled distance:} It is calculated second by second then aggregated hourly using the derivative distance formula: $s = dv*dt + 1/2*da*dt^2$.
 		\item{count in various speed and torque state:} By reasons of the different driving profiles various speed and torque pairs must be categorized second by second and summed hourly. The categorization was done by normalization and 2D binning with the help of the dplyr package.
-		\item{changing x direction:} It is calculated second by second, if the previous values of the speed were different than the current changing in x direction happened. This was also summed hourly.
+		\item{changing x direction:} It is calculated second by second, if the previous values of the speed were different from the current changing in x direction happened. This was also summed hourly.
 		\item{changing y direction:} Same as above. However, with a twist. For this one secondary variable had been calculated if the machine goes in a straight line this secondary value is TRUE.
-		\item{"is there weight" counter (max 3600 in a hour):} If the minutely mean hydraulic pressure is over the constants from the visualization, there is load on the truck. This was also collected hourly.
+		\item{"is there weight" counter (max 3600 in an hour):} If the minutely mean hydraulic pressure is over the constants from the visualization, there is load on the truck. This was also collected hourly.
 		\item{steering wheel degree change derived by time aggregated by average:} The derivation is made second by second, the summary is calculated hourly\footnote{torque and speed derived by time could be useful too}.
 	\end{itemize}
 %----------------------------------------------------------------------------	
 \subsection{Calculating RUL (Remaining Useful Life)}
 	After the previous steps had been done, and the attributes were calculated, the remaining useful life calculation can begin.
-	The hourly aggregated attributes were in a dataframe without sensory values. A new columns had generated with NA-s and the tire measurements are imported with multiple measurement points. Moreover, there were inserted to the new columns next to the appropriate hourly timestamp key. When it is done, the interpolation should begin to all aggregations points\footnote{The interpolation was linear. Thus it could be more precise when the interpolation is based on some metascore involving elapsed time and traveled distance, or with some machine learning algorithm.}.
+	The hourly aggregated attributes were in a dataframe without sensory values. A new columns had generated with NA-s and the tire measurements are imported with multiple measurement points. Moreover, there were inserted to the new columns next to the appropriate hourly timestamp key. When it is done, the interpolation should begin to all aggregations points\footnote{The interpolation was linear. Thus, it could be more precise when the interpolation is based on some meta score involving elapsed time and travelled distance, or with some machine learning algorithm.}.
 
-	Whit this step and more precise tire measurements on multiple occasions the aggregated values can indicate a mean tire abrasion change. If that change was more than specified constant the tire should be changed. From the last hour a tire abrasion rate was calculated\footnote{Based on elapsed time} and with that the remaining useful life had calculated.
+	Whit this step and more precise tire measurements on multiple occasions the aggregated values can indicate a mean tire abrasion change. If that change was more than specified constant, the tire should be changed. From the last hour a tire abrasion rate was calculated\footnote{Based on elapsed time} and with that the remaining useful life had calculated.
 	\#Enumerate the steps?
 %----------------------------------------------------------------------------	
 \subsection{Results}
-The results were statistically promising. However, for more precise results there is a claim for more tire measurement.
+The results were statistically a promise. However, for more precise results there is a claim for more tire measurement.
 
 The code can be viewed on my GitHub repository \cite{GitHub_CAN_RUL}.
 %---------------------------------------------------------------------------------------------------------------------------------------
@@ -160,7 +160,7 @@ The code can be viewed on my GitHub repository \cite{GitHub_CAN_RUL}.
 As it already had been mentioned, for handling this dataset, the Python language was used. Especially, for easy data representation and handling with the NetworkX package. 
 %----------------------------------------------------------------------------
 	\subsection{Cleaning}
-For this dataset the cleaning was far more easier than the previous one. The data is represented in tabular separated txt and in xlsx file formats.
+For this dataset the cleaning was far easier than the previous one. The data is represented in tabular separated txt and in xlsx file formats.
 To progress further, two steps were made:
 \begin{itemize}
 			\item{dropping the NA and duplicated columns,}
@@ -183,10 +183,10 @@ At the end of this process, only the following columns were kept from the files:
 				\item{service task(s) end.}
 			\end{itemize}
 \end{itemize}
-These views were saved in a distinct files for performance and milestone reasons.
+These views were saved in a distinct file for performance and milestone reasons.
 %----------------------------------------------------------------------------
 	\subsection{Creating nodes' list and edges' list}
-from files created previously, the nodes' and edges' lists were generated in the following way.
+From files created previously, the nodes' and edges' lists were generated in the following way.
 \paragraph{Nodes' list generation:}
 The nodes' list contains all the distinct s-errorcodes from the electric error files once, and the distinct exchange par numbers once from the SAP fail file. From these, the condition space could be built.
 \paragraph{Edges' list generation:}
@@ -207,7 +207,7 @@ The directed edges need a starting and ending point. To achieve that purpose, th
 
 %----------------------------------------------------------------------------		
 		\paragraph{Visualizations:}
-		The visualizations are beneficial when it comes to a graph represented data. In this project I had used a the NetworkX built in graph building and visualization, and the matplotlib package plotting functions.
+		The visualizations are beneficial when it comes to a graph represented data. In this project I had used the NetworkX built in graph building and visualization, and the matplotlib package plotting functions.
 
 		As is seems, it is difficult to make a guess, but it can be seen the opportunity to statistically using the states and the edges' weight to make a prediction.
 			\begin{figure}[H]
@@ -221,7 +221,7 @@ The directed edges need a starting and ending point. To achieve that purpose, th
 %----------------------------------------------------------------------------
 	\subsection{Calculating RUL}
 			\paragraph{Built of graph:}
-			When the previous ordering, exploring, and fact checking were completed, the graph building could begun from generated files. Thus the base is the nodes' list, moreover, all nodes should be represented in the graph. When it came to edges the situation was different. For computational resource reasons not all of the paths were included for sure. But more the paths the better was the prediction.
+			When the previous ordering, exploring, and fact checking were completed, the graph building could have begun from generated files. Thus, the base is the nodes' list, moreover, all nodes should be represented in the graph. When it came to edges, the situation was different. For computational resource reasons not all of the paths were included for sure. But more the paths the better was the prediction.
 			\paragraph{Computing steps:}
 			When graph has been build, the remaining useful life calculation steps were the following:
 			\begin{enumerate}
@@ -233,11 +233,11 @@ The directed edges need a starting and ending point. To achieve that purpose, th
 				\item{from the last node the possibility calculated to all exchange part ID nodes, based on the similar shortest machine path count to the specific exchange part ID nodes divided by sum of to all the exchange part ID nodes,}
 				\item{besides of possibility, the time to the specific exchange part ID node was computed to give more insights about the remaining useful life based on the similar shortest machine's distance in time,}
 				\item{the result were contained following columns: exchange part ID node, minimal, mean, median and maximal time to that node, and the computed possibility arranged by possibility and time,} 
-		 		\item{the RUL is the highest possibility with the shortest remaining time\footnote{The RUL can be some kind of metascore based on time window and possibility level.}}
+		 		\item{the RUL is the highest possibility with the shortest remaining time\footnote{The RUL can be some kind of meta score based on time window and possibility level.}}
 		 	\end{enumerate}
 %----------------------------------------------------------------------------
 	\subsection{Result}
-The calculation of the whole table is profitable, because technical workers can solve more problem at one repair sessions, resalting in longer timespan on duty for the machines.
+The calculation of the whole table is profitable, because technical workers can solve more problem at one repair sessions, resulting in longer timespan on duty for the machines.
 
 \#TODO Estimating result, and what causing aleatory mistakes in the model. 
 \#WHY
