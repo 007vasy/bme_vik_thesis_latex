@@ -2,35 +2,54 @@
 \appendix
 %----------------------------------------------------------------------------
 \chapter*{Appendix}\addcontentsline{toc}{chapter}{Appendix}
-\setcounter{chapter}{6}  % a fofejezet-szamlalo az angol ABC 6. betuje (F) lesz
+\setcounter{chapter}{1}  % a fofejezet-szamlalo az angol ABC 6. betuje (F) lesz
 \setcounter{equation}{0} % a fofejezet-szamlalo az angol ABC 6. betuje (F) lesz
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
 \numberwithin{lstlisting}{section}
 %\numberwithin{tabular}{section}
 %----------------------------------------------------------------------------
-\section{A TeXnicCenter felülete}
+\section{CAN fingerprint RUL calculation workflow:}
 %----------------------------------------------------------------------------
+\label{appendix:CANFPRULCalc}
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics[width=150mm, keepaspectratio]{figures/TeXnicCenter.png}
+%\caption{A TeXnicCenter Windows alapú \LaTeX-szerkesztõ.} 
+%\end{figure}
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=150mm, angle =-90, keepaspectratio]{figures/CAN_fingerprint_RUL_calculation.png}
+		\caption{Calculating RUL from cleaned data} 
+	\end{figure}
+%----------------------------------------------------------------------------
+\clearpage\section{Electrical failure prediction preprocessing workflow}
+%----------------------------------------------------------------------------
+\label{appendix:FaultPredPreProc}
 \begin{figure}[!ht]
-\centering
-\includegraphics[width=150mm, keepaspectratio]{figures/TeXnicCenter.png}
-\caption{A TeXnicCenter Windows alapú \LaTeX-szerkesztõ.} 
+		\centering
+		\includegraphics[width=150mm, angle =-90,keepaspectratio]{figures/Electrical_fail_prediction_preprocessing_workflow.png}
+		\caption{Cleaning and ordering step by step} 
 \end{figure}
 
+%A Pitagorasz-tételbõl levezetve
+%\begin{align}
+%c^2=a^2+b^2=42.
+%\end{align}
+%A Faraday-indukciós törvénybõl levezetve
+%\begin{align}
+%\rot E=-\frac{dB}{dt}\hspace{1cm}\longrightarrow \hspace{1cm}
+%U_i=\oint\limits_\mathbf{L}{\mathbf{E}\mathbf{dl}}=-\frac{d}{dt}\int\limits_A{\mathbf{B}\mathbf{da}}=42.
+%\end{align}
 %----------------------------------------------------------------------------
-\clearpage\section{Válasz az ,,Élet, a világmindenség, meg minden'' kérdésére}
+\clearpage\section{Electrical failure prediction RUL calculation workflow}
 %----------------------------------------------------------------------------
-A Pitagorasz-tételbõl levezetve
-\begin{align}
-c^2=a^2+b^2=42.
-\end{align}
-A Faraday-indukciós törvénybõl levezetve
-\begin{align}
-\rot E=-\frac{dB}{dt}\hspace{1cm}\longrightarrow \hspace{1cm}
-U_i=\oint\limits_\mathbf{L}{\mathbf{E}\mathbf{dl}}=-\frac{d}{dt}\int\limits_A{\mathbf{B}\mathbf{da}}=42.
-\end{align}
-
-
-
+\label{appendix:FaultPredRULCalc}
+		\#TODO explain red flags in short
+		\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=150mm, angle =-90,keepaspectratio]{figures/Electrical_failure_pred_RUL.png}
+		\caption{Electrical failure prediction RUL calculation workflow} 
+		\end{figure}
 
 

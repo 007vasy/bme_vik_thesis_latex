@@ -29,7 +29,7 @@ To accomplish the final state from the starting state, the process was partition
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=150mm, keepaspectratio]{figures/abstract_workflow.png}
-\caption{Abstract workflow from raw data to final objective} 
+\caption{Abstract workflow from raw data, to final objective.} 
 \end{figure}
 
 %----------------------------------------------------------------------------
@@ -72,7 +72,7 @@ Various planning principles can be utilized during this design phase \cite{CSDIS
 			\begin{figure}[!ht]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/cleaning_idea_one.png}
-			\caption{First idea (Idea One) to clean the raw data} 
+			\caption{First idea (Idea One) to clean the raw data.} 
 			\end{figure}
 		\subparagraph\noindent
 This is time consuming and slow even on the server, because it is not the optimal sorting algorithm for this kind of data representation \cite{CSDISTILLED}.
@@ -82,7 +82,7 @@ To get rid of the processing-speed problem, the second idea was to aggregate the
 			\begin{figure}[!ht]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/cleaning_idea_two.png}
-			\caption{Second idea (Idea Two) to clean the raw data} 
+			\caption{Second idea (Idea Two) to clean the raw data.} 
 			\end{figure}
 %----------------------------------------------------------------------------
 		\paragraph{Idea Synthesis:}
@@ -99,7 +99,7 @@ To get the advantage of the two methods, it would be useful to merge the previou
 			\begin{figure}[!ht]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/cleaning_idea_synthesis.png}
-			\caption{To optimize the cleaning workflow, merged the to processes together} 
+			\caption{To optimize the cleaning workflow, the to processes were merged together.} 
 			\end{figure}
 \subparagraph\noindent
 With this solution design the high quality data frame, what can be used later, is possible, and with this idea synthesis the problems with the previous ones are worked around.
@@ -156,12 +156,10 @@ With this solution design the high quality data frame, what can be used later, i
 		\item{if the summary is greater than a given constant, the tire should be changed,}
 		\item{to compute reaming useful life on the last hours abrasion rate.}
 	\end{enumerate}
-	\begin{figure}[!ht]
-		\centering
-		\includegraphics[width=150mm, keepaspectratio]{figures/CAN_fingerprint_RUL_calculation.png}
-		\caption{Calculating RUL from cleaned data} 
-	\end{figure}
-		\paragraph\noindent
+
+	\paragraph\noindent
+	The whole CAN fingerprint calculation workflow is in the Appendix \ref{appendix:CANFPRULCalc}.
+
 	Other not implemented solutions:
 	\begin{itemize}
 		\item{calculate RUL with machine learning:} There was not enough data for this solution, the model will be over-fitted based on DataCamp case studies \cite{DataCampCaseStudies} 
@@ -222,12 +220,9 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 			\item{ordering them by time,}
 			\item{saving them in separated files.}
 		 \end{enumerate}
-		With these steps we get the distinct nodes and a lot of edges in different paths. 
-		\begin{figure}[!ht]
-		\centering
-		\includegraphics[width=150mm, keepaspectratio]{figures/Electrical_fail_prediction_preprocessing_workflow.png}
-		\caption{Cleaning and ordering step by step} 
-		\end{figure}
+		With these steps we get the distinct nodes and a lot of edges in different paths.
+
+		The electrical failure prediction preprocessing workflow is in the Appendix \ref{appendix:FaultPredPreProc}
 %----------------------------------------------------------------------------
 		\subsubsection{Exploring:}
 			Unlike the previous dataset, the cleaning steps are not as significant as they could be, because the data was given in a more efficient way. After the later described NA and duplicated column dropping, the data exploring can begin. However, the end of data exploring is after the making of nodes and edges' list, because it is easy to check visually a correct graph representation\footnote{for example: the path is continuous or dashed}.
@@ -260,9 +255,5 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 		\paragraph\noindent	
 		The calculation of the whole table could be profitable because the technical workers can solve more problem at one repair sessions which could cause longer timespan on duty.
 
-		\#TODO explain red flags in short
-		\begin{figure}[!ht]
-		\centering
-		\includegraphics[width=150mm, keepaspectratio]{figures/Calc_Fault_pred_RUL.png}
-		\caption{To optimize the cleaning workflow, merged the to processes together} 
-		\end{figure}
+		\#TODO
+		The whole electrical failure prediction preprocessing workflow is in the Appendix \ref{appendix:FaultPredRULCalc}
