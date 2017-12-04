@@ -144,7 +144,7 @@ These attributes had been calculated from the cleaned data and aggregated hourly
 %----------------------------------------------------------------------------	
 \subsection{Calculating RUL (Remaining Useful Life)}
 	After the previous steps had been done, and the attributes were calculated, the remaining useful life calculation can begin.
-	The hourly aggregated attributes were in a dataframe without sensory values. A new columns had generated with NA-s and the tire measurements are imported with multiple measurement points. Moreover, there were inserted to the new columns next to the appropriate hourly timestamp key. When it is done, the interpolation should begin to all aggregations points\footnote{The interpolation was linear. Thus, it could be more precise when the interpolation is based on some meta score involving elapsed time and travelled distance, or with some machine learning algorithm.}.
+	The hourly aggregated attributes were in a dataframe without sensory values. A new columns had generated with NA-s and the tire measurements were imported with multiple measurement points. Moreover, there were inserted to the new columns next to the appropriate hourly timestamp key. When it is done, the interpolation should begin to all aggregations points\footnote{The interpolation was linear. Thus, it could be more precise when the interpolation is based on some meta score involving elapsed time and travelled distance, or with some machine learning algorithm.}.
 
 	Whit this step and more precise tire measurements on multiple occasions the aggregated values can indicate a mean tire abrasion change. If that change was more than specified constant, the tire should be changed. From the last hour a tire abrasion rate was calculated\footnote{Based on elapsed time} and with that the remaining useful life had calculated.
 	\#Enumerate the steps?
@@ -229,7 +229,7 @@ The directed edges need a starting and ending point. To achieve that purpose, th
 				\item{listing the machine' IDs between the oldest and the second oldest nodes given in the sequence,}
 				\item{iterating through the whole sequence and eliminating the machines which were absent in the current edges,}
 				\item{eliminating and redo when there is no machine ID was returned by the sequence,}
-				\item{the list of machines with similar path are given from the last and youngest node in the sequence. The shortest similar machine path was listed to the exchange part ID nodes,}
+				\item{the list of machines with similar path was given from the last and youngest node in the sequence. The shortest similar machine path was listed to the exchange part ID nodes,}
 				\item{from the last node the possibility calculated to all exchange part ID nodes, based on the similar shortest machine path count to the specific exchange part ID nodes divided by sum of to all the exchange part ID nodes,}
 				\item{besides of possibility, the time to the specific exchange part ID node was computed to give more insights about the remaining useful life based on the similar shortest machine's distance in time,}
 				\item{the result were contained following columns: exchange part ID node, minimal, mean, median and maximal time to that node, and the computed possibility arranged by possibility and time,} 
