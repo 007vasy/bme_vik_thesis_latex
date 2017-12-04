@@ -3,18 +3,22 @@
 %----------------------------------------------------------------------------
 \section{CAN fingerprint dataset processing method}
 \paragraph\noindent
-This sections will describe the algoritmization and realization of of process presented previously in Design chapter, in R language. The reasons are simple, the R is one of the most common and convenient tools to process datasets and interpret them with a fitted statistical or machine learning model.
+This chapter will describe the algoritmization and realization of the process presented previously in Design chapter, in R language. The reasons are simple, the R is one of the most common and convenient tool to process datasets and interpret them with a fitted statistical or machine learning model.
 %----------------------------------------------------------------------------
 \subsection{Cleaning}
 %----------------------------------------------------------------------------
 		\subsubsection{Idea One}
 		\paragraph\noindent
-		In this first iteration the Idea One, described under the similar section of the Design chapter, had been algorithmically implemented in R language.
+		In this first iteration the Idea One,
+		\begin{itemize}
+			\item{described under the similar section of the Design chapter,}
+			\item{described under the similar section of the Design chapter, had been algorithmically implemented in R language.}
+		\end{itemize}
 
 		The following R packages were used:
 		\begin{itemize}
 			\item{R.matlab:} This package was used to handle the *.mat files, and convert columns to a usable format.
-			\item{dplyr,purrr,plyr:} These three packages are part of the tidyverse \cite{Tidyverse}, and excellent for handling as especially cleaning data frames. This  advantage was used for multiple times in the implementation process. The tidyverse R package has one additional benefit: the contained packages are written in C++ language which gives a speed edge against the regular packages.
+			\item{dplyr, purrr, plyr:} These three packages are part of the tidyverse \cite{Tidyverse}, and excellent for handling as especially cleaning data frames. This  advantage was used for multiple times in the implementation process. The tidyverse R package has one additional benefit: the contained packages are written in C++ language, which gives a speed edge against the regular packages.
 			\item{lubridate:} It is also from the the tidyverse meta package, although with a distinct purpose. This package is beneficial to handle time series and time related operation. With the MATLAB export files and timestamp key this is a needed unsavory.
 			\item{stringr:} This package is from the tidyverse as well, with the purpose of handling strings. Some of the functions are needed in cleaning process automatization.
 		\end{itemize}
@@ -22,32 +26,32 @@ This sections will describe the algoritmization and realization of of process pr
 		\paragraph\noindent
 		The cleaning algorithm is capable:
 		\begin{itemize}
-			\item{To handle multiple MATLAB export files from a single folder,}
-			\item{To change German column names to English,} 
-			\item{To boxshort all columns in one file based on key-value pairs in a column,} 
-			\item{To diminish not useful columns for future operations,} 
-			\item{To interpolate between measurement points to make a dataframe without NA-s,}
-			\item{To concatenate time related columns into one,} 
-			\item{To save cleaned files in RDS\footnote{R Data Structure} format.} 
+			\item{to handle multiple MATLAB export files from a single folder,}
+			\item{to change German column names to English,} 
+			\item{to boxshort all columns in one file based on key-value pairs in a column,} 
+			\item{to diminish not useful columns for future operations,} 
+			\item{to interpolate between measurement points to make a dataframe without NA-s,}
+			\item{to concatenate time related columns into one,} 
+			\item{to save cleaned files in RDS\footnote{R Data Structure} format.} 
 		\end{itemize} 
 
 		\paragraph\noindent
-		The actual algorithms' implementation with these packages were inconsiderable. This algorithm described in the already mentioned section were successfully implemented. However, the performance were humble with the small files already. \footnote{See in the verification chapter more in detail.} For the significant MATLAB exports the performance was close to zero, because the cleaning process were not completed in half a day.
+		The actual algorithms' implementation with these packages were not feasible. This algorithm described in the already mentioned section were successfully implemented. However, the performance were humble with the small files already. \footnote{See in the verification chapter more in detail.} For the significant MATLAB exports, the performance was close to zero, because the cleaning process was not completed in half a day.
 		
 		These results caused a need for the second iteration in the cleaning process and necessity for new ideas.
 %----------------------------------------------------------------------------
 		\subsubsection{Idea Two}
-		The second idea was to take advantage of constant sensor frequency. This phenomenon is causing constant gaps between the columns' key-value pairs. The constant gaps result constant insertion volume for a column and faster interpolation.
+		The second idea was to take advantage of constant sensor frequency. This phenomenon was causing constant gaps between the columns' key-value pairs. The constant gaps resulted constant insertion volume for a column and faster interpolation.
 
-		This idea were also implemented and the cleaning process's performance were remarkable compared to the previous one. However, as the second cleaning algorithm were tested, the data contained wholes, spanned about minutes wide. This event completely ruined the process. The next steps were clear, there is a need for an other cleaning solution with the avail of the two current ones.
+		This idea was also implemented and the cleaning process' performance was remarkable compared to the previous one. However, as the second cleaning algorithm was tested, the data contained holes, spanned about minutes wide. This fact completely ruined the process. The next steps were clear, there was a need for an other cleaning solution with the avail of the two current ones.
 %----------------------------------------------------------------------------
 \clearpage\subsubsection{Idea Synthesis}
 		After redefining the corner principles of the cleaned dataset the synthesis of the two previous ideas were possible.
 		There is no need for observation in every 10 milliseconds, just in a second in the first place. This approach allows significantly faster aggregation and eliminate the need for slow interpolation in this level.
 
-		After the aggregation of values are done second by second and the data is arranged by the key. It is easy to join them to a previously build data frame. After that step, the interpolation came, to close the minute wide gaps.
+		After the aggregation of values are done second by second and the data was arranged by the key. It is easy to join them to a previously build data frame. After that step, the interpolation came, to close the minute wide gaps.
 
-		That is what were implemented as the final cleaning process\footnote{See in the verification chapter more in detail.}.
+		This was implemented as the final cleaning process\footnote{See in the verification chapter more in detail.}.
 %----------------------------------------------------------------------------		
 \subsection{Data processing and understanding}
 		The data processing and understanding in depth is an essential step for developing a proper data handling and predicting model.

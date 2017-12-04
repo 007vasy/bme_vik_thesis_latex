@@ -54,7 +54,7 @@ These aggregated values can be calculated from the raw sensor data, and with eno
 \subsection{Data processing workflow design}
 %----------------------------------------------------------------------------
 As it can be seen from the starting and final state, at first the *.mat files have to be transformed into usable data frame. Meanwhile, the not useful columns have to be dropped to save precious processor time and data storage space, especially by handling the longer files. After that the attributes should to be calculated, then the remaining useful life has to be estimated.
-Various planning principles can be utilized during this design phase \cite{CSDISTILLED},\cite{DATACAMP},\cite{LeanThinking}.
+Various planning principles can be utilized during this design phase \cite{CSDISTILLED}, \cite{DATACAMP}, \cite{LeanThinking}.
 %----------------------------------------------------------------------------
 	\subsubsection{Cleaning}
 	As it has been described in the previous section, the *.mat files have to be transformed to a data frame with only the useful columns remaining to further calculations.
@@ -121,9 +121,9 @@ With this solution design the high quality data frame, what can be used later, i
 		The "unsupervised learning" \cite{UnsuplearnBook} is a machine learning method used especially to unlabeled data. It is useful to find connections and correlation between the values in a higher perspective and confirm or question experts' knowledge.
 %----------------------------------------------------------------------------
 			\subparagraph{k-means clustering:}
-			The k-means clustering \cite{k-means},\cite{kmeans2} helps to estimate groups between observations with norming all values to one and calculating multi-dimensional distance between them.
+			The k-means clustering \cite{k-means}, \cite{kmeans2} helps to estimate groups between observations with norming all values to one and calculating multi-dimensional distance between them.
 			\subparagraph{Hierarchical clustering:}
-			Hierarchical clustering \cite{h-clust},\cite{h-clust2},\cite{Clustering} is a k-means with a twist, because it clusters groups hierarchically, step by step with various distance calculation methods and top-down or bottom-up approach.
+			Hierarchical clustering \cite{h-clust}, \cite{h-clust2}, \cite{Clustering} is a k-means with a twist, because it clusters groups hierarchically, step by step with various distance calculation methods and top-down or bottom-up approach.
 			\subparagraph{Principal component analysis:}
 			The PCA \cite{PCA} algorithm makes an orthogonal, multi dimensional space from the values and places there the observations. This algorithm can tell the most significant values from the dataset.
 %----------------------------------------------------------------------------
@@ -181,7 +181,7 @@ In the scope of this project iteration the exchange part IDs are the superior pr
 %----------------------------------------------------------------------------
 As it previously has been mentioned, the BAL Network science book \cite{BALNWSCBOOK} is an effective indicator of later specified solution. However, a lot of optimizing ideas come from the Computer Science Distilled book \cite{CSDISTILLED} and the usage of the Python language and the NetworkX package \cite{NetworkX} is influence of the DataCamp e-learning platform \cite{DATACAMP}, and thinking in flows, process and value streams is caused by books such as the Lean Thinking book \cite{LeanThinking} and the Phoenix Project book \cite{PhoenixProject}.
 %----------------------------------------------------------------------------
-		\subsubsection{Raw data's condition}
+		\subsubsection{Conditions of the raw data}
 		The dataset given for this subproject is consisting three files:
 		\begin{itemize}
 			\item{xtra\_All\_errors\_with\_metainfo.txt} size of 12.9 GB contains the warning logs of 789 forklifts, with timestamp, machine ID, the IDs of warnings, additional information which is out of the scope of this project\footnote{but in a further iteration could be necessary}, and a lot of NA columns.
@@ -189,7 +189,7 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 			\item{Alle-SBs-ProActive\_droprows.xlsx} size of 4.5 MB nearly exactly the same columns like the one above, but form different forklifts and a little different column names.
 		\end{itemize}
 %----------------------------------------------------------------------------
-		\subsubsection{Cleaning in two iteration}
+		\subsubsection{Cleaning in two iterations}
 		\begin{itemize}
 			\item{Eliminating NA-s columns, and duplications:} This step is required to reduce the further resource cost of operations, and to have a filebase for further method development.
 			\item{Discarding not useful columns:} For the first iteration graph building, the timestamp, machine ID, and ID of the warning is required from the first file mentioned before. From the second and third repair sessions' starting and ending time the machine ID, and the exchange part ID is essential. When there is no exchange part ID just technical worker comment, for fast method's development, it could be handy to give a temporary distinct ID. The temporary ones have to differ from real exchange part IDs.\footnote{this can be a starting point of subcategorizing, with the help of NLP} 
