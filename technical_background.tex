@@ -44,7 +44,7 @@ As it was mentioned before, STILL forklifts \cite{RX20} use the CAN technology \
 \end{itemize}
 
 				\subparagraph\noindent
-As it easily can be seen in the file names, the workers carried out various tests with the trucks more than one time with various speed and load over various tracks.
+As it easily can be seen in the file names, the workers carried out various tests with the trucks more than one time with different speeds and load over distinct tracks.
 
 However, in this first iteration, STILL did not provide any target value for tire abrasion. Thus, from this first iteration I was able to make only exploratory data analysis to fuel further data collection. With enough target values in adequate resolution and quality, predictive models can be trained.
 
@@ -158,9 +158,9 @@ The usable columns in these files are:
 	\section{Data processing methods}
 %----------------------------------------------------------------------------
 		\subsection{CAN fingerprint}
-Assuming someone wants to make an educated guess about the future, the neat arrangement of data is demanded. This is often called tidy format, as it is advised and required for preparation for most of the data mining methods. For that reasons, I have chosen the R language to achieve this objective.
+Assuming someone wants to make an educated guess about the future, the neat arrangement of data is demanded. This is often called tidy \cite{Tidy} format, as it is advised and required for preparation for most of the data mining methods. For that reasons, I have chosen the R language to achieve this objective.
 
-In this case, the *.mat files involved a special treatment called box-shorting\footnote{Or bucket-short} \cite{Bucketshort} to achieve the clean and usable tidy state. During the box-shorting procedure the researcher has to know the range of shorting key (in this dataset's case the timestamp key's range) and with that, one can make a large data table with the keys and a column with "NA"-s. It is needed to organize multi-frequency sensory data.
+In this case, the *.mat files involved a special treatment called box-shorting\footnote{Also known as bucket-short} \cite{Bucketshort} to achieve the clean and usable tidy state. During the box-shorting procedure the researcher has to know the range of shorting key (in this dataset's case the timestamp key's range) and with that, one can make a large data table with the keys and a column with "NA"-s. It is needed to organize multi-frequency sensory data.
 
 Once the tidying is done, the \textit{exploratory} data analysis comes to make sense about the data mass, and develop ways to achieve the best prediction possible, and to short out unnecessary columns to make the future process faster.
 
@@ -204,7 +204,7 @@ As a consequence of version control and open source commitment, I had chosen thi
 %----------------------------------------------------------------------------
 			\subsubsection{PyCharm}
 %----------------------------------------------------------------------------
-During working with the Electrical failure prediction dataset I had used Python for various reasons, mainly because there is a package called \textit{NetworkX} \cite{NetworkX}. Moreover, for Python development, the most convenient tool is PyCharm because it is high number of useful functions \cite{PyCharm}.	
+During working with the Electrical failure prediction dataset I had used Python for various reasons, mainly because there is a package called \textit{NetworkX} \cite{NetworkX}. Moreover, for Python development, the most convenient tool is PyCharm because it have a high number of useful functions \cite{PyCharm}.	
 %----------------------------------------------------------------------------
 		\subsection{Management}
 %----------------------------------------------------------------------------

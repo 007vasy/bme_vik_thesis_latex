@@ -6,7 +6,7 @@
 \subsection{Requirement specification}
 %----------------------------------------------------------------------------
 	\noindent
-The final aim was to create data processing methods and calculated attributes from measured values for future prediction applications.
+The final aim was to create data processing methods and calculated attributes from measured values for future prediction applications. Moreover, to come up with a sustainable prediction model, what is capable for prediction even when the amount of th provided target values are low.
 %----------------------------------------------------------------------------
 	\subsubsection{Initial state}
 The initial state was a raw CAN bus physical sensory data in a *.mat format with different measurement frequencies by sensor types.
@@ -14,17 +14,17 @@ The initial state was a raw CAN bus physical sensory data in a *.mat format with
 	\subsubsection{Final state}
 To achieve the final state, datasets require to be transformed into a CSV (Comma Separated Value) or RDS (R Data Structure) format for more convenient handling and calculating attributes.
 
-The attributes are aggregations and summarizations of connection between key values originating from experts' knowledge, exploratory data analysis, and several unsupervised learning techniques.
+The attributes are aggregations and summarizations of connection between key values originating from experts' knowledge, exploratory data analysis, and several unsupervised learning techniques. Along with several data transforming functions, to achieve the demanded Reaming Useful Life prediction.
 \clearpage
 %----------------------------------------------------------------------------
 \subsubsection{Abstract Workflow}
 To accomplish the final state from the starting state, the process was partitioned from on start-to-end into smaller steps. 
 
 \begin{enumerate}
-	\item {Cleaning:} To solve different measurement frequency problems by making a one-row/one-observation data frame.
-	\item {Exploring:} To investigate the data with exploratory data analysis tools and unsupervised learning supported by the STILL workers', engineers' and my acquaintances' experts' knowledge.
- 	\item {Specifying Attributes:} To introduce sustainable attribute calculating algorithms.
- 	\item {Calculating RUL (Remaining Useful Life):} To develop a RUL calculation algorithm for the MANTIS project. This is based on received target values\footnote{few tire measurements}, and attributes calculated beforehand.
+	\item {Cleaning:} to solve different measurement frequency problems by making a one-row/one-observation data frame.
+	\item {Exploring:} to investigate the data with exploratory data analysis tools and unsupervised learning supported by the STILL workers', engineers' and my acquaintances' experts' knowledge.
+ 	\item {Specifying Attributes:} to introduce sustainable attribute calculating algorithms.
+ 	\item {Calculating RUL (Remaining Useful Life):} to develop a RUL calculation algorithm for the MANTIS project. This is based on received target values\footnote{few tire measurements}, and attributes calculated beforehand.
 \end{enumerate}
 
 \begin{figure}[!ht]
@@ -37,7 +37,9 @@ To accomplish the final state from the starting state, the process was partition
 \subsection{Expert knowledge and facts}
 %----------------------------------------------------------------------------
 \paragraph\noindent
-When some kind of industrial dataset is examined and processed to make educated guess about the future, principles and insights from experts' knowledge are actually helpful to interpret and understand the data in a higher sense\footnote{In reality the vast majority of the insight came from exploratory data analysis and unsupervised learning}. For example: There is four main forklift driving style.
+When some kind of industrial dataset is examined and processed to make educated guess about the future, principles and insights from experts' knowledge are actually helpful to interpret and understand the data in a higher sense\footnote{In reality the vast majority of the insight came from exploratory data analysis and unsupervised learning}. 
+
+For example: There is four main forklift driving style.
 
 In summary, the main indicators of tire abrasion between two tire measurements are:
 \begin{itemize}
@@ -106,7 +108,7 @@ To get the advantage of the two methods, it would be useful to merge the previou
 With this solution design the high quality data frame, what can be used later, is possible, and with this idea synthesis the problems with the previous ones are worked around.
 %----------------------------------------------------------------------------
 	\subsubsection{Exploring}
-	The data exploration and data examination is a required step for correct interpretation of the data and confirmation of facts coming from experts' knowledge. Without this "null hypothesis check" step, a lot of human labor and energy can be discarded.
+	The data exploration and data examination is a required step for correct interpretation of the data and confirmation of facts coming from experts' knowledge. Without this "null hypothesis check" step, a lot of human labor and energy could be discarded.
 %----------------------------------------------------------------------------
 		\paragraph{Exploratory data analysis:}
 			With these steps\footnote{data summaries and visualization} one can make himself ensure that dataset has connection with the real world, the values are close to reality, and further steps are worth a shot.
@@ -179,7 +181,7 @@ In the scope of this project iteration the exchange part IDs are the superior pr
 %----------------------------------------------------------------------------
 	\subsection{Data processing workflow design}
 %----------------------------------------------------------------------------
-As it previously has been mentioned, the BAL Network science book \cite{BALNWSCBOOK} is an effective indicator of later specified solution. However, a lot of optimizing ideas come from the Computer Science Distilled book \cite{CSDISTILLED} and the usage of the Python language and the NetworkX package \cite{NetworkX} is influence of the DataCamp e-learning platform \cite{DATACAMP}, and thinking in flows, process and value streams is caused by books such as the Lean Thinking book \cite{LeanThinking} and the Phoenix Project book \cite{PhoenixProject}.
+As it previously has been mentioned, the BAL Network science book \cite{BALNWSCBOOK} is an effective indicator of later specified solution. However, a lot of optimizing ideas come from the Computer Science Distilled book \cite{CSDISTILLED} and the usage of the Python language and the NetworkX package \cite{NetworkX} is the influence of the DataCamp e-learning platform \cite{DATACAMP}, and thinking in flows, process and value streams is caused by books such as the Lean Thinking book \cite{LeanThinking} and the Phoenix Project book \cite{PhoenixProject}.
 %----------------------------------------------------------------------------
 		\subsubsection{Conditions of the raw data}
 		The dataset given for this subproject is consisting three files:
@@ -192,15 +194,15 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 		\subsubsection{Cleaning in two iterations}
 		\begin{itemize}
 			\item{Eliminating NA-s columns, and duplications:} This step is required to reduce the further resource cost of operations, and to have a filebase for further method development.
-			\item{Discarding not useful columns:} For the first iteration graph building, the timestamp, machine ID, and ID of the warning is required from the first file mentioned before. From the second and third repair sessions' starting and ending time the machine ID, and the exchange part ID is essential. When there is no exchange part ID just technical worker comment, for fast method's development, it could be handy to give a temporary distinct ID. The temporary ones have to differ from real exchange part IDs.\footnote{this can be a starting point of subcategorizing, with the help of NLP} 
+			\item{Discarding not useful columns:} For the first iteration graph building, the timestamp, machine ID, and ID of the warning is required from the first file mentioned before. From the second, and third file the repair sessions' starting and ending time the machine ID, and the exchange part ID is essential. When there is no exchange part ID just technical worker comment, for fast method's development, it could be handy to give a temporary distinct ID. The temporary ones have to differ from real exchange part IDs.\footnote{this can be a starting point of subcategorizing, with the help of NLP} 
 		\end{itemize}
 %----------------------------------------------------------------------------
 		\subsubsection{Creating nodes' list and edges' list}
 		From previously generated files the nodes and edges, the two vital components of the graph, can be generated. The nodes' list should contain all the distinct warning and exchange part ID-s, the edges' list should contain\footnote{One edge in a row.} the timestamps, the from and to nodes' ID , and the vehicles' ID.
 %----------------------------------------------------------------------------
 		\paragraph{Making the nodes' list:}
-		The previously generated files contain a lot of duplicated warning and exchange part ID along with a multitudinous not needed columns.
-		Is this case the planned steps should be:
+		The previously generated files contain a lot of duplicated warning and exchange part ID-s along with a multitudinous not needed columns.
+		In this case the planned steps should be:
 		\begin{enumerate}
 			\item{to read in warning ID and exchange part ID columns from previously mentioned files,} 
 			\item{to concatenate the two SAP originated lists,}
@@ -226,13 +228,13 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 		The electrical failure prediction preprocessing workflow is in the Appendix \ref{appendix:FaultPredPreProc}
 %----------------------------------------------------------------------------
 		\subsubsection{Exploring:}
-			Unlike the previous dataset, the cleaning steps are not as significant as they could be, because the data was given in a more efficient way. After the later described NA and duplicated column dropping, the data exploring can begin. However, the end of data exploring is after the making of nodes and edges' list, because it is easy to check visually a correct graph representation\footnote{for example: the path is continuous or dashed}.
+			Unlike the previous dataset, the cleaning steps are not as significant as they could be, because the data was given in a more efficient way. After the previously described NA and duplicated column dropping, the data exploring can begin. However, the end of data exploring is after the making of nodes and edges' list, because it is easy to check visually a correct graph representation\footnote{for example: the path is continuous or dashed}.
 %----------------------------------------------------------------------------
 			\subparagraph{Data summaries:}
 			There are a lot of data summary methods (mean, median, SQRT, min, max and quarters). With these aggregations ran on the dataset, it is get a first impression. 
 %----------------------------------------------------------------------------
 			\subparagraph{Visualizations:}
-			The human mind can easily interpret large amount of data with correct visual representation and to go further check the connections and facts derived from experts' knowledge\footnote{Not to mention, amend that knowledge.}.
+			The human mind can easily interpret large amount of data with correct visual representation, and to go further, check the connections and facts derived from experts' knowledge\footnote{Not to mention, amend that knowledge.}.
 %----------------------------------------------------------------------------
 		\subsubsection{Calculating RUL}
 %----------------------------------------------------------------------------
@@ -243,7 +245,7 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 			If the graph has been built, the remaining useful life calculation steps should be the following:
 			\begin{enumerate}
 				\item{getting a warning sequence, what is not represented in the graph, from the same machine, in a chronological order,}
-				\item{listing the machine' IDs between the oldest and the second oldest nodes given in the sequence}\footnote{all the nodes in the new sequence should be int th graph too,} 
+				\item{listing the machine' IDs between the oldest and the second oldest nodes given in the sequence}\footnote{All the nodes in the new sequence should be in the graph, as well.} 
 				\item{iterating through the whole sequence and eliminating the machines which are absent from the current edges,}
 				\item{eliminating the oldest node in the sequence and redo the previous search, when there is no machine shorted with the sequence,}
 				\item{listing the shortest similar machine paths to the exchange part ID nodes, from the last and youngest node in the sequence.}
@@ -254,6 +256,6 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 		 	\end{enumerate}
 		
 		\paragraph\noindent	
-		The calculation of the whole table could be profitable because the technical workers can solve more problem at one repair sessions which could cause longer timespan on duty.
+		The calculation of the whole table could be profitable because the technical workers can solve more problem at one repair sessions which could cause longer timespan on duty for the machines.
 
 		The whole electrical failure prediction preprocessing workflow is in the Appendix \ref{appendix:FaultPredRULCalc}
