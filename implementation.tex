@@ -3,13 +3,13 @@
 %----------------------------------------------------------------------------
 \section{CAN fingerprint dataset processing method}
 \paragraph\noindent
-This chapter will describe the algorithmization and realization of the process presented previously in Design chapter, in R language. The reasons are simple, the R is one of the most common and convenient tool to process datasets and interpret them with a fitted statistical or machine learning model.
+This chapter will describe the algorithmization and realization of the process presented previously in the Design chapter, in R language. The reasons are simple, the R is one of the most common and convenient tool to process datasets and interpret them with a fitted statistical or machine learning model.
 %----------------------------------------------------------------------------
 \subsection{Cleaning}
 %----------------------------------------------------------------------------
 		\subsubsection{Idea One}
 		\paragraph\noindent
-		In this first iteration the Idea One, described under the similar section of the Design chapter, had been algorithmically implemented in R language.
+		In this first iteration, the Idea One, described under the similar section of the Design chapter, had been algorithmically implemented in R language.
 
 		The following R packages were used:
 		\begin{itemize}
@@ -76,36 +76,45 @@ This chapter will describe the algorithmization and realization of the process p
 			\item{ggplot2:} On the contrary, ggplot2 is also from the tidyverse and because of this reason, it is also written in C++, which guarantees the necessary speed for when it is high demand. Moreover, this package was designed with advanced principles, and the code is mostly reusable, and handles data frames efficiently. 
 		\end{itemize} 
 
+		\subparagraph{The generated figures for exploratory data analysis are listed below:}
+		\begin{itemize}
+			\item{Lifting hydraulic pressure density functions, separated by distinct file:} Pressure on the x-axis, density on the y-axis. Figure \ref{implementation:pressure}
+			\item{Crash Y and steering wheel degree correlation, for cross checking. Figure \ref{implementation:Crash}}
+			\item{Hydraulic pressure levels by file, time on x-axis. Figure \ref{implementation:loadon}}
+			\item{Speed versus torque by file. Different driving profiles. Figure \ref{implementation:svst}}
+			\item{Steering wheel angle versus time by file. Different driving profiles. time on the x-axis. Figure \ref{implementation:timevssteeringangle}}
+			\item{One fingerprint displayed to find correlation and for data validation. Figure \ref{implementation:tands}}
+		\end{itemize}
 
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/clusteringf.png}
-			\caption{As it seems, the density functions of hydraulic pressure (x-axis) are different in the different types of tracks. It implicates that different paths are causing distinct encumbrance, ergo different tire abrasion.} 
+			\caption{As it seems, the density functions of hydraulic pressure (x-axis) are different in the different types of tracks. It implicates that different paths are causing distinct encumbrance, ergo different tire abrasion.\label{implementation:pressure}} 
 			\end{figure}
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/CrashYvsSteeringangle.png}
-			\caption{On this figure, the Y-way accelerometer is on the X-axis and the Steering wheels' angle is on the Y-axis. From this, the linear connection between the values are visible, and it is useful for cross-checking.} 
+			\caption{On this figure, the Y-way accelerometer is on the X-axis and the Steering wheels' angle is on the Y-axis. From this, the linear connection between the values are visible, and it is useful for cross-checking.\label{implementation:Crash}} 
 			\end{figure}
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/Rplot.png}
-			\caption{These visualizations tell the mean hydraulic pressure (y axis) when there is load on the machine. The blurry oscillation is caused by rough terrain and obstacles on the road. Time on the x-axis.} 
+			\caption{These visualizations tell the mean hydraulic pressure (y axis) when there is load on the machine. The blurry oscillation is caused by rough terrain and obstacles on the road. Time on the x-axis.\label{implementation:loadon}} 
 			\end{figure}		
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/speedvstorquefacet.png}
-			\caption{The different driving profiles principle can be verified with this figure. The distinct speed-torque pairs cause different tire abrasion.} 
+			\caption{The different driving profiles principle can be verified with this figure. The distinct speed-torque pairs cause different tire abrasion.\label{implementation:svst}} 
 			\end{figure}	
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/timevssteeringangle.png}
-			\caption{The different driving profiles principle can be verified with this figure as well. The distinct turn types cause different tire abrasion.} 
+			\caption{The different driving profiles principle can be verified with this figure as well. The distinct turn types cause different tire abrasion.\label{implementation:timevssteeringangle}} 
 			\end{figure}	
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/torquespeedcat.png}
-			\caption{The connection between the two driver motors speed and torque across the fingerprint files.} 
+			\caption{The connection between the two driver motors speed and torque across the fingerprint files.\label{implementation:tands}} 
 			\end{figure}		
 %----------------------------------------------------------------------------		
 	\subsubsection{Unsupervised learning}
@@ -143,8 +152,15 @@ These attributes have been calculated from the cleaned data and aggregated hourl
 	The hourly aggregated attributes were in a dataframe without sensory values. A new columns has generated with NA-s \footnote{To have a place for the interpolation.} and the tire measurements were imported with multiple measurement points. Moreover, there were inserted to the new columns next to the appropriate hourly timestamp key. When it is done, the interpolation should begin to all aggregations points\footnote{The interpolation was linear. Thus, it could be more precise when the interpolation is based on some meta score involving elapsed time and travelled distance, or with some machine learning algorithm.}.
 
 	Whit this step and more precise tire measurements on multiple occasions, the aggregated values can indicate a mean tire abrasion change. If that change was more than a specified constant, the tire should be changed. From the last hour a tire abrasion rate was calculated\footnote{Based on elapsed time} and with that the remaining useful life had calculated.
+	
+	The RUL calculation process steps are the following:
+	\begin{enumerate}
+		\item{}
+	\end{enumerate}
+		
 	\#Enumerate the steps and reason them.
-	\#Link workflow.
+
+	The whole CAN fingerprint calculation workflow is in the Appendix \ref{appendix:CANFPRULCalc}.
 %----------------------------------------------------------------------------	
 \subsection{Results}
 The results were statistically a promise. However, for more precise results there is a claim for more tire measurement.
@@ -155,6 +171,10 @@ The code can be viewed on my GitHub repository \cite{GitHub_CAN_RUL}.
 \paragraph\noindent
 \section{Electrical failure prediction dataset processing method}
 As it already had been mentioned, for handling this dataset, the Python language was used. Especially, for easy data representation and handling with the NetworkX package. 
+
+The electrical failure prediction preprocessing workflow is in the Appendix \ref{appendix:FaultPredPreProc}
+
+
 %----------------------------------------------------------------------------
 	\subsection{Cleaning}
 For this dataset the cleaning was far easier than the previous one. The data is represented in tabular separated txt and in xlsx file formats.
@@ -213,7 +233,7 @@ The directed edges need a starting and ending point. To achieve that purpose, th
 			\caption{Ten forklifts' paths displayed undirected.} 
 			\end{figure}
 		\#TODO directed graph
-\#WHY
+\#WHY	
 %----------------------------------------------------------------------------
 	\subsection{Calculating RUL}
 			\paragraph{Built of graph:}
@@ -237,6 +257,6 @@ The calculation of the whole table is profitable, because technical workers can 
 
 \#TODO Estimating result, and what causing aleatory mistakes in the model. 
 \#WHY
-
+The whole electrical failure prediction RUL calculation workflow is in the Appendix \ref{appendix:FaultPredRULCalc}
 
 The code can be viewed on my GitHub repository \cite{GitHub_FP_RUL}.
