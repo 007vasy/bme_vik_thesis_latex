@@ -155,11 +155,15 @@ These attributes have been calculated from the cleaned data and aggregated hourl
 	
 	The RUL calculation process steps are the following:
 	\begin{enumerate}
-		\item{}
+		\item{Initial state:} The hourly aggregated attributes were in a dataframe without sensory values. 
+		\item{Tire measurement imported and merged to the dataframe by timestamp key.}
+		\item{The tire measurements was interpolated to all observation.}
+		\item{New columns with NA-s was generated to the calculated RULs, based on the count of the tire measurement points and attributes count\footnote{New columns count = tire measurement points $*$ attributes count.}
+		\item{Tire abrasion changes are calculated by attributes to the previously generated column}
+		\item{Based on the last aggregation window mean abrasion rate, the RUL are calculable\footnote{These results are usable to predict other machines tire abrasion, if the attributes are calculated and aggregated in a similar time window.} .}
+
 	\end{enumerate}
 		
-	\#Enumerate the steps and reason them.
-
 	The whole CAN fingerprint calculation workflow is in the Appendix \ref{appendix:CANFPRULCalc}.
 %----------------------------------------------------------------------------	
 \subsection{Results}
@@ -232,8 +236,6 @@ The directed edges need a starting and ending point. To achieve that purpose, th
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/fault_pred_files/path.png}
 			\caption{Ten forklifts' paths displayed undirected.} 
 			\end{figure}
-		\#TODO directed graph
-\#WHY	
 %----------------------------------------------------------------------------
 	\subsection{Calculating RUL}
 			\paragraph{Built of graph:}
@@ -255,8 +257,6 @@ The directed edges need a starting and ending point. To achieve that purpose, th
 	\subsection{Result}
 The calculation of the whole table is profitable, because technical workers can solve more problem at one repair sessions, resulting in longer timespan on duty for the machines.
 
-\#TODO Estimating result, and what causing aleatory mistakes in the model. 
-\#WHY
 The whole electrical failure prediction RUL calculation workflow is in the Appendix \ref{appendix:FaultPredRULCalc}
 
 The code can be viewed on my GitHub repository \cite{GitHub_FP_RUL}.
