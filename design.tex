@@ -18,7 +18,7 @@ The attributes are aggregations and summarizations of connection between key val
 \clearpage
 %----------------------------------------------------------------------------
 \subsubsection{Abstract Workflow}
-To accomplish the final state from the starting state, the process was partitioned from on start-to-end into smaller steps. 
+To accomplish the final state from the starting state, the process was partitioned from on start-to-end into smaller steps. See Figure \textbf{\ref{design:absWF}} .
 
 \begin{enumerate}
 	\item {Cleaning:} to solve different measurement frequency problems by making a one-row/one-observation data frame.
@@ -30,11 +30,11 @@ To accomplish the final state from the starting state, the process was partition
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=150mm, keepaspectratio]{figures/abstract_workflow.png}
-\caption{Abstract workflow from raw data, to final objective.} 
+\caption{Abstract workflow from raw data, to final objective.\label{design:absWF}} 
 \end{figure}
 
 %----------------------------------------------------------------------------
-\subsection{Expert knowledge and facts}
+\clearpage\subsection{Expert knowledge and facts}
 %----------------------------------------------------------------------------
 \paragraph\noindent
 When some kind of industrial dataset is examined and processed to make educated guess about the future, principles and insights from experts' knowledge are actually helpful to interpret and understand the data in a higher sense\footnote{In reality the vast majority of the insight came from exploratory data analysis and unsupervised learning}. 
@@ -63,7 +63,8 @@ Various planning principles can be utilized during this design phase \cite{CSDIS
 
 	To establish a sustainable process, the iteration has to go through more than one ideas. For the sake of clarity, all ideas would be enumerated.
 		\paragraph{Idea One:}
-			The first data shape transforming idea was to box-short the data. Item by item:
+			The first data shape transforming idea was to box-short the data. See Figure \textbf{\ref{design:IONE}} . 
+			Item by item:
 \begin{enumerate}
 	\item{to examine the longest key-value pair vector maximal timestamp,} 
 	\item{to make a data frame with timestamp keys from zero to the maximum timestamp key got from the file in step of 10 milliseconds,}
@@ -72,24 +73,24 @@ Various planning principles can be utilized during this design phase \cite{CSDIS
 	\item{to do it for all columns in the file,}
 	\item{to do it for all files.}
 \end{enumerate}
-			\begin{figure}[!ht]
+			\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/cleaning_idea_one.png}
-			\caption{First idea (Idea One) to clean the raw data.} 
+			\caption{First idea (Idea One) to clean the raw data.\label{design:IONE}} 
 			\end{figure}
 		\subparagraph\noindent
 This is time consuming and slow even on the server, because it is not the optimal sorting algorithm for this kind of data representation \cite{CSDISTILLED}.
 %----------------------------------------------------------------------------
-		\paragraph{Idea Two:}
-To get rid of the processing-speed problem, the second idea was to aggregate the values' mean by second. This solution has to be more faster than the previous one, but if there time skip in the data\footnote{there is a lot of missing rows, sometimes effecting minutes of operational data}, this idea would not be sufficient, either.
-			\begin{figure}[!ht]
+		\clearpage\paragraph{Idea Two:}
+To get rid of the processing-speed problem, the second idea was to aggregate the values' mean by second. This solution has to be more faster than the previous one, but if there time skip in the data\footnote{there is a lot of missing rows, sometimes effecting minutes of operational data}, this idea would not be sufficient, either. See Figure \textbf{\ref{design:ITWO}} .
+			\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/cleaning_idea_two.png}
-			\caption{Second idea (Idea Two) to clean the raw data.} 
+			\caption{Second idea (Idea Two) to clean the raw data.\label{design:ITWO}} 
 			\end{figure}
 %----------------------------------------------------------------------------
 		\paragraph{Idea Synthesis:}
-To get the advantage of the two methods, it would be useful to merge the previous ideas.
+To get the advantage of the two methods, it would be useful to merge the previous ideas. See Figure \textbf{\ref{design:ISyn}} .
 \begin{enumerate}
 	\item{examine the longest key-value pair vector maximal timestamp,} 
 	\item{make a data frame with timestamp keys from zero to the maximal timestamp key got from the file in step of a second,}
@@ -99,10 +100,10 @@ To get the advantage of the two methods, it would be useful to merge the previou
 	\item{do it for all columns in the file,}
 	\item{do it for all files.}
 \end{enumerate} 
-			\begin{figure}[!ht]
+			\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/cleaning_idea_synthesis.png}
-			\caption{To optimize the cleaning workflow, the to processes were merged together.} 
+			\caption{To optimize the cleaning workflow, the to processes were merged together.\label{design:ISyn}} 
 			\end{figure}
 \subparagraph\noindent
 With this solution design the high quality data frame, what can be used later, is possible, and with this idea synthesis the problems with the previous ones are worked around.
@@ -161,7 +162,7 @@ With this solution design the high quality data frame, what can be used later, i
 	\end{enumerate}
 
 	\paragraph\noindent
-	The whole CAN fingerprint calculation workflow is in the Appendix \ref{appendix:CANFPRULCalc}.
+	The whole CAN fingerprint calculation workflow is in the Appendix \textbf{\ref{appendix:CANFPRULCalc}} .
 
 	Other not implemented solutions:
 	\begin{itemize}
@@ -225,7 +226,7 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 		 \end{enumerate}
 		With these steps we get the distinct nodes and a lot of edges in different paths.
 
-		The electrical failure prediction preprocessing workflow is in the Appendix \ref{appendix:FaultPredPreProc}
+		The electrical failure prediction preprocessing workflow is in the Appendix \textbf{\ref{appendix:FaultPredPreProc}} .
 %----------------------------------------------------------------------------
 		\subsubsection{Exploring:}
 			Unlike the previous dataset, the cleaning steps are not as significant as they could be, because the data was given in a more efficient way. After the previously described NA and duplicated column dropping, the data exploring can begin. However, the end of data exploring is after the making of nodes and edges' list, because it is easy to check visually a correct graph representation\footnote{for example: the path is continuous or dashed}.
@@ -258,4 +259,4 @@ As it previously has been mentioned, the BAL Network science book \cite{BALNWSCB
 		\paragraph\noindent	
 		The calculation of the whole table could be profitable because the technical workers can solve more problem at one repair sessions which could cause longer timespan on duty for the machines.
 
-		The whole electrical failure prediction RUL calculation workflow is in the Appendix \ref{appendix:FaultPredRULCalc}
+		The whole electrical failure prediction RUL calculation workflow is in the Appendix \textbf{\ref{appendix:FaultPredRULCalc}} .

@@ -78,12 +78,12 @@ This chapter will describe the algorithmization and realization of the process p
 
 		\subparagraph{The generated figures for exploratory data analysis are listed below:}
 		\begin{itemize}
-			\item{Lifting hydraulic pressure density functions, separated by distinct file:} Pressure on the x-axis, density on the y-axis. Figure \ref{implementation:pressure}
-			\item{Crash Y and steering wheel degree correlation, for cross checking. Figure \ref{implementation:Crash}}
-			\item{Hydraulic pressure levels by file, time on x-axis. Figure \ref{implementation:loadon}}
-			\item{Speed versus torque by file. Different driving profiles. Figure \ref{implementation:svst}}
-			\item{Steering wheel angle versus time by file. Different driving profiles. time on the x-axis. Figure \ref{implementation:timevssteeringangle}}
-			\item{One fingerprint displayed to find correlation and for data validation. Figure \ref{implementation:tands}}
+			\item{Lifting hydraulic pressure density functions, separated by distinct file:} Pressure on the x-axis, density on the y-axis. See Figure \textbf{\ref{implementation:pressure}} .
+			\item{Crash Y and steering wheel degree correlation, for cross checking. Figure \textbf{\ref{implementation:Crash}} .}
+			\item{Hydraulic pressure levels by file, time on x-axis. Figure \textbf{\ref{implementation:loadon}} .}
+			\item{Speed versus torque by file. Different driving profiles. Figure \textbf{\ref{implementation:svst}} .}
+			\item{Steering wheel angle versus time by file. Different driving profiles. time on the x-axis. Figure \textbf{\ref{implementation:timevssteeringangle}} .}
+			\item{One fingerprint displayed to find correlation and for data validation. Figure \textbf{\ref{implementation:tands}} .}
 		\end{itemize}
 
 		\begin{figure}[H]
@@ -126,7 +126,7 @@ This chapter will describe the algorithmization and realization of the process p
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/clustering.png}
 			\caption{Clustering speed and torque pairs with a hierarchical bottom-up clustering.\label{fig:clustering}} 
 	\end{figure}
-	As it is visible, from this figure \ref{fig:clustering} , the experts' knowledge was partly wrong, because they forgot to mention the fourth state: the standing still state.
+	As it is visible, from this figure \textbf{\ref{fig:clustering}} , the experts' knowledge was partly wrong, because they forgot to mention the fourth state: the standing still state.
 
 	This can be argued further, because if the machine is standing still with a load, it damages the tire more than moving slowly with low torque.
 %----------------------------------------------------------------------------	
@@ -147,6 +147,11 @@ These attributes have been calculated from the cleaned data and aggregated hourl
 		\item{steering wheel degree change derived by time aggregated by average:} The derivation is made second by second, the summary is calculated hourly\footnote{torque and speed derived by time could be useful, as well}.
 	\end{itemize}
 %----------------------------------------------------------------------------	
+\subsection{Important Note:}
+			The STILL company, due to more important projects and tasks, not provided enough CAN-bus data between two tire measurement points (2017.12.08.). Thus, the following lines are just implementation plans, and the functions couldn't be tested for real by the due date of the thesis.
+
+			To solve this situation, I was written a recursive data multiple function , but it was not enough time to test the solution \cite{rekur}.
+
 \subsection{Calculating RUL (Remaining Useful Life)}
 	After the previous steps have been done, and the attributes were calculated, the remaining useful life calculation can begin.
 	The hourly aggregated attributes were in a dataframe without sensory values. A new columns has generated with NA-s \footnote{To have a place for the interpolation.} and the tire measurements were imported with multiple measurement points. Moreover, there were inserted to the new columns next to the appropriate hourly timestamp key. When it is done, the interpolation should begin to all aggregations points\footnote{The interpolation was linear. Thus, it could be more precise when the interpolation is based on some meta score involving elapsed time and travelled distance, or with some machine learning algorithm.}.
@@ -158,13 +163,12 @@ These attributes have been calculated from the cleaned data and aggregated hourl
 		\item{Initial state:} The hourly aggregated attributes were in a dataframe without sensory values. 
 		\item{Tire measurement imported and merged to the dataframe by timestamp key.}
 		\item{The tire measurements was interpolated to all observation.}
-		\item{New columns with NA-s was generated to the calculated RULs, based on the count of the tire measurement points and attributes count\footnote{New columns count = tire measurement points $*$ attributes count.}
-		\item{Tire abrasion changes are calculated by attributes to the previously generated column}
-		\item{Based on the last aggregation window mean abrasion rate, the RUL are calculable\footnote{These results are usable to predict other machines tire abrasion, if the attributes are calculated and aggregated in a similar time window.} .}
-
+		\item{New columns with NA-s was generated to the calculated RULs}, based on the count of the tire measurement points and attributes count\footnote{New columns count is equal to the tire measurement points $*$ attributes count.}
+		\item{Tire abrasion changing rates are calculated by attributes to the previously generated column}
+		\item{Based on the last aggregation window mean abrasion rate, the RUL are calculable.} Just a constant tire abrasion limit is needed\footnote{These results are usable to predict other machines tire abrasion, if the attributes are calculated and aggregated in a similar time window.}.
 	\end{enumerate}
 		
-	The whole CAN fingerprint calculation workflow is in the Appendix \ref{appendix:CANFPRULCalc}.
+	The whole CAN fingerprint calculation workflow is in the Appendix \textbf{\ref{appendix:CANFPRULCalc}} .
 %----------------------------------------------------------------------------	
 \subsection{Results}
 The results were statistically a promise. However, for more precise results there is a claim for more tire measurement.
@@ -176,7 +180,7 @@ The code can be viewed on my GitHub repository \cite{GitHub_CAN_RUL}.
 \section{Electrical failure prediction dataset processing method}
 As it already had been mentioned, for handling this dataset, the Python language was used. Especially, for easy data representation and handling with the NetworkX package. 
 
-The electrical failure prediction preprocessing workflow is in the Appendix \ref{appendix:FaultPredPreProc}
+The electrical failure prediction preprocessing workflow is in the Appendix \textbf{\ref{appendix:FaultPredPreProc}} .
 
 
 %----------------------------------------------------------------------------
@@ -240,6 +244,8 @@ The directed edges need a starting and ending point. To achieve that purpose, th
 	\subsection{Calculating RUL}
 			\paragraph{Built of graph:}
 			When the previous ordering, exploring, and fact checking were completed, the graph building could have begun from generated files. Thus, the base is the nodes' list, moreover, all nodes should be represented in the graph. When it came to edges, the situation was different. For computational resource reasons not all of the paths were included for sure. But more the paths the better was the prediction.
+			\paragraph{Important Note:}
+			The STILL company, due to more important projects and tasks, not provided electric error data and SAP fault data with merging truck ID on time (2017.12.08.). Thus, the following lines are just implementation plans, and the functions couldn't be tested for real by the due date of the thesis.
 			\paragraph{Computing steps:}
 			When graph has been build, the remaining useful life calculation steps were the following:
 			\begin{enumerate}
@@ -257,6 +263,6 @@ The directed edges need a starting and ending point. To achieve that purpose, th
 	\subsection{Result}
 The calculation of the whole table is profitable, because technical workers can solve more problem at one repair sessions, resulting in longer timespan on duty for the machines.
 
-The whole electrical failure prediction RUL calculation workflow is in the Appendix \ref{appendix:FaultPredRULCalc}
+The whole electrical failure prediction RUL calculation workflow is in the Appendix \textbf{\ref{appendix:FaultPredRULCalc}} .
 
 The code can be viewed on my GitHub repository \cite{GitHub_FP_RUL}.
