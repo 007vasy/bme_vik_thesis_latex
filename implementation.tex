@@ -78,28 +78,28 @@ This chapter will describe the algorithmization and realization of the process p
 
 		\subparagraph{The generated figures for exploratory data analysis are listed below:}
 		\begin{itemize}
-			\item{Lifting hydraulic pressure density functions, separated by distinct file:} Pressure on the x-axis, density on the y-axis. See Figure \textbf{\ref{implementation:pressure}} .
-			\item{Crash Y and steering wheel degree correlation, for cross checking. Figure \textbf{\ref{implementation:Crash}} .}
-			\item{Hydraulic pressure levels by file, time on x-axis. Figure \textbf{\ref{implementation:loadon}} .}
-			\item{Speed versus torque by file. Different driving profiles. Figure \textbf{\ref{implementation:svst}} .}
-			\item{Steering wheel angle versus time by file. Different driving profiles. time on the x-axis. Figure \textbf{\ref{implementation:timevssteeringangle}} .}
-			\item{One fingerprint displayed to find correlation and for data validation. Figure \textbf{\ref{implementation:tands}} .}
+			\item{Lifting hydraulic pressure density functions, separated by distinct file:} Pressure on the x-axis, density on the y-axis. See Figure \textbf{\ref{implementation:pressure}.}
+			\item{Crash Y and steering wheel degree correlation, for cross checking. Figure \textbf{\ref{implementation:Crash}.}}
+			\item{Hydraulic pressure levels by file, time on x-axis. Figure \textbf{\ref{implementation:loadon}.}}
+			\item{Speed versus torque by file. Different driving profiles. Figure \textbf{\ref{implementation:svst}.}}
+			\item{Steering wheel angle versus time by file. Different driving profiles. time on the x-axis. Figure \textbf{\ref{implementation:timevssteeringangle}.}}
+			\item{One fingerprint displayed to find correlation and for data validation. Figure \textbf{\ref{implementation:tands}.}}
 		\end{itemize}
 
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/clusteringf.png}
-			\caption{As it seems, the density functions of hydraulic pressure (x-axis) are different in the different types of tracks. It implicates that different paths are causing distinct encumbrance, ergo different tire abrasion.\label{implementation:pressure}} 
+			\caption{The density functions of hydraulic pressure (x-axis) are different in the different types of tracks. It implicates that different paths are causing distinct encumbrance, ergo different tire abrasion.\label{implementation:pressure}} 
 			\end{figure}
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/CrashYvsSteeringangle.png}
-			\caption{On this figure, the Y-way accelerometer is on the X-axis and the Steering wheels' angle is on the Y-axis. From this, the linear connection between the values are visible, and it is useful for cross-checking.\label{implementation:Crash}} 
+			\caption{In this figure, the Y-way accelerometer is on the X-axis and the Steering wheels' angle is on the Y-axis. From this, the linear connection between the values are visible, and it is useful for cross-checking.\label{implementation:Crash}} 
 			\end{figure}
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/Rplot.png}
-			\caption{These visualizations tell the mean hydraulic pressure (y axis) when there is load on the machine. The blurry oscillation is caused by rough terrain and obstacles on the road. Time on the x-axis.\label{implementation:loadon}} 
+			\caption{These visualizations tell the mean hydraulic pressure (y axis) when there is load on the machine. The blurry oscillation is caused by rough terrain and obstacles on the road. The horizontal axis represents time.\label{implementation:loadon}} 
 			\end{figure}		
 		\begin{figure}[H]
 			\centering
@@ -120,13 +120,13 @@ This chapter will describe the algorithmization and realization of the process p
 	\subsubsection{Unsupervised learning}
 	Unsupervised learning is efficient for handling and examining unlabelled data in the first place.
 	
-	In this particular case it is used to check the experts' knowledge what says there are three driving profiles.
+	In this particular case it is used to check the experts' knowledge, which says that there are three driving profiles.
 	\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/can_f/clustering.png}
 			\caption{Clustering speed and torque pairs with a hierarchical bottom-up clustering.\label{fig:clustering}} 
 	\end{figure}
-	As it is visible, from this figure \textbf{\ref{fig:clustering}} , the experts' knowledge was partly wrong, because they forgot to mention the fourth state: the standing still state.
+	As it is visible, from this Figure \textbf{\ref{fig:clustering}} , the experts' knowledge was partly wrong, because they forgot to mention the fourth state: the standing still state.
 
 	This can be argued further, because if the machine is standing still with a load, it damages the tire more than moving slowly with low torque.
 %----------------------------------------------------------------------------	
@@ -148,44 +148,44 @@ These attributes have been calculated from the cleaned data and aggregated hourl
 	\end{itemize}
 %----------------------------------------------------------------------------	
 \subsection{Important Note:}
-			The STILL company, due to more important projects and tasks, not provided enough CAN-bus data between two tire measurement points (2017.12.08.). Thus, the following lines are just implementation plans, and the functions couldn't be tested for real by the due date of the thesis.
+			The STILL company, due to more important projects and tasks, has not provided enough CAN-bus data between two tire measurement points (2017.12.08.). Thus, the following lines are just implementation plans, and the functions couldn't be tested for real by the due date of the thesis.
 
-			To solve this situation, I was written a recursive data multiple function , but it was not enough time to test the solution \cite{rekur}.
+			To solve this situation, I wrote a recursive data multiple function, but it was not enough time to test the solution \cite{rekur}.
 
 \subsection{Calculating RUL (Remaining Useful Life)}
-	After the previous steps have been done, and the attributes were calculated, the remaining useful life calculation can begin.
-	The hourly aggregated attributes were in a dataframe without sensory values. A new columns has generated with NA-s \footnote{To have a place for the interpolation.} and the tire measurements were imported with multiple measurement points. Moreover, there were inserted to the new columns next to the appropriate hourly timestamp key. When it is done, the interpolation should begin to all aggregations points\footnote{The interpolation was linear. Thus, it could be more precise when the interpolation is based on some meta score involving elapsed time and travelled distance, or with some machine learning algorithm.}.
+	After the previous steps have been done, and the attributes were calculated, the remaining useful life calculation was able to begin.
+	The hourly aggregated attributes were in a dataframe without sensory values. The new columns has generated with NA-s \footnote{To have a place for the interpolation.} and the tire measurements were imported with multiple measurement points. Moreover, they were inserted to the new columns next to the appropriate hourly timestamp key. When it is done, the interpolation should begin to all aggregations points\footnote{The interpolation was linear. Thus, it could be more precise when the interpolation is based on some meta score involving elapsed time and travelled distance, or with some machine learning algorithm.}.
 
-	Whit this step and more precise tire measurements on multiple occasions, the aggregated values can indicate a mean tire abrasion change. If that change was more than a specified constant, the tire should be changed. From the last hour a tire abrasion rate was calculated\footnote{Based on elapsed time} and with that the remaining useful life had calculated.
+	With this step and more precise tire measurements on multiple occasions, the aggregated values can indicate a mean tire abrasion change. If that change was more than a specified constant, the tire should be changed. From the last hour a tire abrasion rate was calculated\footnote{Based on elapsed time} and with that the remaining useful life was calculated.
 	
 	The RUL calculation process steps are the following:
 	\begin{enumerate}
 		\item{Initial state:} The hourly aggregated attributes were in a dataframe without sensory values. 
 		\item{Tire measurement imported and merged to the dataframe by timestamp key.}
-		\item{The tire measurements was interpolated to all observation.}
-		\item{New columns with NA-s was generated to the calculated RULs}, based on the count of the tire measurement points and attributes count\footnote{New columns count is equal to the tire measurement points $*$ attributes count.}
-		\item{Tire abrasion changing rates are calculated by attributes to the previously generated column}
-		\item{Based on the last aggregation window mean abrasion rate, the RUL are calculable.} Just a constant tire abrasion limit is needed\footnote{These results are usable to predict other machines tire abrasion, if the attributes are calculated and aggregated in a similar time window.}.
+		\item{The tire measurements were interpolated to all observation.}
+		\item{New columns with NA-s were generated to the calculated RULs}, based on the count of the tire measurement points and attributes count\footnote{New columns count is equal to the tire measurement points $*$ attributes count.}.
+		\item{Tire abrasion changing rates are calculated by attributes to the previously generated column.}
+		\item{Based on the last aggregation window mean abrasion rate, the RUL are calculable.} There is just a constant tire abrasion limit is needed\footnote{These results are usable to predict other machines tire abrasion, if the attributes are calculated and aggregated in a similar time window.}.
 	\end{enumerate}
 		
-	The whole CAN fingerprint calculation workflow is in the Appendix \textbf{\ref{appendix:CANFPRULCalc}} .
+	The whole CAN fingerprint calculation workflow is in the Appendix \textbf{\ref{appendix:CANFPRULCalc}.}
 %----------------------------------------------------------------------------	
 \subsection{Results}
-The results were statistically a promise. However, for more precise results there is a claim for more tire measurement.
+The results were statistically promising. However, for more precise results there is a claim for more tire measurement.
 
-The code can be viewed on my GitHub repository \cite{GitHub_CAN_RUL}.
+The code can be viewed in my GitHub repository \cite{GitHub_CAN_RUL}.
 %---------------------------------------------------------------------------------------------------------------------------------------
 %---------------------------------------------------------------------------------------------------------------------------------------
 \paragraph\noindent
 \section{Electrical failure prediction dataset processing method}
-As it already had been mentioned, for handling this dataset, the Python language was used. Especially, for easy data representation and handling with the NetworkX package. 
+As it was mentioned earlier, for handling this dataset, the Python language was used. Especially for easy data representation and handling with the NetworkX package. 
 
-The electrical failure prediction preprocessing workflow is in the Appendix \textbf{\ref{appendix:FaultPredPreProc}} .
+The electrical failure prediction preprocessing workflow is in the Appendix \textbf{\ref{appendix:FaultPredPreProc}.}
 
 
 %----------------------------------------------------------------------------
 	\subsection{Cleaning}
-For this dataset the cleaning was far easier than the previous one. The data is represented in tabular separated txt and in xlsx file formats.
+For this dataset the cleaning was far easier than for the previous one. The data is represented in tabular separated txt and in xlsx file formats.
 To progress further, two steps were made:
 \begin{itemize}
 			\item{dropping the NA and duplicated columns,}
@@ -222,19 +222,19 @@ The edges' list was generated from three sources:
 	\item{SAP fails once more with a twist} all columns except the service task(s) begin timestamp.
 \end{itemize}
 
-This dataframe\footnote{Containing three columns} was processed further. The dataframe's rows were grouped by vehicle ID and arranged by the timestamps\footnote{The similar rows with close timestamp were not been eliminated.}.
-The directed edges need a starting and ending point. To achieve that purpose, the starting states were derived from the previous row ending state by vehicle ID. After that, the data was saved in distinct files by vehicle ID.
+This dataframe\footnote{Containing three columns.} was processed further. The dataframe's rows were grouped by vehicle ID and arranged by the timestamps\footnote{The similar rows with close timestamp were not been eliminated.}.
+The directed edges needed a starting and ending point. To achieve that purpose, the starting states were derived from the previous row ending state by vehicle ID. After that, the data was saved in distinct files by vehicle ID.
 %----------------------------------------------------------------------------
 	\subsection{Exploring}
 		\paragraph{Data summaries:}
-		With this special dataset the common data summary functions are nearly useless, because of the lack of quantitative variables, and the condition state representation.
+		With this special dataset the common data summary functions were nearly useless, because of the lack of quantitative variables, and the condition state representation.
 		The useful data summaries were informative about the length of the dissimilar edges' and nodes' lists, because it helped to confirm the quality of the data for graph representation and RUL calculation. 
 
 %----------------------------------------------------------------------------		
 		\paragraph{Visualizations:}
 		The visualizations are beneficial when it comes to a graph represented data. In this project I had used the NetworkX built in graph building and visualization, and the matplotlib package plotting functions.
 
-		As is seems, it is difficult to make a guess, but it can be seen the opportunity to statistically using the states and the edges' weight to make a prediction.
+		It looks like that it is difficult to make a guess, but it can be seen the opportunity to statistically using the states and the edges' weight to make a prediction.
 			\begin{figure}[H]
 			\centering
 			\includegraphics[width=150mm, keepaspectratio]{figures/gen_files/fault_pred_files/path.png}
@@ -242,12 +242,12 @@ The directed edges need a starting and ending point. To achieve that purpose, th
 			\end{figure}
 %----------------------------------------------------------------------------
 	\subsection{Calculating RUL}
-			\paragraph{Built of graph:}
-			When the previous ordering, exploring, and fact checking were completed, the graph building could have begun from generated files. Thus, the base is the nodes' list, moreover, all nodes should be represented in the graph. When it came to edges, the situation was different. For computational resource reasons not all of the paths were included for sure. But more the paths the better was the prediction.
+			\paragraph{Building the graph:}
+			When the previous ordering, exploring, and fact checking were completed, the graph building could have begun from generated files. Thus, the base is the nodes' list, moreover, all nodes should be represented in the graph. When it came to the edges, the situation were different. For computational resource reasons not all of the paths got included for sure. But more the paths the better was the prediction.
 			\paragraph{Important Note:}
-			The STILL company, due to more important projects and tasks, not provided electric error data and SAP fault data with merging truck ID on time (2017.12.08.). Thus, the following lines are just implementation plans, and the functions couldn't be tested for real by the due date of the thesis.
+			The STILL company, due to more important projects and tasks, did not provide electric error data and SAP fault data with merging truck ID on time (2017.12.08.). Thus, the following lines are just implementation plans, and the functions couldn't be tested for real by the due date of the thesis.
 			\paragraph{Computing steps:}
-			When graph has been build, the remaining useful life calculation steps were the following:
+			When graph has been build, the remaining useful life calculation steps are the following:
 			\begin{enumerate}
 				\item{getting a warning sequence, what is not represented in the graph from the same machine in a chronological order,}
 				\item{listing the machine' IDs between the oldest and the second oldest nodes given in the sequence,}
@@ -255,14 +255,14 @@ The directed edges need a starting and ending point. To achieve that purpose, th
 				\item{eliminating and redo when there is no machine ID was returned by the sequence,}
 				\item{the list of machines with similar path was given from the last and youngest node in the sequence. The shortest similar machine path was listed to the exchange part ID nodes,}
 				\item{from the last node the possibility calculated to all exchange part ID nodes, based on the similar shortest machine path count to the specific exchange part ID nodes divided by sum of to all the exchange part ID nodes,}
-				\item{besides of possibility, the time to the specific exchange part ID node was computed to give more insights about the remaining useful life based on the similar shortest machine's distance in time,}
-				\item{the result were contained following columns: exchange part ID node, minimal, mean, median and maximal time to that node, and the computed possibility arranged by possibility and time,} 
-		 		\item{the RUL is the highest possibility with the shortest remaining time\footnote{The RUL can be some kind of meta score based on time window and possibility level.}}
+				\item{besides possibility, the time to the specific exchange part ID node was computed to give more insights about the remaining useful life based on the similar shortest machine's distance in time,}
+				\item{the result contained the following columns: exchange part ID node, minimal-, mean-, median- and maximal time to that node, and the computed possibility arranged by possibility and time,} 
+		 		\item{the RUL is the highest possibility with the shortest remaining time\footnote{The RUL can be some kind of meta score based on time window and possibility level.}.}
 		 	\end{enumerate}
 %----------------------------------------------------------------------------
 	\subsection{Result}
-The calculation of the whole table is profitable, because technical workers can solve more problem at one repair sessions, resulting in longer timespan on duty for the machines.
+The calculation of the whole table is worth it, because technical workers can solve more problems at one repair session, resulting in longer timespan on duty for the machines.
 
-The whole electrical failure prediction RUL calculation workflow is in the Appendix \textbf{\ref{appendix:FaultPredRULCalc}} .
+The whole electrical failure prediction RUL calculation workflow is in the Appendix \textbf{\ref{appendix:FaultPredRULCalc}.}
 
-The code can be viewed on my GitHub repository \cite{GitHub_FP_RUL}.
+The code can be viewed in my GitHub repository \cite{GitHub_FP_RUL}.
