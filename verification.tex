@@ -7,15 +7,14 @@
 %----------------------------------------------------------------------------
 All written functions and workflows were manually unit tested before the unit assembly to a grater function or workflow. Thus, debugging were easier and following functional testing was simpler because of the trustworthy sub functions and sub workflows.
 
-After a wanted workflow for example the cleaning was assembled, following steps were integration tests, to ensure the solution's quality and whole planning and implementation process' validity.
+After a wanted workflow for example the cleaning was assembled, the following steps were integration tests, to ensure the solution's quality and whole planning and implementation process' validity.
 
 Due to their large volumes in this data set all of these enormous files were tested and ran on the TMIT department's Linux server \cite{Batman}.
 Afterwards, the results were copied back to the personal computer for further investigation.
-\footnote{Collect footnotes and explain them in the optimization section}
 %----------------------------------------------------------------------------
 \subsection{Performance testing}
 %----------------------------------------------------------------------------
-The performance was investigated on various workflows, as they already had been presented, on two computer on personal computer \cite{Latitude}, and on Linux server \cite{Batman}.
+The performance was investigated on various workflows, as they already had been presented, on two computers on a personal computer \cite{Latitude}, and on a Linux server \cite{Batman}.
 
 The results were:
 \begin{table}[H]
@@ -63,7 +62,7 @@ Whole RUL calculating workflow & NA & NA \\
 \subsection{Possible functional and performance optimizations}
 The results in previous section were indicating the worth of future optimization. There are a lot of opportunities when the whole process are under investigation.
 
-The whole process means from the data collection on the forklifts CAN bus, and the tire measurement, trough the entire computation processes to the final RUL calculation.
+The whole process means from the data collection on the forklifts CAN bus, and the tire measurement, through the entire computation processes to the final RUL calculation.
 
 The possible optimization opportunities are:
 \begin{itemize}
@@ -81,14 +80,14 @@ The possible optimization opportunities are:
 %----------------------------------------------------------------------------
 Although there is an opportunity to write automated unit and integration tests in Python, all written functions and workflows were manually unit tested, before the unit assembly to a grater function or workflow. Therefore, the debugging were easier and following functional testing was simpler because of trustworthy sub functions and sub workflows.
 
-After a wanted workflow e.c. the cleaning, was assembled, following steps were the integration tests, to ensure the solution quality and whole planning process validity of the new approach.
+After a wanted workflow (e.g. the cleaning) was assembled, following steps were the integration tests, to ensure the solution quality and whole planning process validity of the new approach.
 
 Thus, the large file in this dataset, the enormous file was tested and ran on the department Linux server \cite{Batman}.
 Moreover, the results were copied back to the personal computer for further investigation.
 %----------------------------------------------------------------------------
 \subsection{Performance testing}
 %----------------------------------------------------------------------------
-The performance was investigated on various workflows, as they already had been mentioned, on two computer: on personal computer \cite{Latitude}, and one Linux server \cite{Batman}.
+The performance was investigated on various workflows, as they already had been mentioned, on two computer: on a personal computer \cite{Latitude}, and on a Linux server \cite{Batman}.
 
 The tested workflows were the following:
 \begin{enumerate}
@@ -137,7 +136,7 @@ Results in previous section were indicating the worth of future optimization. Th
 
 The possible optimization opportunities are:
 \begin{itemize}
-	\item{Allocating more resources to RUL computation process.} Thus, RUL calculation is computation heavy. However, with some cloud computing solution can speed up the process.
+	\item{Allocating more resources to RUL computation process.} Thus, RUL calculation is computation heavy. However, some cloud computing solution can speed up the process.
 	\item{Including technical workers' comment.} As they already had been mentioned, the technical workers' comment with NLP tokenisation, and categorization could bring more and preciser fail states which could improve the predictions' precision.
 	\item{Drop paths under X path weight.} The calculation of lower paths' possibility could be probably worthless with further testing. Corresponding a dropping level could be estimated, with that in mind the wasteful paths could be dropped.
 	\item{Saving by vehicle ID when making node list.} In the current solution grouping was done on the whole file, but if the edges pre-data chunk is saved to distinct files by vehicle ID, the processing computer could arrange data file by file. This could accelerate the grouping process.
